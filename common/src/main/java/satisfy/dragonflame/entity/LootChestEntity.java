@@ -125,16 +125,17 @@ public class LootChestEntity extends RandomizableContainerBlockEntity implements
         int fireworkCount = 8 + random.nextInt(7);
 
         for (int i = 0; i < fireworkCount; i++) {
+            int color = random.nextInt(0xFFFFFF);
             ItemStack fireworkStack = new ItemStack(Items.FIREWORK_ROCKET);
             CompoundTag fireworkTag = new CompoundTag();
             CompoundTag fireworkExplosions = new CompoundTag();
             ListTag explosionsList = new ListTag();
             CompoundTag explosion = new CompoundTag();
 
-            explosion.putIntArray("Colors", new int[]{random.nextInt(0xFFFFFF)});
             explosion.putByte("Flicker", (byte) (random.nextBoolean() ? 1 : 0));
             explosion.putByte("Trail", (byte) (random.nextBoolean() ? 1 : 0));
-            explosion.putByte("Type", (byte) random.nextInt(5));
+            explosion.putIntArray("Colors", new int[]{color});
+            explosion.putByte("Type", (byte) 0);
             explosionsList.add(explosion);
 
             fireworkExplosions.put("Explosions", explosionsList);
