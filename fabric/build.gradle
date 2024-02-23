@@ -41,6 +41,7 @@ dependencies {
     modApi("dev.architectury:architectury-fabric:${rootProject.architectury_version}"){ exclude group: 'net.fabricmc', module: 'fabric-loader' }
     modImplementation("me.shedaniel:RoughlyEnoughItems-fabric:$rei_version") { exclude group: 'net.fabricmc', module: 'fabric-loader' }
     include(implementation("blue.endless:jankson:${jankson_version}"))
+    modImplementation "net.tslat.smartbrainlib:SmartBrainLib-fabric-${project.minecraft_version}:${project.sbl_version}"
 
 
     modCompileOnlyApi("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
