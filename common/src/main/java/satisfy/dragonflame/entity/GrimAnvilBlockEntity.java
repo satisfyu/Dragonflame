@@ -88,7 +88,7 @@ public class GrimAnvilBlockEntity extends BlockEntity implements BlockEntityTick
 
 
     private boolean canSpawn() {
-        return this.ore.getItem() == ObjectRegistry.TITAN_INGOT && this.level != null &&
+        return this.ore.getItem() == ObjectRegistry.TITAN_INGOT.get() && this.level != null &&
                 GrimAnvilBlock.getGrimAnvilComponents(this.worldPosition, this.getBlockState()).stream().allMatch(pos -> this.level.getBlockState(pos).getValue(GrimAnvilBlock.ESSENCE));
     }
 
