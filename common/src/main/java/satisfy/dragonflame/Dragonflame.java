@@ -6,8 +6,6 @@ import satisfy.dragonflame.client.DragonflameClient;
 import satisfy.dragonflame.config.DragonflameConfig;
 import satisfy.dragonflame.networking.DragonflameNetworking;
 import satisfy.dragonflame.registry.*;
-import satisfy.dragonflame.util.BowProperties;
-import satisfy.dragonflame.util.DragonflameProperties;
 
 public class Dragonflame {
 
@@ -25,7 +23,6 @@ public class Dragonflame {
 		MobEffectRegistry.init();
 		EnchantmentRegistry.init();
 		PlacerTypesRegistry.init();
-		DragonflameProperties.init();
 		DragonflameNetworking.commonInit();
 	}
 }
