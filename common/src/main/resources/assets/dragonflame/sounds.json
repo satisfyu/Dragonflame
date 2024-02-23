@@ -10,5 +10,17 @@
     "sounds": [
       "dragonflame:improved_raid_horn"
     ]
+  },
+  "lootchest_open": {
+    "subtitle": "dragonflame.sound.lootchest_open",
+    "sounds": [
+      "dragonflame:lootchest_open"
+    ]
+  },
+  "lootchest_close": {
+    "subtitle": "dragonflame.sound.lootchest_close",
+    "sounds": [
+      "dragonflame:lootchest_close"
+    ]
   }
 }

@@ -29,7 +29,7 @@ public class LootChestScreenhandler extends AbstractContainerMenu {
 
         for(int j = 0; j < 3; ++j) {
             for(int k = 0; k < 3; ++k) {
-                this.addSlot(new PicnicBasketSlot(container, k + j * 3, 62 + k * 18, 17 + j * 18));
+                this.addSlot(new LootChest(container, k + j * 3, 62 + k * 18, 17 + j * 18));
             }
         }
 
@@ -87,9 +87,9 @@ public class LootChestScreenhandler extends AbstractContainerMenu {
         return this.container.stillValid(player);
     }
 
-    private static class PicnicBasketSlot extends Slot{
+    private static class LootChest extends Slot{
 
-        public PicnicBasketSlot(Container container, int i, int j, int k) {
+        public LootChest(Container container, int i, int j, int k) {
             super(container, i, j, k);
         }
 

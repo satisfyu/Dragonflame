@@ -34,9 +34,13 @@ public class DraconicForDummiesItem extends EnchantedBookItem {
         return super.interactLivingEntity(stack, player, target, hand);
     }
 
-
-    @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level world, @NotNull List<Component> tooltip, TooltipFlag context) {
-        tooltip.add(Component.translatable("lore.dragonflame.draconicfordummies").withStyle(ChatFormatting.GOLD, ChatFormatting.OBFUSCATED));
+    public void appendHoverText(@NotNull ItemStack stack, @Nullable Level world, @NotNull List<Component> tooltip, @NotNull TooltipFlag context) {
+        tooltip.add(Component.translatable("tooltip.dragonflame.enchantment").withStyle(ChatFormatting.BLUE, ChatFormatting.OBFUSCATED));
+        tooltip.add(Component.empty());
+        Component combined = Component.literal("")
+                .append(Component.translatable("tooltip.dragonflame.enchantment_for").withStyle(ChatFormatting.GRAY, ChatFormatting.OBFUSCATED))
+                .append(Component.translatable("item.dragonflame.tooltip." + this.getDescriptionId()).withStyle(ChatFormatting.GOLD, ChatFormatting.OBFUSCATED));
+        tooltip.add(combined);
+        tooltip.add(Component.translatable("tooltip.dragonflame.enchantment." + this.getDescriptionId()).withStyle(ChatFormatting.GREEN, ChatFormatting.OBFUSCATED));
     }
 }

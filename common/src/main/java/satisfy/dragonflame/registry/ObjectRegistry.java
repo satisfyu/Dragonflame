@@ -92,12 +92,12 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Block> DRAGONSTONE_BRICK_WALL = registerWithItem("dragonstone_brick_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(DRAGONSTONE_BRICKS.get())));
     public static final RegistrySupplier<Block> MOSSY_COBBLED_DRAGONSTONE_WALL = registerWithItem("mossy_cobbled_dragonstone_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(MOSSY_COBBLED_DRAGONSTONE.get())));
     public static final RegistrySupplier<Block> MOSSY_DRAGONSTONE_BRICK_WALL = registerWithItem("mossy_dragonstone_brick_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(MOSSY_DRAGONSTONE_BRICKS.get())));
-    public static final RegistrySupplier<Block> CHISELED_DRAGONSTONE_BRICKS = registerWithItem("chiseled_dragonstone_bricks", () -> new Block(BlockBehaviour.Properties.copy(Blocks.CHISELED_STONE_BRICKS)));
-    public static final RegistrySupplier<Block> POLISHED_DRAGONSTONE_BRICKS = registerWithItem("polished_dragonstone_bricks", () -> new Block(BlockBehaviour.Properties.copy(Blocks.POLISHED_ANDESITE)));
+    public static final RegistrySupplier<Block> CHISELED_DRAGONSTONE = registerWithItem("chiseled_dragonstone", () -> new Block(BlockBehaviour.Properties.copy(Blocks.CHISELED_STONE_BRICKS)));
+    public static final RegistrySupplier<Block> POLISHED_DRAGONSTONE = registerWithItem("polished_dragonstone", () -> new Block(BlockBehaviour.Properties.copy(Blocks.POLISHED_ANDESITE)));
     public static final RegistrySupplier<Block> TITAN_ORE = registerWithItem("titan_ore", () -> new Block(BlockBehaviour.Properties.of().requiresCorrectToolForDrops().strength(50.0F, 1200.0F)));
     public static final RegistrySupplier<Block> TITAN_BLOCK = registerWithItem("titan_block", () -> new Block(BlockBehaviour.Properties.of().requiresCorrectToolForDrops().strength(2.0F, 3.0F).sound(SoundType.METAL)));
-    public static final RegistrySupplier<Block> TITAN_STAIRS = registerWithItem("titan_stairs", () -> new StairBlock(TITAN_BLOCK.get().defaultBlockState(), BlockBehaviour.Properties.of().requiresCorrectToolForDrops().strength(2.0F, 3.0F).sound(SoundType.METAL)));
-    public static final RegistrySupplier<Block> TITAN_SLAB = registerWithItem("titan_slab", () -> new SlabBlock(BlockBehaviour.Properties.of().strength(2.0F, 3.0F).requiresCorrectToolForDrops().sound(SoundType.METAL)));
+    public static final RegistrySupplier<Block> TITAN_BLOCK_STAIRS = registerWithItem("titan_block_stairs", () -> new StairBlock(TITAN_BLOCK.get().defaultBlockState(), BlockBehaviour.Properties.of().requiresCorrectToolForDrops().strength(2.0F, 3.0F).sound(SoundType.METAL)));
+    public static final RegistrySupplier<Block> TITAN_BLOCK_SLAB = registerWithItem("titan_block_slab", () -> new SlabBlock(BlockBehaviour.Properties.of().strength(2.0F, 3.0F).requiresCorrectToolForDrops().sound(SoundType.METAL)));
     public static final RegistrySupplier<Item>  ARMORED_PILLAGER_SPAWN_EGG = registerItem("armored_pillager_spawn_egg", () -> new ArchitecturySpawnEggItem(EntityRegistry.ARMORED_PILLAGER, -1, -1, getSettings()));
     public static final RegistrySupplier<Item>  ARMORED_VINDICATOR_SPAWN_EGG = registerItem("armored_vindicator_spawn_egg", () -> new ArchitecturySpawnEggItem(EntityRegistry.ARMORED_VINDICATOR, -1, -1, getSettings()));
     public static final RegistrySupplier<Item>  FIREDRAGON_SPAWN_EGG = registerItem("fire_dragon_spawn_egg", () ->  new ArchitecturySpawnEggItem(EntityRegistry.FIREDRAGON, 0x725D78, 0xE6792C, getSettings()));
@@ -161,7 +161,7 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Block> LOOTCHEST = registerWithItem("lootchest", () -> new LootChestBlock(BlockBehaviour.Properties.of().strength(-1.0F, 3600000.0F).noLootTable().sound(SoundType.STONE).pushReaction(PushReaction.IGNORE)));
     public static final RegistrySupplier<Item> HEARTHSTONE = registerItem("hearthstone", () -> new HearthstoneItem(getSettings().rarity(Rarity.RARE)));
     public static final RegistrySupplier<Item> DRAGON_TEARS = registerItem("dragon_tears", () -> new DragonTearsItem(getSettings().rarity(Rarity.RARE)));
-    public static final RegistrySupplier<Item>  FIERY_WARHORSE_SPAWN_EGG = registerItem("reins_of_the_fiery_warhorse",  () -> new ArchitecturySpawnEggItem(EntityRegistry.FIERY_WARHORSE, -1, -1, getSettings()));
+    public static final RegistrySupplier<Item>  FIERY_WARHORSE_SPAWN_EGG = registerItem("reins_of_the_fiery_warhorse",  () -> new FieryWarhorseSpawnEgg(EntityRegistry.FIERY_WARHORSE, -1, -1, getSettings()));
     public static final RegistrySupplier<Block> DRAGON_EGG = registerWithItem("dragon_egg", () -> new DragonEggBlock(Blocks.DRAGON_EGG, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_RED)));
     public static final RegistrySupplier<Item> ESSENCE_OF_FIRE = registerItem("essence_of_fire", () -> new Item(getSettings().rarity(Rarity.UNCOMMON)));
     public static final RegistrySupplier<Item> HEART_OF_FLAME = registerItem("heart_of_flame", () -> HeartSmithingTemplateItem.createHeartUpgradeTemplate(Rarity.RARE));

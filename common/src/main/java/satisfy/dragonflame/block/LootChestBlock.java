@@ -1,7 +1,9 @@
 package satisfy.dragonflame.block;
 
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -11,6 +13,7 @@ import net.minecraft.world.entity.monster.piglin.PiglinAi;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -132,7 +135,6 @@ public class LootChestBlock extends BaseEntityBlock implements SimpleWaterlogged
                 ((LootChestEntity)blockEntity).setCustomName(itemStack.getHoverName());
             }
         }
-
     }
 
     @Nullable
@@ -202,7 +204,11 @@ public class LootChestBlock extends BaseEntityBlock implements SimpleWaterlogged
         return false;
     }
 
-
+    @Override
+    public void appendHoverText(ItemStack stack, @Nullable BlockGetter world, List<Component> tooltip, TooltipFlag flag) {
+        super.appendHoverText(stack, world, tooltip, flag);
+        tooltip.add(Component.translatable("tooltip.dragonflame.unobtainable").withStyle(ChatFormatting.ITALIC, ChatFormatting.DARK_RED));
+    }
 
     static{
         FACING = HorizontalDirectionalBlock.FACING;

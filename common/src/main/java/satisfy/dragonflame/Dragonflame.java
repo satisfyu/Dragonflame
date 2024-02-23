@@ -18,6 +18,7 @@ public class Dragonflame {
 		ObjectRegistry.init();
 		BlockEntityRegistry.init();
 		ScreenhandlerTypeRegistry.init();
+		SoundEventRegistry.init();
 		TabRegistry.init();
 		EntityRegistry.init();
 		MobEffectRegistry.init();

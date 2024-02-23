@@ -1,5 +1,7 @@
 package satisfy.dragonflame.item;
 
+import dev.architectury.core.item.ArchitecturySpawnEggItem;
+import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EntityType;
@@ -13,9 +15,9 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class FieryWarhorseSpawnEgg extends SpawnEggItem {
-    public FieryWarhorseSpawnEgg(EntityType<? extends Mob> entityType, int i, int j, Properties properties) {
-        super(entityType, i, j, properties);
+public class FieryWarhorseSpawnEgg extends ArchitecturySpawnEggItem {
+    public FieryWarhorseSpawnEgg(RegistrySupplier<? extends EntityType<? extends Mob>> entityType, int backgroundColor, int highlightColor, Properties properties) {
+        super(entityType, backgroundColor, highlightColor, properties);
     }
 
     @Override

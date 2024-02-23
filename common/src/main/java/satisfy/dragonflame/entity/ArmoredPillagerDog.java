@@ -38,6 +38,7 @@ import satisfy.dragonflame.entity.ai.PatrolGoal;
 import satisfy.dragonflame.entity.ai.PillagerDogAttackGoal;
 import satisfy.dragonflame.registry.EntityRegistry;
 import satisfy.dragonflame.registry.ObjectRegistry;
+import satisfy.dragonflame.registry.SoundEventRegistry;
 
 import java.util.List;
 import java.util.UUID;
@@ -174,7 +175,7 @@ public class ArmoredPillagerDog extends Animal implements NeutralMob, IPatrollin
                         this.spawnSpottingParticles();
                         this.hasSummonedPillagers = true;
                         this.pillagerSpawnTick = this.level().getGameTime() + 100L;
-                        this.playSound(SoundEvents.WOLF_HOWL, 2.0F, 1.0F);
+                        this.playSound(SoundEventRegistry.IMPROVED_RAID_HORN.get(), 1.0F, 1.0F);
                     }
                 }
             }
