@@ -7,5 +7,7 @@ public class DragonflameFabric implements ModInitializer {
     @Override
     public void onInitialize() {
         Dragonflame.init();
+        DragonflameProperties.init();
+
     }
 }

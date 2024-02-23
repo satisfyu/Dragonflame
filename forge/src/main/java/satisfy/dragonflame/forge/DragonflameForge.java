@@ -10,5 +10,6 @@ public class DragonflameForge {
     public DragonflameForge() {
         EventBuses.registerModEventBus(Dragonflame.MOD_ID, FMLJavaModLoadingContext.get().getModEventBus());
         Dragonflame.init();
+        DragonflameProperties.init();
     }
 }

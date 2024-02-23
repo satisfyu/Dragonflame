@@ -1,4 +1,5 @@
-package satisfy.dragonflame.util;
+package satisfy.dragonflame.fabric;
+
 
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
