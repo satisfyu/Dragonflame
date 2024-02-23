@@ -32,7 +32,7 @@ public class EnchantmentMixin {
         boolean hasEnchantment = false;
 
         for (ItemStack itemStack : player.getArmorSlots()) {
-            if (EnchantmentHelper.getItemEnchantmentLevel(EnchantmentRegistry.DRAGON_HEART, itemStack) > 0) {
+            if (EnchantmentHelper.getItemEnchantmentLevel(EnchantmentRegistry.DRAGON_HEART.get(), itemStack) > 0) {
                 hasEnchantment = true;
                 break;
             }

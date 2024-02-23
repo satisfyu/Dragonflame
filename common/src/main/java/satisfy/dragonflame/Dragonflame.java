@@ -16,6 +16,7 @@ public class Dragonflame {
 		DragonflameConfig.DEFAULT.getConfig();
 		//ParticleRegistry.init();
 		ObjectRegistry.init();
+		BoatAndSignRegistry.init();
 		BlockEntityRegistry.init();
 		ScreenhandlerTypeRegistry.init();
 		SoundEventRegistry.init();

@@ -10,8 +10,9 @@ public class DragonEyeEnchantment extends Enchantment {
     private static final int[] LEVEL_COST = new int[]{10};
     private static final int[] LEVEL_COST_SPAN = new int[]{30};
 
-    public DragonEyeEnchantment(Enchantment.Rarity rarity, EquipmentSlot... equipmentSlots) {
-        super(rarity, EnchantmentCategory.ARMOR_HEAD, equipmentSlots);
+
+    public DragonEyeEnchantment() {
+        super(Rarity.RARE, EnchantmentCategory.ARMOR_HEAD, EquipmentSlot.values());
     }
 
     @Override

@@ -24,10 +24,10 @@ public class DraconicForDummiesItem extends EnchantedBookItem {
     }
 
     @Override
-    public InteractionResult interactLivingEntity(ItemStack stack, Player player, LivingEntity target, InteractionHand hand) {
+    public @NotNull InteractionResult interactLivingEntity(ItemStack stack, Player player, LivingEntity target, InteractionHand hand) {
         if (!player.level().isClientSide && hand == InteractionHand.MAIN_HAND) {
-            if (EnchantmentHelper.getItemEnchantmentLevel(EnchantmentRegistry.DRACONIC_FOR_DUMMIES, stack) == 0) {
-                stack.enchant(EnchantmentRegistry.DRACONIC_FOR_DUMMIES, 1);
+            if (EnchantmentHelper.getItemEnchantmentLevel(EnchantmentRegistry.DRACONIC_FOR_DUMMIES.get(), stack) == 0) {
+                stack.enchant(EnchantmentRegistry.DRACONIC_FOR_DUMMIES.get(), 1);
             }
             return InteractionResult.sidedSuccess(player.level().isClientSide);
         }

@@ -9,8 +9,8 @@ public class DragonHeartEnchantment extends Enchantment {
     private static final int[] LEVEL_COST = new int[]{10};
     private static final int[] LEVEL_COST_SPAN = new int[]{30};
 
-    public DragonHeartEnchantment(Enchantment.Rarity rarity, EquipmentSlot... equipmentSlots) {
-        super(rarity, EnchantmentCategory.ARMOR_CHEST, equipmentSlots);
+    public DragonHeartEnchantment() {
+        super(Rarity.VERY_RARE, EnchantmentCategory.ARMOR_CHEST, EquipmentSlot.values());
     }
 
     @Override

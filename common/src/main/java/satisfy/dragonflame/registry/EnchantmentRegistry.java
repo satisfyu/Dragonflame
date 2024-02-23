@@ -1,31 +1,28 @@
 package satisfy.dragonflame.registry;
 
+import dev.architectury.registry.registries.DeferredRegister;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.enchantment.Enchantment;
 import satisfy.dragonflame.Dragonflame;
 import satisfy.dragonflame.enchantment.DraconicForDummiesEnchantment;
 import satisfy.dragonflame.enchantment.DragonEyeEnchantment;
 import satisfy.dragonflame.enchantment.DragonHeartEnchantment;
+import satisfy.dragonflame.util.DragonflameIdentifier;
 
-public interface EnchantmentRegistry {
-    Enchantment DRACONIC_FOR_DUMMIES = new DraconicForDummiesEnchantment(Enchantment.Rarity.COMMON, EquipmentSlot.MAINHAND);
-    Enchantment DRAGON_EYE = new DragonEyeEnchantment(Enchantment.Rarity.VERY_RARE, EquipmentSlot.HEAD);
-    Enchantment DRAGON_HEART = new DragonHeartEnchantment(Enchantment.Rarity.VERY_RARE, EquipmentSlot.CHEST);
+import java.util.function.Supplier;
 
+public class EnchantmentRegistry {
+    public static final DeferredRegister<Enchantment> ENCHANTS = DeferredRegister.create(Dragonflame.MOD_ID, Registries.ENCHANTMENT);
 
-    static void init() {
+    public static final Supplier<Enchantment> DRAGON_HEART = ENCHANTS.register(new DragonflameIdentifier("dragon_heart"), DragonHeartEnchantment::new);
+    public static final Supplier<Enchantment> DRAGON_EYE = ENCHANTS.register(new DragonflameIdentifier("dragon_eye"), DragonEyeEnchantment::new);
+    public static final Supplier<Enchantment> DRACONIC_FOR_DUMMIES = ENCHANTS.register(new DragonflameIdentifier("draconic_for_dummies"), DraconicForDummiesEnchantment::new);
+
+    public static void init() {
         Dragonflame.LOGGER.debug("Registering Enchantmens for " + Dragonflame.MOD_ID);
-        register("draconic_for_dummies", DRACONIC_FOR_DUMMIES);
-        register("dragon_eye", DRAGON_EYE);
-        register("dragon_heart", DRAGON_HEART);
-
-    }
-
-    static Enchantment register(String name, Enchantment enchantment) {
-        ResourceLocation id = new ResourceLocation("dragonflame", name);
-        return Registry.register(BuiltInRegistries.ENCHANTMENT, id, enchantment);
+        ENCHANTS.register();
     }
 }
