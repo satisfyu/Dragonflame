@@ -19,6 +19,7 @@ import org.jetbrains.annotations.NotNull;
 import satisfy.dragonflame.entity.ArmoredPillagerDog;
 import satisfy.dragonflame.util.DragonflameIdentifier;
 
+@SuppressWarnings("all")
 @Environment(EnvType.CLIENT)
 public class ArmoredPillagerDogModel<T extends ArmoredPillagerDog> extends HierarchicalModel<T> {
         public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new DragonflameIdentifier("pillager_dog"), "main");
@@ -78,8 +79,8 @@ public class ArmoredPillagerDogModel<T extends ArmoredPillagerDog> extends Hiera
         this.root().getAllParts().forEach(ModelPart::resetPose);
         this.applyHeadRotation(netHeadYaw, headPitch, ageInTicks);
 
-        this.animateWalk(ArmoredPillagerDogModel.walk, limbSwing, limbSwingAmount, 2f, 2.5f);
-        this.animate(entity.idleAnimationState, ArmoredPillagerDogModel.idle, ageInTicks, 1f);
+        this.animateWalk(ArmoredPillagerDogModel.walk, limbSwing, limbSwingAmount, 5f, 3f);
+        this.animate(entity.idleAnimationState, ArmoredPillagerDogModel.idle, ageInTicks, 0f);
         this.animate(entity.attackAnimationState, ArmoredPillagerDogModel.bite, ageInTicks, 1f);
         this.animate(entity.howlAnimationState, ArmoredPillagerDogModel.howl, ageInTicks, 1f);
     }
@@ -98,11 +99,11 @@ public class ArmoredPillagerDogModel<T extends ArmoredPillagerDog> extends Hiera
     }
 
     @Override
-    public ModelPart root() {
+    public @NotNull ModelPart root() {
         return this.root;
     }
 
-    public static final AnimationDefinition walk = AnimationDefinition.Builder.withLength(0.0F).looping()
+    public static final AnimationDefinition walk = AnimationDefinition.Builder.withLength(1.0F).looping()
             .addAnimation("head", new AnimationChannel(AnimationChannel.Targets.ROTATION,
                     new Keyframe(0.0F, KeyframeAnimations.degreeVec(1.0F, 0.0F, -1.25F), AnimationChannel.Interpolations.LINEAR)
             ))

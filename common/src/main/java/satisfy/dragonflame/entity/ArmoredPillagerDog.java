@@ -32,6 +32,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import satisfy.dragonflame.entity.ai.PatrolGoal;
@@ -79,6 +80,8 @@ public class ArmoredPillagerDog extends Animal implements NeutralMob, IPatrollin
         return Mob.createMobAttributes()
                 .add(Attributes.MOVEMENT_SPEED, 0.30000001192092896)
                 .add(Attributes.MAX_HEALTH, 12.0)
+                .add(Attributes.ARMOR, 2.0)
+                .add(Attributes.ARMOR_TOUGHNESS, 2.0)
                 .add(Attributes.ATTACK_DAMAGE, 3.0);
     }
 
@@ -148,26 +151,14 @@ public class ArmoredPillagerDog extends Animal implements NeutralMob, IPatrollin
 
     @Override
     public void tick() {
-        if (!this.level().isClientSide() && this.level().getDifficulty() == Difficulty.PEACEFUL) {
-            this.remove(RemovalReason.DISCARDED);
-            return;
-        }
         super.tick();
-        if (this.level().isClientSide()) {
-            setupAnimationStates();
-        }
         if (!this.level().isClientSide) {
-            if (this.pillagerSpawnTick > 0) {
-                if (this.level().getGameTime() >= this.pillagerSpawnTick) {
-                    this.summonPillagers();
-                    setState(State.HOWL);
-                    this.howlAnimationState.start(this.tickCount);
-                    this.level().playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.GOAT_HORN_PLAY, this.getSoundSource(), 32.0F, 1.0F);
-                    this.pillagerSpawnTick = 0;
-                }
-            } else {
+            if (this.pillagerSpawnTick > 0 && this.level().getGameTime() >= this.pillagerSpawnTick) {
+                this.summonPillagers();
+                this.pillagerSpawnTick = 0;
+            } else if (!this.hasSummonedPillagers) {
                 List<Player> players = this.level().getEntitiesOfClass(Player.class, this.getBoundingBox().inflate(25), player -> true);
-                if (!players.isEmpty() && !this.hasSummonedPillagers) {
+                if (!players.isEmpty()) {
                     Player targetPlayer = players.get(0);
                     ItemStack mainHandItem = targetPlayer.getMainHandItem();
                     if (!mainHandItem.is(ObjectRegistry.DRAGON_BONES.get())) {
@@ -175,12 +166,18 @@ public class ArmoredPillagerDog extends Animal implements NeutralMob, IPatrollin
                         this.spawnSpottingParticles();
                         this.hasSummonedPillagers = true;
                         this.pillagerSpawnTick = this.level().getGameTime() + 100L;
-                        this.playSound(SoundEventRegistry.IMPROVED_RAID_HORN.get(), 1.0F, 1.0F);
+                        this.setState(State.HOWL);
+                        this.howlAnimationState.start(this.tickCount);
+                        this.playSound(SoundEvents.WOLF_HOWL, 1.0F, 1.0F);
                     }
                 }
             }
         }
+        if (this.level().isClientSide) {
+            setupAnimationStates();
+        }
     }
+
 
     private void setupAnimationStates() {
         if (this.idleAnimationTimeout <= 0) {
@@ -203,6 +200,17 @@ public class ArmoredPillagerDog extends Animal implements NeutralMob, IPatrollin
         this.walkAnimation.update(f, 0.2f);
     }
 
+    private boolean isSpawnLocationSuitable(Level world, double x, double y, double z) {
+        BlockPos position = new BlockPos((int) x, (int) y, (int) z);
+        BlockPos belowPosition = position.below();
+        BlockState stateAtPosition = world.getBlockState(position);
+        BlockState stateBelowPosition = world.getBlockState(belowPosition);
+
+        return world.isEmptyBlock(position)
+                && !stateBelowPosition.isAir()
+                && stateBelowPosition.isCollisionShapeFullBlock(world, belowPosition);
+    }
+
     private void summonPillagers() {
         if (!this.level().isClientSide) {
             for (int i = 0; i < 2; i++) {
@@ -211,13 +219,16 @@ public class ArmoredPillagerDog extends Animal implements NeutralMob, IPatrollin
                     double spawnX = this.getX() + (i == 0 ? -1 : 1) * 4;
                     double spawnY = this.getY();
                     double spawnZ = this.getZ();
-                    pillager.moveTo(spawnX, spawnY, spawnZ, this.getYRot(), 0.0F);
-                    this.level().addFreshEntity(pillager);
+                    if (isSpawnLocationSuitable(this.level(), spawnX, spawnY, spawnZ)) {
+                        pillager.moveTo(spawnX, spawnY, spawnZ, this.getYRot(), 0.0F);
+                        this.level().addFreshEntity(pillager);
+                    }
                 }
             }
-            this.playSound(SoundEvents.WOLF_HOWL, 2.0F, 1.0F);
+            this.playSound(SoundEventRegistry.IMPROVED_RAID_HORN.get(), 1.0F, 1.0F);
         }
     }
+
 
     private void spawnSpottingParticles() {
         if (this.level().isClientSide) {
