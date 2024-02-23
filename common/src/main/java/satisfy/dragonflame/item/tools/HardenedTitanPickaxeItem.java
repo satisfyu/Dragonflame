@@ -15,19 +15,20 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import satisfy.dragonflame.registry.ParticleRegistry;
+//import satisfy.dragonflame.registry.ParticleRegistry;
 import satisfy.dragonflame.util.GeneralUtil;
 import satisfyu.dragonflame.util.MathUtil;
 
 import java.util.List;
 
 public class HardenedTitanPickaxeItem extends PickaxeItem {
+    /*
+       public static final SimpleParticleType[] BLOCK_AURA_SWIPE_PARTICLES;
 
-    public static final SimpleParticleType[] BLOCK_AURA_SWIPE_PARTICLES;
-
-    static {
-        BLOCK_AURA_SWIPE_PARTICLES = new SimpleParticleType[]{ParticleRegistry.TITAN_PICKAXE_SWIPE_01, ParticleRegistry.TITAN_PICKAXE_SWIPE_02, ParticleRegistry.TITAN_PICKAXE_SWIPE_03};
-    }
+      static {
+           BLOCK_AURA_SWIPE_PARTICLES = new SimpleParticleType[]{ParticleRegistry.TITAN_PICKAXE_SWIPE_01, ParticleRegistry.TITAN_PICKAXE_SWIPE_02, ParticleRegistry.TITAN_PICKAXE_SWIPE_03};
+       }
+       */
     public HardenedTitanPickaxeItem(Tier tier, int i, float f, Properties properties) {
         super(tier, i, f, properties);
     }
@@ -69,7 +70,7 @@ public class HardenedTitanPickaxeItem extends PickaxeItem {
 
             Level world = player.level(); // We might be able to use the level variable but IDK,
             if (world instanceof ServerLevel serverWorld) { // I'd rather be safe than cause a server crash
-                serverWorld.sendParticles(BLOCK_AURA_SWIPE_PARTICLES[player.getRandom().nextInt(BLOCK_AURA_SWIPE_PARTICLES.length)], player.getX() + deltaX, player.getY(0.5), player.getZ() + deltaZ, 0, deltaX, 0.0, deltaZ, 0.0);
+                //serverWorld.sendParticles(BLOCK_AURA_SWIPE_PARTICLES[player.getRandom().nextInt(BLOCK_AURA_SWIPE_PARTICLES.length)], player.getX() + deltaX, player.getY(0.5), player.getZ() + deltaZ, 0, deltaX, 0.0, deltaZ, 0.0);
             }
 
             return InteractionResultHolder.success(player.getItemInHand(interactionHand));

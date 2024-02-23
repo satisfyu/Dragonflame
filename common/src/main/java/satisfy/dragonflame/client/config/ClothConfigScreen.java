@@ -16,7 +16,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.ConfirmLinkScreen;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import satisfy.dragonflame.Dragonflame;
 import satisfy.dragonflame.config.DragonflameConfig;
 import satisfy.dragonflame.util.DragonflameIdentifier;

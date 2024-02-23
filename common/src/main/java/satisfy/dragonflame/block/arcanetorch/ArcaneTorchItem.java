@@ -18,7 +18,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import satisfy.dragonflame.Dragonflame;
-import satisfy.dragonflame.networking.DragonflameNetworking;
 import satisfy.dragonflame.util.TextFormattingUtil;
 import satisfy.dragonflame.util.TrackedPlayerState;
 

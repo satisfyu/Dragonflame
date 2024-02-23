@@ -4,7 +4,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import satisfy.dragonflame.client.DragonflameClient;
 import satisfy.dragonflame.config.DragonflameConfig;
-import satisfy.dragonflame.networking.DragonflameNetworking;
 import satisfy.dragonflame.registry.*;
 
 public class Dragonflame {
@@ -16,13 +15,13 @@ public class Dragonflame {
 		DragonflameClient.preInitClient();
 		DragonflameConfig.DEFAULT.getConfig();
 		//ParticleRegistry.init();
-		BlockEntityRegistry.init();
 		ObjectRegistry.init();
+		BlockEntityRegistry.init();
+		ScreenhandlerTypeRegistry.init();
 		TabRegistry.init();
 		EntityRegistry.init();
 		MobEffectRegistry.init();
 		EnchantmentRegistry.init();
 		PlacerTypesRegistry.init();
-		DragonflameNetworking.commonInit();
 	}
 }

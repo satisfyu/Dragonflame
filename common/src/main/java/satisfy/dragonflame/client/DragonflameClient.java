@@ -15,6 +15,7 @@ import satisfy.dragonflame.client.model.ArmoredPillagerModel;
 import satisfy.dragonflame.client.model.ArmoredVindicatorModel;
 import satisfy.dragonflame.client.model.FieryWarhorseModel;
 import satisfy.dragonflame.client.render.*;
+import satisfy.dragonflame.entity.fire_dragon.FireDragonRenderer;
 import satisfy.dragonflame.registry.*;
 
 import java.util.HashSet;
@@ -45,6 +46,7 @@ public class DragonflameClient implements ClientModInitializer {
                 }, ARCANE_WALL_TORCH, ARCANE_GROUND_TORCH);*/
 
                 MenuRegistry.registerScreenFactory(ScreenhandlerTypeRegistry.LOOTCHEST_SCREENHANDLER.get(), LootChestScreen::new);
+                registerBlockEntityRenderers();
 
         }
 
@@ -57,7 +59,6 @@ public class DragonflameClient implements ClientModInitializer {
 
                 registerEntityModelLayers();
                 registerEntityRenderers();
-                registerBlockEntityRenderers();
                 //ParticleRegistry.registerFactories();
         }
 
@@ -66,7 +67,7 @@ public class DragonflameClient implements ClientModInitializer {
                 EntityRendererRegistry.register(EntityRegistry.ARMORED_PILLAGER_DOG, ArmoredPillagerDogRenderer::new);
                 EntityRendererRegistry.register(EntityRegistry.ARMORED_VINDICATOR, ArmoredVindicatorRenderer::new);
                 EntityRendererRegistry.register(EntityRegistry.ARMORED_PILLAGER, ArmoredPillagerRenderer::new);
-                //EntityRendererRegistry.register(EntityRegistry.FIREDRAGON, FireDragonRenderer::new);
+                EntityRendererRegistry.register(EntityRegistry.FIREDRAGON, FireDragonRenderer::new);
         }
 
         public static void registerBlockEntityRenderers() {

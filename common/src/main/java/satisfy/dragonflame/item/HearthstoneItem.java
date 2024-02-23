@@ -1,12 +1,9 @@
 package satisfy.dragonflame.item;
 
-import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
-import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.DustColorTransitionOptions;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -21,25 +18,12 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
-import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BedBlock;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.joml.Vector3f;
-import satisfy.dragonflame.Dragonflame;
-import satisfy.dragonflame.client.particle.HearthstoneParticleEffect;
-import satisfy.dragonflame.networking.DragonflameNetworking;
-import satisfy.dragonflame.registry.ParticleRegistry;
-import team.lodestar.lodestone.setup.LodestoneParticles;
-import team.lodestar.lodestone.systems.rendering.particle.Easing;
-import team.lodestar.lodestone.systems.rendering.particle.WorldParticleBuilder;
-import team.lodestar.lodestone.systems.rendering.particle.data.ColorParticleData;
-import team.lodestar.lodestone.systems.rendering.particle.data.GenericParticleData;
-import team.lodestar.lodestone.systems.rendering.particle.data.SpinParticleData;
 
-import java.awt.*;
-import java.nio.Buffer;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.Executors;
@@ -54,7 +38,7 @@ public class HearthstoneItem extends Item {
     public static final int USAGE_TICKS = 80;
     private static final int COOLDOWN_TICKS = 6000;
 
-    private HearthstoneParticleEffect particleEffect;
+    //private HearthstoneParticleEffect particleEffect;
 
     private final Random random = new Random();
     private final ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
@@ -74,7 +58,7 @@ public class HearthstoneItem extends Item {
         super.onUseTick(level, livingEntity, itemStack, i);
 
         if (!(livingEntity instanceof ServerPlayer player) || level.isClientSide()) {
-            particleEffect.particleTick(level, (Player) livingEntity);
+           // particleEffect.particleTick(level, (Player) livingEntity);
             return;
         }
 
@@ -121,12 +105,12 @@ public class HearthstoneItem extends Item {
             );
 
             ServerLevel serverLevel = (ServerLevel) level;
-
+/*
             serverLevel.players().forEach((sendToPlayer) -> {
                 ServerPlayNetworking.send(sendToPlayer, DragonflameNetworking.HEARTHSTONE_TP_PACKET_ID, new FriendlyByteBuf(
                         PacketByteBufs.create().writeDouble(destinationX).writeDouble(destinationY).writeDouble(destinationZ)));
             });
-
+*/
             if (duration % 5 == 0) {
                 for (int j = 0; j < 8; j++) {
                     level.addParticle(ParticleTypes.REVERSE_PORTAL,
@@ -193,7 +177,7 @@ public class HearthstoneItem extends Item {
     @Override
     public @NotNull InteractionResultHolder<ItemStack> use(@NotNull Level worldIn, Player playerIn, @NotNull InteractionHand handIn) {
         ItemStack itemStack = playerIn.getItemInHand(handIn);
-        particleEffect = new HearthstoneParticleEffect(playerIn);
+        //particleEffect = new HearthstoneParticleEffect(playerIn);
         setCountdownStart(itemStack);
         playerIn.startUsingItem(handIn);
         return InteractionResultHolder.consume(itemStack);
