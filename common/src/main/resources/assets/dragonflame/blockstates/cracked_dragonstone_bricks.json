@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": [ { "model": "dragonflame:block/cracked_dragonstone_bricks_1", "weight":4 }
+    ,{ "model": "dragonflame:block/cracked_dragonstone_bricks_2", "weight":1 }
+    ,{ "model": "dragonflame:block/cracked_dragonstone_bricks_3", "weight":4 }
+    ]   }
+}

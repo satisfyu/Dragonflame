@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column_horizontal",
+  "textures": {
+    "end": "dragonflame:block/burnt_log_side",
+    "side": "dragonflame:block/burnt_log_side"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_top_left",
+  "textures": {
+    "top": "dragonflame:block/dragon_door_top",
+    "bottom": "dragonflame:block/dragon_door_bottom"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "dragonflame:hardened_titan_plates"
+  },
+  "base": {
+    "item": "dragonflame:titan_shovel"
+  },
+  "result": {
+    "item": "dragonflame:hardened_titan_shovel"
+  },
+  "template": {
+    "item": "dragonflame:heart_of_flame"
+  }
+}

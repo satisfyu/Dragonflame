@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "dragonflame:block/mossy_cobbled_dragonstone",
+    "top": "dragonflame:block/mossy_cobbled_dragonstone",
+    "side": "dragonflame:block/mossy_cobbled_dragonstone"
+  }
+}

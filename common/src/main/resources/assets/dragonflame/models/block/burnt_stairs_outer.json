@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "dragonflame:block/burnt_planks",
+    "top": "dragonflame:block/burnt_planks",
+    "side": "dragonflame:block/burnt_planks"
+  }
+}

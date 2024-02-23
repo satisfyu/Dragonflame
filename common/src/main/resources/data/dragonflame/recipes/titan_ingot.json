@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "item": "dragonflame:titan_dust"
+    },
+    "B": {
+      "item": "dragonflame:dragonscale"
+    }
+  },
+  "pattern": [
+    "XXX",
+    "XBX",
+    "XXX"
+  ],
+  "result": {
+    "item": "dragonflame:titan_ingot"
+  },
+  "show_notification": true
+}

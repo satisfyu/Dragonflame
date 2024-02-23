@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "dragonflame:block/burnt_slab"
+    },
+    "type=double": {
+      "model": "dragonflame:block/burnt_planks"
+    },
+    "type=top": {
+      "model": "dragonflame:block/burnt_slab_top"
+    }
+  }
+}

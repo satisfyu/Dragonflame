@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "dragonflame:block/mossy_dragonstone_bricks_3"
+  }
+}

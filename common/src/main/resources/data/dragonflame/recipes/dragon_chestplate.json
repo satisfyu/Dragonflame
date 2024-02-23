@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "item": "minecraft:diamond_chestplate"
+    },
+    "B": {
+      "item": "dragonflame:dragonscale"
+    },
+    "#": {
+      "item": "dragonflame:essence_of_fire"
+    }
+  },
+  "pattern": [
+    "B B",
+    "BXB",
+    "#B#"
+  ],
+  "result": {
+    "item": "dragonflame:dragon_chestplate"
+  },
+  "show_notification": true
+}
+

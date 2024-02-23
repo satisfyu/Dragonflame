@@ -1,0 +1,14 @@
+{
+  "flamethrower": {
+    "subtitle": "dragonflame.sound.flamethrower",
+    "sounds": [
+      "dragonflame:flamethrower"
+    ]
+  },
+  "improved_raid_horn": {
+    "subtitle": "dragonflame.sound.improved_raid_horn",
+    "sounds": [
+      "dragonflame:improved_raid_horn"
+    ]
+  }
+}

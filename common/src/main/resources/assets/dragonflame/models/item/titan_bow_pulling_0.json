@@ -1,0 +1,6 @@
+{
+    "parent": "dragonflame:item/titan_bow",
+    "textures": {
+        "layer0": "dragonflame:item/titan_bow_pulling_0"
+    }
+}

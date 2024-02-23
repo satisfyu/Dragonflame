@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "item": "minecraft:diamond_boots"
+    },
+    "B": {
+      "item": "dragonflame:dragonscale"
+    },
+    "#": {
+      "item": "dragonflame:essence_of_fire"
+    }
+  },
+  "pattern": [
+    "#X#",
+    "B B"
+  ],
+  "result": {
+    "item": "dragonflame:dragon_boots"
+  },
+  "show_notification": true
+}
+

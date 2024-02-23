@@ -1,0 +1,6 @@
+{
+    "parent": "dragonflame:item/dragon_crossbow",
+    "textures": {
+        "layer0": "dragonflame:item/dragon_crossbow_firework"
+    }
+}

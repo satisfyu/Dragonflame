@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "id": "dragonflame",
+  "version": "${version}",
+  "name": "Dragonflame",
+  "description": "This is an example description! Tell everyone what your mod is about!",
+  "authors": [
+    "satisfy, baumeisterjo, cph101, ecacresasson"
+  ],
+  "license": "Custom",
+  "icon": "assets/dragonflame/pack.png",
+  "entrypoints": {
+    "main": [
+      "satisfy.dragonflame.fabric.DragonflameFabric"
+    ],
+    "client": [
+      "satisfy.dragonflame.client.DragonflameClient"
+    ],
+    "doapi": [
+      "satisfy.dragonflame.util.api.DragonFlameDoAPI"
+    ],
+    "modmenu": [
+      "satisfy.dragonflame.client.config.ModMenuIntegration"
+    ]
+  },
+  "mixins": [
+    "dragonflame.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.15.6",
+    "minecraft": "~1.20.1",
+    "java": ">=17",
+    "fabric-api": "*",
+    "doapi": ">=1.2.3"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}

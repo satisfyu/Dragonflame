@@ -1,0 +1,65 @@
+{
+	"credit": "Made by Satisfy",
+	"textures": {
+		"0": "dragonflame:block/grim_anvil_bottom",
+		"1": "dragonflame:block/grim_anvil_side",
+		"2": "dragonflame:block/grim_anvil_layer",
+		"3": "dragonflame:block/grim_anvil_top",
+		"4": "dragonflame:block/grim_anvil_flame_essence",
+		"particle": "dragonflame:block/grim_anvil_bottom"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 0],
+			"to": [16, 11, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
+			"faces": {
+				"south": {"uv": [16, 5, 0, 16], "texture": "#1"},
+				"west": {"uv": [0, 5, 16, 16], "texture": "#1"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#2"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#0"}
+			}
+		},
+		{
+			"from": [0, 11, 5],
+			"to": [16, 13, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
+			"faces": {
+				"north": {"uv": [0, 14, 16, 16], "texture": "#4"},
+				"south": {"uv": [0, 3, 16, 5], "texture": "#1"},
+				"west": {"uv": [5, 3, 16, 5], "texture": "#1"},
+				"up": {"uv": [5, 16, 16, 0], "rotation": 90, "texture": "#3"}
+			}
+		},
+		{
+			"from": [0, 11, 0],
+			"to": [11, 13, 5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
+			"faces": {
+				"east": {"uv": [9, 14, 14, 16], "texture": "#4"},
+				"west": {"uv": [0, 3, 5, 5], "texture": "#1"},
+				"up": {"uv": [0, 11, 5, 0], "rotation": 90, "texture": "#3"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "titan_anvil",
+			"origin": [8, 0, 8],
+			"color": 0,
+			"nbt": "{}",
+			"children": [
+				0,
+				1,
+				2,
+				{
+					"name": "essense",
+					"origin": [9, 13, 7],
+					"color": 0,
+					"nbt": "{}",
+					"children": []
+				}
+			]
+		}
+	]
+}

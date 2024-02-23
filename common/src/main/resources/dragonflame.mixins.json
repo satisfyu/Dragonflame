@@ -1,0 +1,21 @@
+{
+  "required": true,
+  "package": "satisfy.dragonflame.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "minVersion": "0.8",
+  "client": [
+    "ArcaneTorchItemRendererMixin",
+    "CameraMixin",
+    "EnchantmentMixin",
+    "GuiMixin",
+    "PlayerRendererMixin"
+  ],
+  "mixins": [
+    "ItemStackMixin",
+    "RarityMixin",
+    "ServerLevelMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

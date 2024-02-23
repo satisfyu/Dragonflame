@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "": [
+      { "model": "dragonflame:block/mossy_cobbled_dragonstone", "weight":1 }
+    ]
+  }
+}
+

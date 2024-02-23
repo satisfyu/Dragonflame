@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": [
+      { "model": "dragonflame:block/dragonstone", "weight":1 }
+    ]
+  }
+}

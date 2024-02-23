@@ -1,0 +1,8 @@
+{
+  "parent": "dragonflame:block/templates/template_arcane_torch_wall",
+  "textures": {
+    "torch": "dragonflame:block/arcane_torch",
+    "colored": "dragonflame:block/arcane_torch_overlay",
+    "particle": "dragonflame:block/dragon_log_stripped"
+  }
+}

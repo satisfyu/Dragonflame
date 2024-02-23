@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "dragonflame:block/dragonstone_slab"
+    },
+    "type=double": {
+      "model": "dragonflame:block/dragonstone"
+    },
+    "type=top": {
+      "model": "dragonflame:block/dragonstone_slab_top"
+    }
+  }
+}

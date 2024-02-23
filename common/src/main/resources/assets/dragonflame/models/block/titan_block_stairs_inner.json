@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "dragonflame:block/titan_block_side",
+    "top": "dragonflame:block/titan_block_top",
+    "side": "dragonflame:block/titan_block_side"
+  }
+}

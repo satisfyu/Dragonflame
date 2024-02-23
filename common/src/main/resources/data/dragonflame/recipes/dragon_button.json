@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "wooden_button",
+  "ingredients": [
+    {
+      "item": "dragonflame:dragon_planks"
+    }
+  ],
+  "result": {
+    "item": "dragonflame:dragon_button"
+  }
+}

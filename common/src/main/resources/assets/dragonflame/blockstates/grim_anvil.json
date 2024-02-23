@@ -1,0 +1,36 @@
+{
+  "variants": {
+    "essence=false,facing=north": {
+      "model": "dragonflame:block/grim_anvil",
+      "y": 0
+    },
+    "essence=false,facing=south": {
+      "model": "dragonflame:block/grim_anvil",
+      "y": 180
+    },
+    "essence=false,facing=west": {
+      "model": "dragonflame:block/grim_anvil",
+      "y": 270
+    },
+    "essence=false,facing=east": {
+      "model": "dragonflame:block/grim_anvil",
+      "y": 90
+    },
+    "essence=true,facing=north": {
+      "model": "dragonflame:block/grim_anvil_charged",
+      "y": 0
+    },
+    "essence=true,facing=south": {
+      "model": "dragonflame:block/grim_anvil_charged",
+      "y": 180
+    },
+    "essence=true,facing=west": {
+      "model": "dragonflame:block/grim_anvil_charged",
+      "y": 270
+    },
+    "essence=true,facing=east": {
+      "model": "dragonflame:block/grim_anvil_charged",
+      "y": 90
+    }
+  }
+}

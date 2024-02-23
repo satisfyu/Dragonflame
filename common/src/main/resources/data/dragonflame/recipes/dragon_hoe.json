@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "B": {
+      "item": "dragonflame:dragonscale"
+    },
+    "X": {
+      "item": "minecraft:diamond_hoe"
+    },
+    "#": {
+      "item": "dragonflame:essence_of_fire"
+    }
+  },
+  "pattern": [
+    "##",
+    " B",
+    " X"
+  ],
+  "result": {
+    "item": "dragonflame:dragon_hoe"
+  },
+  "show_notification": true
+}

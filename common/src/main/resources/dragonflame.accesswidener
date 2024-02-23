@@ -1,0 +1,9 @@
+accessWidener   v2  named
+accessible method net/minecraft/world/level/levelgen/feature/trunkplacers/TrunkPlacerType <init> (Lcom/mojang/serialization/Codec;)V
+accessible method net/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacerType <init> (Lcom/mojang/serialization/Codec;)V
+accessible field net/minecraft/world/entity/LivingEntity jumping Z
+accessible method net/minecraft/client/Camera move (DDD)V
+accessible method net/minecraft/client/Camera getMaxZoom (D)D
+accessible field net/minecraft/world/item/CreativeModeTab$Builder displayName Lnet/minecraft/network/chat/Component;
+accessible method net/minecraft/world/item/StandingAndWallBlockItem getPlacementState (Lnet/minecraft/world/item/context/BlockPlaceContext;)Lnet/minecraft/world/level/block/state/BlockState;
+accessible field net/minecraft/world/entity/Entity deltaMovement Lnet/minecraft/world/phys/Vec3;

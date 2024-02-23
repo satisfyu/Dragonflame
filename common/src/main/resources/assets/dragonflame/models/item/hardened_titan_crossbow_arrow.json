@@ -1,0 +1,6 @@
+{
+    "parent": "dragonflame:item/hardened_titan_crossbow",
+    "textures": {
+        "layer0": "dragonflame:item/hardened_titan_crossbow_arrow"
+    }
+}

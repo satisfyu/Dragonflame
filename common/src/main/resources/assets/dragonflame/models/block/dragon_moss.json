@@ -1,0 +1,7 @@
+{
+	"parent": "minecraft:block/cube_column",
+	"textures": {
+		"end": "dragonflame:block/dragon_moss_top",
+		"side": "dragonflame:block/dragon_moss_side"
+	}
+}

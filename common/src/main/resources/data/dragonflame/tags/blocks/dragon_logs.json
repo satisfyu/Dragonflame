@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "dragonflame:dragon_log",
+    "dragonflame:stripped_dragon_log",
+    "dragonflame:dragon_wood",
+    "dragonflame:stripped_dragon_wood"
+  ]
+}

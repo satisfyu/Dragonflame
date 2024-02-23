@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "dragonflame:block/stripped_dragon_wood_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "dragonflame:block/stripped_dragon_wood"
+    },
+    "axis=z": {
+      "model": "dragonflame:block/stripped_dragon_wood_horizontal",
+      "x": 90
+    }
+  }
+}

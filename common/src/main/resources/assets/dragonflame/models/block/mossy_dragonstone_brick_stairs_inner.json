@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "dragonflame:block/mossy_dragonstone_bricks_1",
+    "top": "dragonflame:block/mossy_dragonstone_bricks_1",
+    "side": "dragonflame:block/mossy_dragonstone_bricks_1"
+  }
+}

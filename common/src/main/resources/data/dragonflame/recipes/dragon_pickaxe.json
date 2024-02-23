@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": {
+      "item": "dragonflame:essence_of_fire"
+    },
+    "B": {
+      "item": "dragonflame:dragonscale"
+    },
+    "X": {
+      "item": "minecraft:diamond_pickaxe"
+    }
+  },
+  "pattern": [
+    "###",
+    " B ",
+    " X "
+  ],
+  "result": {
+    "item": "dragonflame:dragon_pickaxe"
+  },
+  "show_notification": true
+}

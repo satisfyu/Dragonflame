@@ -1,0 +1,77 @@
+{
+	"credit": "Made by Satisfy",
+	"texture_size": [64, 64],
+	"textures": {
+		"0": "dragonflame:block/statues/lilitu",
+		"particle": "dragonflame:block/statues/lilitu"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 0],
+			"to": [16, 3, 16],
+			"faces": {
+				"north": {"uv": [4, 15.25, 8, 16], "texture": "#0"},
+				"east": {"uv": [4, 15.25, 8, 16], "texture": "#0"},
+				"south": {"uv": [4, 15.25, 8, 16], "texture": "#0"},
+				"west": {"uv": [4, 15.25, 8, 16], "texture": "#0"},
+				"up": {"uv": [0, 12, 4, 16], "texture": "#0"},
+				"down": {"uv": [0, 12, 4, 16], "texture": "#0"}
+			}
+		},
+		{
+			"from": [4, 1, -2],
+			"to": [12, 6, -1],
+			"rotation": {"angle": 22.5, "axis": "x", "origin": [0, 0, 0]},
+			"faces": {
+				"north": {"uv": [8.25, 14.5, 10.25, 15.75], "texture": "#0"},
+				"east": {"uv": [8, 14, 8.25, 15.5], "texture": "#0"},
+				"south": {"uv": [10.25, 14.5, 12.25, 15.75], "texture": "#0"},
+				"west": {"uv": [8, 14, 8.25, 15.5], "texture": "#0"},
+				"up": {"uv": [8.25, 15.75, 10.25, 16], "texture": "#0"},
+				"down": {"uv": [8.25, 15.75, 10.25, 16], "texture": "#0"}
+			}
+		},
+		{
+			"name": "Body",
+			"from": [4, 15, 6],
+			"to": [12, 16, 10],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
+			"faces": {
+				"north": {"uv": [5, 7.75, 7, 8], "texture": "#0"},
+				"east": {"uv": [4, 7.75, 5, 8], "texture": "#0"},
+				"south": {"uv": [8, 7.75, 10, 8], "texture": "#0"},
+				"west": {"uv": [7, 7.75, 8, 8], "texture": "#0"},
+				"up": {"uv": [9, 5, 7, 4], "texture": "#0"},
+				"down": {"uv": [9, 4, 7, 5], "texture": "#0"}
+			}
+		},
+		{
+			"name": "Right Leg",
+			"from": [7.9, 3, 6],
+			"to": [11.9, 15, 10],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
+			"faces": {
+				"north": {"uv": [1, 5, 2, 8], "texture": "#0"},
+				"east": {"uv": [0, 5, 1, 8], "texture": "#0"},
+				"south": {"uv": [3, 5, 4, 8], "texture": "#0"},
+				"west": {"uv": [2, 5, 3, 8], "texture": "#0"},
+				"up": {"uv": [2, 5, 1, 4], "texture": "#0"},
+				"down": {"uv": [3, 4, 2, 5], "texture": "#0"}
+			}
+		},
+		{
+			"name": "left leg",
+			"from": [3.9, 1, 12],
+			"to": [7.9, 14, 16],
+			"rotation": {"angle": -22.5, "axis": "x", "origin": [8, 0, 8]},
+			"faces": {
+				"north": {"uv": [2, 5, 1, 8], "texture": "#0"},
+				"east": {"uv": [2, 5, 3, 8], "texture": "#0"},
+				"south": {"uv": [4, 5, 3, 8], "texture": "#0"},
+				"west": {"uv": [0, 5, 1, 8], "texture": "#0"},
+				"up": {"uv": [2, 4, 1, 5], "texture": "#0"},
+				"down": {"uv": [3, 4, 2, 5], "texture": "#0"}
+			}
+		}
+	]
+}

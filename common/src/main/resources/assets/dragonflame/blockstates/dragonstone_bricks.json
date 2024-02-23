@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "": [ { "model": "dragonflame:block/dragonstone_bricks_1", "weight":1 }
+    ,{ "model": "dragonflame:block/dragonstone_bricks_2", "weight":1 }
+    ,{ "model": "dragonflame:block/dragonstone_bricks_3", "weight":1 }
+    ,{ "model": "dragonflame:block/dragonstone_bricks_4", "weight":1 }
+    ,{ "model": "dragonflame:block/dragonstone_bricks_5", "weight":1 }
+    ,{ "model": "dragonflame:block/dragonstone_bricks_6", "weight":1 }
+    ]   }
+}

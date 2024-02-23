@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "dragonflame:block/dragonstone_bricks_1",
+    "top": "dragonflame:block/dragonstone_bricks_1",
+    "side": "dragonflame:block/dragonstone_bricks_1"
+  }
+}

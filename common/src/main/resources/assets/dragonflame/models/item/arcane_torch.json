@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "dragonflame:item/arcane_torch_overlay",
+    "layer1": "dragonflame:item/arcane_torch"
+  }
+}

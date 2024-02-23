@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "dragonflame:block/arcane_wall_torch",
+      "y": 270
+    },
+    "facing=south": {
+      "model": "dragonflame:block/arcane_wall_torch",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "dragonflame:block/arcane_wall_torch",
+      "y": 180
+    },
+    "facing=east": {
+      "model": "dragonflame:block/arcane_wall_torch"
+    }
+  }
+}

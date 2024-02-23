@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "dragonflame:block/burnt_pressure_plate"
+    },
+    "powered=true": {
+      "model": "dragonflame:block/burnt_pressure_plate_down"
+    }
+  }
+}

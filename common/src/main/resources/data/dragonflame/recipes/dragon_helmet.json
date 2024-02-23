@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "item": "minecraft:diamond_helmet"
+    },
+    "B": {
+      "item": "dragonflame:dragonscale"
+    },
+    "#": {
+      "item": "dragonflame:essence_of_fire"
+    }
+  },
+  "pattern": [
+    " # ",
+    "BXB",
+    "B B"
+  ],
+  "result": {
+    "item": "dragonflame:dragon_helmet"
+  },
+  "show_notification": true
+}
+

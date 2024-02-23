@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "dragonflame:block/mossy_dragonstone_brick_slab"
+    },
+    "type=double": {
+      "model": "dragonflame:block/mossy_dragonstone_bricks_1"
+    },
+    "type=top": {
+      "model": "dragonflame:block/mossy_dragonstone_brick_slab_top"
+    }
+  }
+}
