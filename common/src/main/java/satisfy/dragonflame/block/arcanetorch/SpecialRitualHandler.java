@@ -86,7 +86,7 @@ public class SpecialRitualHandler {
     }
 
     private static Logger getLogger() {
-        return LoggerFactory.getLogger(Dragonflame.MOD_NAME + "/SpecialRitualHandler");
+        return LoggerFactory.getLogger(Dragonflame.MOD_ID + "/SpecialRitualHandler");
     }
 
     public void completeRitual(Level world, BlockPos summoningCenterPos, BlockPos... torches) {

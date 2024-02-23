@@ -5,6 +5,7 @@ import net.fabricmc.api.Environment;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
+import org.jetbrains.annotations.NotNull;
 import satisfy.dragonflame.client.model.ArmoredPillagerDogModel;
 import satisfy.dragonflame.entity.ArmoredPillagerDog;
 import satisfy.dragonflame.util.DragonflameIdentifier;
@@ -15,11 +16,11 @@ public class ArmoredPillagerDogRenderer extends MobRenderer<ArmoredPillagerDog, 
     private static final ResourceLocation TEXTURE = new DragonflameIdentifier("textures/entity/pillager_dog.png");
 
     public ArmoredPillagerDogRenderer(EntityRendererProvider.Context context) {
-        super(context, new ArmoredPillagerDogModel(context.bakeLayer(ArmoredPillagerDogModel.LAYER_LOCATION)), 0.7f);
+        super(context, new ArmoredPillagerDogModel<>(context.bakeLayer(ArmoredPillagerDogModel.LAYER_LOCATION)), 0.7f);
     }
 
     @Override
-    public ResourceLocation getTextureLocation(ArmoredPillagerDog entity) {
+    public @NotNull ResourceLocation getTextureLocation(ArmoredPillagerDog entity) {
         return TEXTURE;
     }
 }

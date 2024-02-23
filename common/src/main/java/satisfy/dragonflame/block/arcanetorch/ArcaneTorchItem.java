@@ -1,7 +1,5 @@
 package satisfy.dragonflame.block.arcanetorch;
 
-import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
-import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.Direction;
@@ -66,7 +64,7 @@ public class ArcaneTorchItem extends StandingAndWallBlockItem implements Dyeable
             }
             if (Screen.hasShiftDown()) {
                 if (TrackedPlayerState.wasHoldingShiftWhenLastCached() != Screen.hasShiftDown()) {
-                    ClientPlayNetworking.send(DragonflameNetworking.SWITCH_TORCH_PACKET_ID, PacketByteBufs.create().writeItem(itemStack));
+                   // ClientPlayNetworking.send(DragonflameNetworking.SWITCH_TORCH_PACKET_ID, PacketByteBufs.create().writeItem(itemStack));
                     Dragonflame.LOGGER.info("Torch itemstack switch packet sent");
                 }
                 TrackedPlayerState.setHoldingShift(true);
@@ -93,11 +91,13 @@ public class ArcaneTorchItem extends StandingAndWallBlockItem implements Dyeable
         CompoundTag nbtCompound = stack.getTagElement("display");
         return nbtCompound != null && nbtCompound.contains("FirstColor", 99) ? nbtCompound.getInt("FirstColor") : defaultFirstColor.getRGB();
     }
-
+/*
     @Override
     public boolean allowNbtUpdateAnimation(Player player, InteractionHand hand, ItemStack oldStack, ItemStack newStack) {
         return false;
     }
+
+ */
 
     public static int getSecondColor(ItemStack stack) {
         CompoundTag nbtCompound = stack.getTagElement("display");

@@ -1,5 +1,5 @@
 package satisfy.dragonflame.client.particle.flamethrower;
-
+/*
 import net.fabricmc.fabric.impl.client.particle.FabricSpriteProviderImpl;
 import net.minecraft.client.multiplayer.ClientLevel;
 import team.lodestar.lodestone.systems.rendering.particle.world.GenericParticle;
@@ -11,3 +11,5 @@ public class FlameParticle extends GenericParticle {
         setSprite(random.nextInt(3));
     }
 }
+
+ */

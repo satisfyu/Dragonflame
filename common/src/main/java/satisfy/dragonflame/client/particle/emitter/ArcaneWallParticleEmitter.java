@@ -1,5 +1,5 @@
 package satisfy.dragonflame.client.particle.emitter;
-
+/*
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -39,3 +39,5 @@ public class ArcaneWallParticleEmitter {
                 .repeat(x, y, 1);
     }
 }
+
+ */
