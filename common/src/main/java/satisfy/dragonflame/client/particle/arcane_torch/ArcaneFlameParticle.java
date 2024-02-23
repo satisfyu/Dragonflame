@@ -1,5 +1,5 @@
 package satisfy.dragonflame.client.particle.arcane_torch;
-
+/*
 import net.fabricmc.fabric.impl.client.particle.FabricSpriteProviderImpl;
 import net.minecraft.client.multiplayer.ClientLevel;
 import team.lodestar.lodestone.systems.rendering.particle.world.FrameSetParticle;
@@ -29,3 +29,5 @@ public class ArcaneFlameParticle extends FrameSetParticle {
         return 0xF000F0;
     }
 }
+
+ */

@@ -11,15 +11,8 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 import satisfy.dragonflame.registry.BlockEntityRegistry;
-import satisfy.dragonflame.registry.ParticleRegistry;
 import satisfy.dragonflame.util.NbtUtil;
-import team.lodestar.lodestone.helpers.ColorHelper;
-import team.lodestar.lodestone.setup.LodestoneParticles;
-import team.lodestar.lodestone.systems.rendering.particle.Easing;
-import team.lodestar.lodestone.systems.rendering.particle.WorldParticleBuilder;
-import team.lodestar.lodestone.systems.rendering.particle.data.ColorParticleData;
-import team.lodestar.lodestone.systems.rendering.particle.data.GenericParticleData;
-import team.lodestar.lodestone.systems.rendering.particle.data.SpinParticleData;
+
 
 import java.awt.*;
 
@@ -40,7 +33,7 @@ public class ArcaneBlockEntity extends BlockEntity {
         this.firstColor = new Color(firstColorRGB);
         this.secondColor = new Color(secondColorRGB);
     }
-
+/*
     public void clientTick(Level world, BlockPos pos, BlockState state) {
         if (firstColor == null) {
             return;
@@ -68,7 +61,7 @@ public class ArcaneBlockEntity extends BlockEntity {
             y -= 0.2f;
             lifeTime -= 2;
             scale *= 1.25f;
-        }*/
+        }
         WorldParticleBuilder.create(LodestoneParticles.WISP_PARTICLE)
                 .setScaleData(GenericParticleData.create(scale, 0).build())
                 .setLifetime(lifeTime)
@@ -125,6 +118,7 @@ public class ArcaneBlockEntity extends BlockEntity {
         }
     }
 
+ */
     public ArcaneBlockEntity(BlockPos pos, BlockState state) {
         this(pos, state, new Color(107, 59, 45).getRGB(), new Color(79, 107, 45).getRGB());
     }

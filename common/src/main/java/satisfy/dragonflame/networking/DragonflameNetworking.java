@@ -1,5 +1,5 @@
 package satisfy.dragonflame.networking;
-
+/*
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.client.Minecraft;
@@ -57,3 +57,5 @@ public interface DragonflameNetworking {
         clientInit();
     }
 }
+
+ */

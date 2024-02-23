@@ -32,6 +32,7 @@ import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import satisfy.dragonflame.entity.LootChestEntity;
 import satisfy.dragonflame.registry.BlockEntityRegistry;
@@ -42,6 +43,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 
+@SuppressWarnings("all")
 public class LootChestBlock extends BaseEntityBlock implements SimpleWaterloggedBlock{
     public static final DirectionProperty FACING;
     public static final ResourceLocation CONTENTS;
@@ -50,7 +52,6 @@ public class LootChestBlock extends BaseEntityBlock implements SimpleWaterlogged
     public LootChestBlock(Properties properties) {
         super(properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(WATERLOGGED,false));
-
     }
 
     private static final Supplier<VoxelShape> voxelShapeSupplier = () -> {
@@ -175,7 +176,7 @@ public class LootChestBlock extends BaseEntityBlock implements SimpleWaterlogged
         return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
     }
 
-    public BlockState mirror(BlockState state, Mirror mirror) {
+    public @NotNull BlockState mirror(BlockState state, Mirror mirror) {
         return state.rotate(mirror.getRotation(state.getValue(FACING)));
     }
 

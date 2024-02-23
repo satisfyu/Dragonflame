@@ -27,13 +27,12 @@ import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
+import satisfy.dragonflame.registry.BlockEntityRegistry;
 import satisfy.dragonflame.registry.ObjectRegistry;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import static satisfy.dragonflame.registry.BlockEntityRegistry.ARCANE_BLOCK_ENTITY;
 
 @SuppressWarnings("deprecation")
 public abstract class AbstractArcaneTorchBlock extends BaseEntityBlock implements SimpleWaterloggedBlock {
@@ -102,11 +101,14 @@ public abstract class AbstractArcaneTorchBlock extends BaseEntityBlock implement
         }
         return blockState.setValue(WATERLOGGED, fluidState.getType() == Fluids.WATER);
     }
+
+    /*
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level world, BlockState state, BlockEntityType<T> type) {
-        return world.isClientSide ? createTickerHelper(type, ARCANE_BLOCK_ENTITY, (world1, pos, state1, blockEntity) -> blockEntity.clientTick(world1, pos, state1)) : null;
+        return world.isClientSide ? createTickerHelper(type, BlockEntityRegistry.ARCANE_BLOCK_ENTITY, (world1, pos, state1, blockEntity) -> blockEntity.clientTick(world1, pos, state1)) : null;
     }
+     */
 
     @Override
     public FluidState getFluidState(BlockState state) {

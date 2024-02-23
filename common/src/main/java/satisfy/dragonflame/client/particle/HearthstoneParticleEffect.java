@@ -8,15 +8,11 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import satisfy.dragonflame.Dragonflame;
 import satisfy.dragonflame.item.HearthstoneItem;
-import satisfy.dragonflame.registry.ParticleRegistry;
-import team.lodestar.lodestone.systems.rendering.particle.Easing;
-import team.lodestar.lodestone.systems.rendering.particle.WorldParticleBuilder;
-import team.lodestar.lodestone.systems.rendering.particle.data.ColorParticleData;
-import team.lodestar.lodestone.systems.rendering.particle.data.GenericParticleData;
+
 
 import java.awt.*;
 import java.util.Objects;
-
+/*
 public class HearthstoneParticleEffect {
     private int ticksSinceInit;
     private double basePlayerRotation;
@@ -30,7 +26,6 @@ public class HearthstoneParticleEffect {
         this.processedPlayerYLevel = player.getY();
     }
 
-    /** Don't call this method unless you typed it */
     public void resetTicks() {
         this.ticksSinceInit = 1;
     }
@@ -84,3 +79,5 @@ public class HearthstoneParticleEffect {
         this.ticksSinceInit++;
     }
 }
+
+*/

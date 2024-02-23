@@ -1,5 +1,5 @@
 package satisfy.dragonflame.client.particle.arcane_torch;
-
+/*
 import com.mojang.serialization.Codec;
 import net.fabricmc.fabric.impl.client.particle.FabricSpriteProviderImpl;
 import net.minecraft.client.multiplayer.ClientLevel;
@@ -28,3 +28,5 @@ public class ArcaneFlameParticleType extends ParticleType<WorldParticleEffect> {
         }
     }
 }
+
+ */

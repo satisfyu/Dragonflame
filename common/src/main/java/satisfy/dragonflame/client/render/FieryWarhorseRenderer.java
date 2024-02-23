@@ -5,6 +5,7 @@ import net.fabricmc.api.Environment;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
+import org.jetbrains.annotations.NotNull;
 import satisfy.dragonflame.client.model.FieryWarhorseModel;
 import satisfy.dragonflame.entity.FieryWarhorse;
 import satisfy.dragonflame.util.DragonflameIdentifier;
@@ -18,7 +19,7 @@ public class FieryWarhorseRenderer<T extends FieryWarhorse> extends MobRenderer<
     }
 
     @Override
-    public ResourceLocation getTextureLocation(FieryWarhorse entity) {
+    public @NotNull ResourceLocation getTextureLocation(FieryWarhorse entity) {
         return TEXTURE;
     }
 
