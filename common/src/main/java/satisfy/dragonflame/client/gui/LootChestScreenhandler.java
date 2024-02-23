@@ -29,20 +29,19 @@ public class LootChestScreenhandler extends AbstractContainerMenu {
 
         for(int j = 0; j < 3; ++j) {
             for(int k = 0; k < 3; ++k) {
-                this.addSlot(new LootChest(container, k + j * 3, 62 + k * 18, 17 + j * 18));
+                this.addSlot(new LootChest(container, k + j * 3, 63 + k * 18, 6 + j * 18));
             }
         }
-
         for(int j = 0; j < 3; ++j) {
             for(int k = 0; k < 9; ++k) {
-                this.addSlot(new Slot(inventory, k + j * 9 + 9, 8 + k * 18, 84 + j * 18));
+                this.addSlot(new Slot(inventory, k + j * 9 + 9, 8 + k * 18, 83 + j * 18));
             }
         }
-
         for(int j = 0; j < 9; ++j) {
-            this.addSlot(new Slot(inventory, j, 8 + j * 18, 142));
+            this.addSlot(new Slot(inventory, j, 8 + j * 18, 141));
         }
     }
+
 
 
 

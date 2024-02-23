@@ -44,5 +44,7 @@ public class EntityRegistry {
         EntityAttributeRegistry.register(ARMORED_PILLAGER, ArmoredPillagerEntity::createAttributes);
         EntityAttributeRegistry.register(FIERY_WARHORSE, FieryWarhorse::createAttributes);
         EntityAttributeRegistry.register(ARMORED_PILLAGER_DOG, ArmoredPillagerDog::createAttributes);
+        EntityAttributeRegistry.register(FIREDRAGON, FireDragon::createAttributes);
+
     }
 }

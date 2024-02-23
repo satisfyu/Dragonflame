@@ -1,10 +1,10 @@
 package satisfy.dragonflame.entity;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Container;
 import net.minecraft.world.ContainerHelper;
@@ -19,10 +19,10 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.*;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.Vec3i;
+import org.jetbrains.annotations.NotNull;
 import satisfy.dragonflame.block.LootChestBlock;
 import satisfy.dragonflame.registry.BlockEntityRegistry;
 import satisfy.dragonflame.client.gui.LootChestScreenhandler;
@@ -38,21 +38,20 @@ public class LootChestEntity extends RandomizableContainerBlockEntity implements
     private NonNullList<ItemStack> items;
     private final ContainerOpenersCounter openersCounter;
     private final ChestLidController chestLidController = new ChestLidController();
-    private Random random = new Random();
+    private final Random random = new Random();
     private int fireworkTicks = 0;
     private boolean isFireworkActive = false;
-
 
     public LootChestEntity(BlockPos blockPos, BlockState blockState) {
         super(BlockEntityRegistry.LOOTCHEST_BLOCK_ENTITY, blockPos, blockState);
         this.items = NonNullList.withSize(9, ItemStack.EMPTY);
         this.openersCounter = new ContainerOpenersCounter() {
             protected void onOpen(Level level, BlockPos blockPos, BlockState blockState) {
-                LootChestEntity.this.playSound(blockState, SoundEventRegistry.LOOTCHEST_OPEN.get());
+                LootChestEntity.this.playSound(SoundEventRegistry.LOOTCHEST_OPEN.get());
             }
 
             protected void onClose(Level level, BlockPos blockPos, BlockState blockState) {
-                LootChestEntity.this.playSound(blockState, SoundEventRegistry.LOOTCHEST_CLOSE.get());
+                LootChestEntity.this.playSound(SoundEventRegistry.LOOTCHEST_CLOSE.get());
             }
 
             protected void openerCountChanged(Level level, BlockPos blockPos, BlockState blockState, int i, int j) {
@@ -85,15 +84,15 @@ public class LootChestEntity extends RandomizableContainerBlockEntity implements
         }
     }
 
-    protected Component getDefaultName() {
-        return Component.translatable(this.getBlockState().getBlock().getDescriptionId());
+    protected @NotNull Component getDefaultName() {
+        return Component.empty();
     }
 
-    protected AbstractContainerMenu createMenu(int i, Inventory inventory) {
+    protected @NotNull AbstractContainerMenu createMenu(int i, Inventory inventory) {
         return new LootChestScreenhandler(i, inventory, this);
     }
 
-    protected NonNullList<ItemStack> getItems() {
+    protected @NotNull NonNullList<ItemStack> getItems() {
         return this.items;
     }
 
@@ -120,10 +119,8 @@ public class LootChestEntity extends RandomizableContainerBlockEntity implements
         }
     }
 
-
     public void shootFireworks(Level level, BlockPos pos, Random random) {
         int fireworkCount = 8 + random.nextInt(7);
-
         for (int i = 0; i < fireworkCount; i++) {
             int color = random.nextInt(0xFFFFFF);
             ItemStack fireworkStack = new ItemStack(Items.FIREWORK_ROCKET);
@@ -139,14 +136,10 @@ public class LootChestEntity extends RandomizableContainerBlockEntity implements
             explosionsList.add(explosion);
 
             fireworkExplosions.put("Explosions", explosionsList);
-            fireworkExplosions.putByte("Flight", (byte) (1 + random.nextInt(2)));
-            fireworkTag.put("Fireworks", fireworkExplosions);
             fireworkStack.setTag(fireworkTag);
-
             double x = pos.getX() + 0.5 + (random.nextDouble() - 0.5) * 2.0;
             double y = pos.getY() + 1.0;
             double z = pos.getZ() + 0.5 + (random.nextDouble() - 0.5) * 2.0;
-
             FireworkRocketEntity fireworkRocket = new FireworkRocketEntity(level, x, y, z, fireworkStack);
             level.addFreshEntity(fireworkRocket);
         }
@@ -165,20 +158,20 @@ public class LootChestEntity extends RandomizableContainerBlockEntity implements
         }
     }
 
-
     public void stopOpen(Player player) {
         if (!this.remove && !player.isSpectator()) {
             this.openersCounter.decrementOpeners(player, Objects.requireNonNull(this.getLevel()), this.getBlockPos(), this.getBlockState());
         }
     }
 
-    void playSound(BlockState blockState, SoundEvent soundEvent) {
-        Vec3i vec3i = blockState.getValue(LootChestBlock.FACING).getNormal();
-        double d = this.worldPosition.getX() + 0.5D + vec3i.getX() / 2.0D;
-        double e = this.worldPosition.getY() + 0.5D + vec3i.getY() / 2.0D;
-        double f = this.worldPosition.getZ() + 0.5D + vec3i.getZ() / 2.0D;
+    void playSound(SoundEvent soundEvent) {
+        double d = this.worldPosition.getX() + 0.5D;
+        double e = this.worldPosition.getY() + 0.5D;
+        double f = this.worldPosition.getZ() + 0.5D;
+        assert this.level != null;
         this.level.playSound(null, d, e, f, soundEvent, SoundSource.BLOCKS, 0.5F, this.level.random.nextFloat() * 0.1F + 0.9F);
     }
+
 
     public float getOpenNess(float f) {
         return this.chestLidController.getOpenness(f);
@@ -201,48 +194,66 @@ public class LootChestEntity extends RandomizableContainerBlockEntity implements
         Block block = blockState.getBlock();
         level.blockEvent(blockPos, block, 1, j);
     }
-    //TODO: Rework loottable
+
     public void generateLoot() {
+        addItemRandomly(new ItemStack(ObjectRegistry.HEART_OF_FLAME.get(), 1));
+        addItemRandomly(new ItemStack(ObjectRegistry.DRAGON_EMBLEM.get(), random.nextInt(3) + 2));
+        addItemRandomly(new ItemStack(ObjectRegistry.DRAGON_TEARS.get(), random.nextInt(44) + 17));
+        addItemRandomly(new ItemStack(ObjectRegistry.DRAGON_BONES.get(), random.nextInt(54) + 12));
+        addItemRandomly(new ItemStack(ObjectRegistry.DRAGONSCALE.get(), random.nextInt(12) + 4));
         List<ItemStack> possibleLoot = new ArrayList<>();
-        possibleLoot.add(new ItemStack(ObjectRegistry.HEART_OF_FLAME.get(), 1));
-        for (int i = 0; i < (random.nextInt(3) + 1); i++) possibleLoot.add(new ItemStack(ObjectRegistry.DRAGON_EMBLEM.get(), 1));
-        if (random.nextFloat() < 0.25) for (int i = 0; i < (random.nextInt(4) + 1); i++) possibleLoot.add(new ItemStack(ObjectRegistry.TITAN_INGOT.get(), 1));
-        for (int i = 0; i < (random.nextInt(12) + 1); i++) possibleLoot.add(new ItemStack(ObjectRegistry.DRAGON_TEARS.get(), 1));
-        if (random.nextFloat() < 0.02) possibleLoot.add(new ItemStack(ObjectRegistry.EMBERGRASP.get(), 1));
-        if (random.nextFloat() < 0.05) possibleLoot.add(new ItemStack(ObjectRegistry.FLAMETHROWER.get(), 1));
-        if (random.nextFloat() < 0.01) possibleLoot.add(new ItemStack(ObjectRegistry.THOAREL_BOW.get(), 1));
-        if (random.nextFloat() < 0.03) possibleLoot.add(new ItemStack(ObjectRegistry.RAUBBAU.get(), 1));
-        if (random.nextFloat() < 0.01) possibleLoot.add(new ItemStack(ObjectRegistry.QUALAMRAR.get(), 1));
+        if (random.nextFloat() < 0.25) for (int i = 0; i < (random.nextInt(4) + 1); i++) possibleLoot.add(new ItemStack(ObjectRegistry.TITAN_PLATES.get(), 1));
+        if (random.nextFloat() < 0.05) possibleLoot.add(new ItemStack(ObjectRegistry.EMBERGRASP.get(), 1));
+        if (random.nextFloat() < 0.1) possibleLoot.add(new ItemStack(ObjectRegistry.FLAMETHROWER.get(), 1));
+        if (random.nextFloat() < 0.05) possibleLoot.add(new ItemStack(ObjectRegistry.THOAREL_BOW.get(), 1));
+        if (random.nextFloat() < 0.1) possibleLoot.add(new ItemStack(ObjectRegistry.RAUBBAU.get(), 1));
+        if (random.nextFloat() < 0.30) possibleLoot.add(new ItemStack(ObjectRegistry.DRACONIC_FOR_DUMMIES.get(), 1));
+        if (random.nextFloat() < 0.05) possibleLoot.add(new ItemStack(ObjectRegistry.QUALAMRAR.get(), 1));
         if (random.nextFloat() < 0.40) possibleLoot.add(new ItemStack(ObjectRegistry.HEARTHSTONE.get(), 1));
         if (random.nextFloat() < 0.40) possibleLoot.add(new ItemStack(ObjectRegistry.DRAGON_HEARTH.get(), 1));
         if (random.nextFloat() < 0.15) possibleLoot.add(new ItemStack(ObjectRegistry.HEARTHSTONE.get(), 1));
         if (random.nextFloat() < 0.12) possibleLoot.add(new ItemStack(ObjectRegistry.DRAGON_HEAD_HELMET.get(), 1));
         if (random.nextFloat() < 0.15) possibleLoot.add(new ItemStack(ObjectRegistry.DRAGON_EYE.get(), 1));
-
         if (random.nextFloat() < 0.005) possibleLoot.add(new ItemStack(ObjectRegistry.FIERY_WARHORSE_SPAWN_EGG.get(), 1));
-        for (int i = 0; i < (random.nextInt(54) + 1); i++) possibleLoot.add(new ItemStack(ObjectRegistry.DRAGON_BONES.get(), 1));
+        for (int i = 0; i < (random.nextInt(33) + 1); i++) possibleLoot.add(new ItemStack(ObjectRegistry.DRAGON_BONES.get(), 1));
+        for (int i = 0; i < (random.nextInt(44) + 1); i++) possibleLoot.add(new ItemStack(ObjectRegistry.DRAGONSCALE.get(), 1));
 
         int itemsToAdd = 4 + random.nextInt(4);
         for (int i = 0; i < itemsToAdd; i++) {
             if (possibleLoot.isEmpty()) break;
             ItemStack item = possibleLoot.remove(random.nextInt(possibleLoot.size()));
-            addItem(item);
+            addItemRandomly(item);
         }
     }
 
-    private void addItem(ItemStack itemToAdd) {
-        for (ItemStack stack : items) {
-            if (stack.isEmpty()) {
-                items.set(items.indexOf(stack), itemToAdd.copy());
-                break;
-            } else if (ItemStack.isSameItemSameTags(stack, itemToAdd) && stack.getCount() < stack.getMaxStackSize()) {
+
+    private void addItemRandomly(ItemStack itemToAdd) {
+        if (itemToAdd.isEmpty()) return;
+
+        for (ItemStack stack : this.items) {
+            if (ItemStack.isSameItemSameTags(stack, itemToAdd) && stack.getCount() < stack.getMaxStackSize()) {
                 int countToAdd = Math.min(itemToAdd.getCount(), stack.getMaxStackSize() - stack.getCount());
                 stack.grow(countToAdd);
                 itemToAdd.shrink(countToAdd);
                 if (itemToAdd.isEmpty()) {
-                    break;
+                    return;
                 }
             }
         }
+        List<Integer> emptySlots = new ArrayList<>();
+        for (int i = 0; i < this.items.size(); i++) {
+            if (this.items.get(i).isEmpty()) {
+                emptySlots.add(i);
+            }
+        }
+        while (!itemToAdd.isEmpty() && !emptySlots.isEmpty()) {
+            int randomIndex = this.random.nextInt(emptySlots.size());
+            int slotIndex = emptySlots.get(randomIndex);
+            ItemStack newItemStack = itemToAdd.copy();
+            newItemStack.setCount(itemToAdd.getCount());
+            this.items.set(slotIndex, newItemStack);
+            itemToAdd.setCount(0);
+        }
     }
+
 }

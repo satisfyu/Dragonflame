@@ -442,7 +442,7 @@ public class FireDragon extends Monster implements GeoEntity, Saddleable, Flying
         return BASE_SIZE_MODIFIER;
         //return (0.33f + (0.67f * BASE_SIZE_MODIFIER));
     }
-    public static AttributeSupplier.Builder setAttributes() {
+    public static AttributeSupplier.@NotNull Builder createAttributes() {
         return Mob.createMobAttributes()
                 .add(Attributes.MOVEMENT_SPEED, BASE_SPEED_GROUND)
                 .add(Attributes.MAX_HEALTH, BASE_HEALTH)
