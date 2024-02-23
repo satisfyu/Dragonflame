@@ -5,6 +5,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobType;
+import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.enchantment.DamageEnchantment;
@@ -13,11 +14,11 @@ import net.minecraft.world.item.enchantment.EnchantmentCategory;
 import satisfy.dragonflame.Dragonflame;
 
 public class DraconicForDummiesEnchantment extends DamageEnchantment {
-    public static final ResourceLocation ID = new ResourceLocation(Dragonflame.MOD_ID, "draconic_for_dummies");
     private static final int MAX_LEVEL = 10;
 
-    public DraconicForDummiesEnchantment(Enchantment.Rarity rarity, EquipmentSlot... equipmentSlots) {
-        super(rarity, EnchantmentCategory.ARMOR_HEAD.ordinal(), equipmentSlots);
+    public DraconicForDummiesEnchantment() {
+        super(Rarity.UNCOMMON, EnchantmentCategory.WEAPON.ordinal());
+
     }
 
     @Override
@@ -40,7 +41,7 @@ public class DraconicForDummiesEnchantment extends DamageEnchantment {
     }
 
     public boolean canApplyAtEnchantingTable(ItemStack stack) {
-        return super.canEnchant(stack) && stack.getItem() instanceof SwordItem;
+        return super.canEnchant(stack) && (stack.getItem() instanceof SwordItem || stack.getItem() instanceof AxeItem);
     }
 
     @Override
