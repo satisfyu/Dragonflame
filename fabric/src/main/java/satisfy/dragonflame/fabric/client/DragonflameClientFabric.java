@@ -7,6 +7,7 @@ import satisfy.dragonflame.client.DragonflameClient;
 public class DragonflameClientFabric implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
+        Keybindings.init();
         DragonflameClient.preInitClient();
         DragonflameClient.onInitializeClient();
     }

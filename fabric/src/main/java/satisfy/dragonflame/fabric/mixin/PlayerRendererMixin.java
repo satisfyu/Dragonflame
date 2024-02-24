@@ -1,4 +1,4 @@
-package satisfy.dragonflame.mixin;
+package satisfy.dragonflame.fabric.mixin;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.MultiBufferSource;
