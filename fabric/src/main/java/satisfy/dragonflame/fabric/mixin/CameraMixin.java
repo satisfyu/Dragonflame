@@ -1,4 +1,4 @@
-package satisfy.dragonflame.mixin;
+package satisfy.dragonflame.fabric.mixin;
 
 import net.minecraft.client.Camera;
 import net.minecraft.world.entity.Entity;
