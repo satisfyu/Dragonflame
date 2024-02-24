@@ -18,6 +18,7 @@ public class SoundEventRegistry {
     public static final RegistrySupplier<SoundEvent> DRAGON_WHELPLING_AMBIENT = create("dragon_whelpling_ambient");
     public static final RegistrySupplier<SoundEvent> DRAGON_WHELPLING_HURT = create("dragon_whelpling_hurt");
     public static final RegistrySupplier<SoundEvent> DRAGON_WHELPLING_DEATH = create("dragon_whelpling_death");
+    public static final RegistrySupplier<SoundEvent> DRAGON_EGG_HATCH = create("dragon_egg_hatch");
 
 
     private static RegistrySupplier<SoundEvent> create(String name) {

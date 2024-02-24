@@ -208,7 +208,7 @@
 
   "item.dragonflame.tooltip.item.dragonflame.dragon_sign": "Needs DoAPI implementation",
   "item.dragonflame.dragon_sign": "Dragon Sign",
-
+  "dragonflame.sound.dragon_egg_hatch": "Dragon Egg breaks",
   "dragonflame.sound.dragon_whelpling_hurt": "Whelpling Shrieks",
   "dragonflame.sound.dragon_whelpling_dies": "Whelpling Scream",
   "dragonflame.sound.dragon_whelpling_ambient": "Whelpling Screech"

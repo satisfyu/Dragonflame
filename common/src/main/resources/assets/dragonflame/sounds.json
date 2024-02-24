@@ -41,6 +41,15 @@
     "subtitle": "dragonflame.sound.dragon_whelpling_death",
     "sounds": [
       "dragonflame:dragon_whelpling_death"
-    ]
+    ],
+    "dragon_egg_hatch": {
+      "subtitle": "dragonflame.sound.dragon_egg_hatch",
+      "sounds": [
+        "dragonflame:dragon_egg_hatch_0",
+        "dragonflame:dragon_egg_hatch_1",
+        "dragonflame:dragon_egg_hatch_2"
+
+      ]
+    }
   }
 }

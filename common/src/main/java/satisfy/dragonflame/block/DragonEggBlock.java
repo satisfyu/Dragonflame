@@ -24,8 +24,9 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import satisfy.dragonflame.entity.fire_dragon.FireDragon;
+import satisfy.dragonflame.entity.DragonWhelpling;
 import satisfy.dragonflame.registry.EntityRegistry;
+import satisfy.dragonflame.registry.SoundEventRegistry;
 
 import java.util.List;
 import java.util.Map;
@@ -61,9 +62,9 @@ public class DragonEggBlock extends Block {
     }
 
     private void spawnDragon(ServerLevel serverLevel, BlockPos blockPos) {
-        FireDragon fireDragon = new FireDragon(EntityRegistry.FIREDRAGON.get(), serverLevel); //TODO - change to whelpling
-        fireDragon.moveTo((double) blockPos.getX() + 0.5, blockPos.getY(), (double) blockPos.getZ() + 0.5, 0.0F, 0.0F);
-        serverLevel.addFreshEntity(fireDragon);
+        DragonWhelpling dragonWhelpling = new DragonWhelpling(EntityRegistry.DRAGON_WHELPLING.get(), serverLevel);
+        dragonWhelpling.moveTo((double) blockPos.getX() + 0.5, blockPos.getY(), (double) blockPos.getZ() + 0.5, 0.0F, 0.0F);
+        serverLevel.addFreshEntity(dragonWhelpling);
     }
 
     @Override
@@ -73,7 +74,8 @@ public class DragonEggBlock extends Block {
         if (!level.isClientSide && entity instanceof LivingEntity) {
             level.destroyBlock(blockPos, false);
             spawnDragon((ServerLevel)level, blockPos);
-            level.playSound(null, blockPos, SoundEvents.ENDER_DRAGON_GROWL, SoundSource.BLOCKS, 1.0F, 1.0F);
+            level.playSound(null, blockPos, SoundEventRegistry.DRAGON_WHELPLING_AMBIENT.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
+            level.playSound(null, blockPos, SoundEventRegistry.DRAGON_EGG_HATCH.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
 
             ServerLevel serverLevel = (ServerLevel) level;
             for (int dx = -1; dx <= 1; dx++) {

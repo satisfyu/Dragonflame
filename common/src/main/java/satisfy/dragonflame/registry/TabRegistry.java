@@ -13,6 +13,13 @@ import java.util.stream.Stream;
 public class TabRegistry {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Dragonflame.MOD_ID, Registries.CREATIVE_MODE_TAB);
 
+    /**
+     *
+     * // TODO: I've outcommited Bows and Crossbows since they can't easily be modified in terms of damage and other benefits - Should we keep or remove them?
+     *
+     *
+     */
+
     public static final RegistrySupplier<CreativeModeTab> DRAGONFLAME_TAB = CREATIVE_MODE_TABS.register("dragonflame", () -> CreativeModeTab.builder(CreativeModeTab.Row.TOP, 1)
             .icon(() -> new ItemStack(ObjectRegistry.HEARTHSTONE.get()))
             .title(Component.translatable("itemGroup.dragonflame.dragonflame_tab"))
@@ -98,8 +105,8 @@ public class TabRegistry {
                     ObjectRegistry.DRAGON_PICKAXE,
                     ObjectRegistry.DRAGON_SHOVEL,
                     ObjectRegistry.DRAGON_HOE,
-                    ObjectRegistry.DRAGON_BOW,
-                    ObjectRegistry.DRAGON_CROSSBOW,
+                    //ObjectRegistry.DRAGON_BOW,
+                    //ObjectRegistry.DRAGON_CROSSBOW,
                     ObjectRegistry.TITAN_HELMET,
                     ObjectRegistry.TITAN_CHESTPLATE,
                     ObjectRegistry.TITAN_LEGGINGS,
@@ -109,8 +116,8 @@ public class TabRegistry {
                     ObjectRegistry.TITAN_PICKAXE,
                     ObjectRegistry.TITAN_SHOVEL,
                     ObjectRegistry.TITAN_HOE,
-                    ObjectRegistry.TITAN_BOW,
-                    ObjectRegistry.TITAN_CROSSBOW,
+                    //ObjectRegistry.TITAN_BOW,
+                    //ObjectRegistry.TITAN_CROSSBOW,
                     ObjectRegistry.HARDENED_TITAN_HELMET,
                     ObjectRegistry.HARDENED_TITAN_CHESTPLATE,
                     ObjectRegistry.HARDENED_TITAN_LEGGINGS,
@@ -120,12 +127,13 @@ public class TabRegistry {
                     ObjectRegistry.HARDENED_TITAN_PICKAXE,
                     ObjectRegistry.HARDENED_TITAN_SHOVEL,
                     ObjectRegistry.HARDENED_TITAN_SCYTHE,
-                    ObjectRegistry.HARDENED_TITAN_BOW,
-                    ObjectRegistry.HARDENED_TITAN_CROSSBOW,
+                    //ObjectRegistry.HARDENED_TITAN_BOW,
+                    //ObjectRegistry.HARDENED_TITAN_CROSSBOW,
                     ObjectRegistry.QUALAMRAR,
                     ObjectRegistry.RAUBBAU,
                     ObjectRegistry.FLAMETHROWER,
                     ObjectRegistry.EMBERGRASP,
+                    ObjectRegistry.FIERY_WARAXE,
                     ObjectRegistry.SHATTERBRAND,
                     ObjectRegistry.ARMORED_VINDICATOR_AXE,
                     ObjectRegistry.THOAREL_BOW,

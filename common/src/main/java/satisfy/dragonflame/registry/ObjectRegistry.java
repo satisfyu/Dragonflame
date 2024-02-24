@@ -148,6 +148,7 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Item> THOAREL_BOW = registerItem("thoarel_bow", () -> new ThoaRelBowItem(new Item.Properties().stacksTo(1).durability(800).fireResistant().rarity(Rarity.RARE)));
     public static final RegistrySupplier<Item> FLAMETHROWER = registerItem("flamethrower", () -> new FlamethrowerItem(getSettings()));
     public static final RegistrySupplier<Item> EMBERGRASP = registerItem("embergrasp", () -> new EmbergraspItem(ToolTiersRegistry.EMBERGRASP, getSettings().fireResistant().rarity(Rarity.EPIC)));
+    public static final RegistrySupplier<Item> FIERY_WARAXE = registerItem("fiery_waraxe", () -> new FieryWarAxeItem(ToolTiersRegistry.EMBERGRASP, getSettings().fireResistant().rarity(Rarity.RARE)));
     public static final RegistrySupplier<Item> ARMORED_VINDICATOR_AXE = registerItem("armored_vindicator_axe", () -> new AxeItem(Tiers.DIAMOND, 5.0F, -3.0F, new Item.Properties().rarity(Rarity.UNCOMMON)));
     public static final RegistrySupplier<Item> SHATTERBRAND = registerItem("shatterbrand", () -> new ShatterbrandSwordItem(ToolTiersRegistry.EMBERGRASP, new Item.Properties().rarity(Rarity.UNCOMMON)));
     public static final RegistrySupplier<Item> DRAGON_BONES = registerItem("dragon_bones", () -> new TooltipItem(getSettings().rarity(Rarity.UNCOMMON)));
