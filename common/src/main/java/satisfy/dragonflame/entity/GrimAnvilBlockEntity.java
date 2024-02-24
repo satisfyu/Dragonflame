@@ -31,7 +31,7 @@ public class GrimAnvilBlockEntity extends BlockEntity implements BlockEntityTick
     private int boss;
 
     public GrimAnvilBlockEntity(BlockPos blockPos, BlockState blockState) {
-        super(BlockEntityRegistry.GRIM_ANVIL_BLOCK_ENTITY, blockPos, blockState);
+        super(BlockEntityRegistry.GRIM_ANVIL_BLOCK_ENTITY.get(), blockPos, blockState);
         this.ore = ItemStack.EMPTY;
         this.boss = -1;
     }
@@ -59,7 +59,7 @@ public class GrimAnvilBlockEntity extends BlockEntity implements BlockEntityTick
     public void tick(@NotNull Level level, @NotNull BlockPos blockPos, @NotNull BlockState blockState, @NotNull GrimAnvilBlockEntity blockEntity) {
         if (level.isClientSide || this.level == null) return;
 
-        if (!this.ore.isEmpty() && this.ore.getItem() == ObjectRegistry.TITAN_INGOT) {
+        if (!this.ore.isEmpty() && this.ore.getItem() == ObjectRegistry.TITAN_INGOT.get()) {
             BlockPos lightPos = blockPos.above();
             if (level.isEmptyBlock(lightPos)) {
                 level.setBlockAndUpdate(lightPos, Blocks.LIGHT.defaultBlockState());

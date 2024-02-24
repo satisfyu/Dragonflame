@@ -5,25 +5,26 @@
   "name": "Dragonflame",
   "description": "This is an example description! Tell everyone what your mod is about!",
   "authors": [
-    "satisfy, baumeisterjo, cph101, ecacresasson"
+    "satisfy", "Cristelknight", "cph101", "ecacresasson", "baumeisterjo"
   ],
   "license": "Custom",
-  "icon": "assets/dragonflame/pack.png",
+  "icon": "pack.png",
   "entrypoints": {
     "main": [
       "satisfy.dragonflame.fabric.DragonflameFabric"
     ],
     "client": [
-      "satisfy.dragonflame.client.DragonflameClient"
+      "satisfy.dragonflame.fabric.client.DragonflameClientFabric"
     ],
     "doapi": [
       "satisfy.dragonflame.util.api.DragonFlameDoAPI"
     ],
     "modmenu": [
-      "satisfy.dragonflame.client.config.ModMenuIntegration"
+      "satisfy.dragonflame.fabric.config.ModMenuIntegration"
     ]
   },
   "mixins": [
+    "dragonflame-common.mixins.json",
     "dragonflame.mixins.json"
   ],
   "depends": {

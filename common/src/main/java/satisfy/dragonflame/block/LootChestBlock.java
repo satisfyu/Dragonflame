@@ -12,7 +12,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
@@ -23,7 +22,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
@@ -119,7 +117,7 @@ public class LootChestBlock extends BaseEntityBlock implements SimpleWaterlogged
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState blockState, BlockEntityType<T> blockEntityType) {
-        return level.isClientSide ? createTickerHelper(blockEntityType, BlockEntityRegistry.LOOTCHEST_BLOCK_ENTITY, LootChestEntity::lidAnimateTick) : null;
+        return level.isClientSide ? createTickerHelper(blockEntityType, BlockEntityRegistry.LOOTCHEST_BLOCK_ENTITY.get(), LootChestEntity::lidAnimateTick) : null;
     }
 
     public void onRemove(BlockState blockState, Level level, BlockPos blockPos, BlockState blockState2, boolean bl) {
@@ -135,7 +133,7 @@ public class LootChestBlock extends BaseEntityBlock implements SimpleWaterlogged
 
     public ItemStack getCloneItemStack(BlockGetter blockGetter, BlockPos blockPos, BlockState blockState) {
         ItemStack itemStack = super.getCloneItemStack(blockGetter, blockPos, blockState);
-        blockGetter.getBlockEntity(blockPos, BlockEntityRegistry.LOOTCHEST_BLOCK_ENTITY).ifPresent((basketBlockEntity) -> {
+        blockGetter.getBlockEntity(blockPos, BlockEntityRegistry.LOOTCHEST_BLOCK_ENTITY.get()).ifPresent((basketBlockEntity) -> {
             basketBlockEntity.saveToItem(itemStack);
         });
         return itemStack;

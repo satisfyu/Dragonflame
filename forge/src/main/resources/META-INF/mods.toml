@@ -6,12 +6,12 @@ license = "Insert License Here"
 [[mods]]
 modId = "dragonflame"
 version = "${version}"
-displayName = "Example Mod"
-authors = "Me!"
+displayName = "Dragonflame"
+authors = "satisfy, Cristelknight, cph101, ecacresasson, baumeisterjo"
 description = '''
 This is an example description! Tell everyone what your mod is about!
 '''
-#logoFile = ""
+logoFile = "pack.png"
 
 [[dependencies.dragonflame]]
 modId = "forge"

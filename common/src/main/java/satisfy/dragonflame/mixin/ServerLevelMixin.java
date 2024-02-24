@@ -12,10 +12,11 @@ import satisfy.dragonflame.world.worldgen.PatrolSpawner;
 @Mixin(ServerLevel.class)
 public class ServerLevelMixin {
     @Unique
-    CustomSpawner patrolSpawner = new PatrolSpawner();
+    final
+    CustomSpawner dragonflame$patrolSpawner = new PatrolSpawner();
 
     @Inject(method = "tickCustomSpawners", at = @At("TAIL"))
     public void tickPatrolSpawner(boolean bl, boolean bl2, CallbackInfo ci) {
-        patrolSpawner.tick((ServerLevel) (Object) this, bl, bl2);
+        dragonflame$patrolSpawner.tick((ServerLevel) (Object) this, bl, bl2);
     }
 }

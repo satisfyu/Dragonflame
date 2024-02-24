@@ -24,7 +24,7 @@ public class EntityRegistry {
     public static final RegistrySupplier<EntityType<ArmoredPillagerDog>> ARMORED_PILLAGER_DOG = create("armored_pillager_dog",  () -> EntityType.Builder.of(ArmoredPillagerDog::new, MobCategory.CREATURE).sized(0.9f, 1.87f).clientTrackingRange(10).updateInterval(3).build(new DragonflameIdentifier("armored_pillager_dog").toString()));
     public static final RegistrySupplier<EntityType<FieryWarhorse>> FIERY_WARHORSE = create("fiery_warhorse",  () -> EntityType.Builder.of(FieryWarhorse::new, MobCategory.CREATURE).sized(0.9f, 1.87f).clientTrackingRange(10).updateInterval(3).build(new DragonflameIdentifier("fiery_warhorse").toString()));
 
-    public static final RegistrySupplier<EntityType<FireDragon>> FIREDRAGON = create("firedragon",  () -> EntityType.Builder.of(FireDragon::new, MobCategory.CREATURE).sized(0.9f, 1.87f).clientTrackingRange(10).updateInterval(3).build(new DragonflameIdentifier("firedragon").toString()));
+    public static final RegistrySupplier<EntityType<FireDragon>> FIREDRAGON = create("firedragon",  () -> EntityType.Builder.of(FireDragon::new, MobCategory.CREATURE).sized(2.75f, 2.75f).clientTrackingRange(10).updateInterval(3).build(new DragonflameIdentifier("firedragon").toString()));
 
 
     public static <T extends EntityType<?>> RegistrySupplier<T> create(final String path, final Supplier<T> type) {
@@ -45,6 +45,5 @@ public class EntityRegistry {
         EntityAttributeRegistry.register(FIERY_WARHORSE, FieryWarhorse::createAttributes);
         EntityAttributeRegistry.register(ARMORED_PILLAGER_DOG, ArmoredPillagerDog::createAttributes);
         EntityAttributeRegistry.register(FIREDRAGON, FireDragon::createAttributes);
-
     }
 }

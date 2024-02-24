@@ -26,7 +26,6 @@ import net.minecraft.world.entity.animal.FlyingAnimal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
@@ -57,6 +56,7 @@ import satisfy.dragonflame.entity.fire_dragon.ai.upgrade.MoveToWalkTarget;
 import satisfy.dragonflame.entity.fire_dragon.ai.upgrade.SetWalkTargetToAttackTarget;
 import satisfy.dragonflame.entity.fire_dragon.control.DragonBodyController;
 import satisfy.dragonflame.entity.fire_dragon.control.DragonMoveControl;
+import satisfy.dragonflame.registry.ObjectRegistry;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.AnimatableManager;
@@ -248,7 +248,7 @@ public class FireDragon extends Monster implements GeoEntity, Saddleable, Flying
     protected @NotNull InteractionResult mobInteract(Player player, InteractionHand interactionHand) {
         ItemStack stack = player.getItemInHand(interactionHand);
         boolean server = isServer();
-        if(stack.getItem().equals(Items.SADDLE) && !isSaddled()){
+        if(stack.getItem().equals(ObjectRegistry.DRAGON_SADDLE.get()) && !isSaddled()){
             if(server){
                 stack.shrink(1);
                 equipSaddle(SoundSource.NEUTRAL);
@@ -257,7 +257,7 @@ public class FireDragon extends Monster implements GeoEntity, Saddleable, Flying
             return InteractionResult.sidedSuccess(!server);
         } else if (player.isCrouching() && isSaddled() && getPassengers().isEmpty()) {
             if(server){
-                ItemStack saddle = new ItemStack(Items.SADDLE);
+                ItemStack saddle = new ItemStack(ObjectRegistry.DRAGON_SADDLE.get());
                 if (!player.getInventory().add(saddle)) {
                     player.drop(saddle, false);
                 }
@@ -330,7 +330,9 @@ public class FireDragon extends Monster implements GeoEntity, Saddleable, Flying
     ///////////////////////////------Riding--------///////////////////////////////
     @Override
     public double getPassengersRidingOffset() {
-        return getBbHeight() + 0.9;
+        double offset = 1.1;
+        if(isFlying()) offset-=0.5;
+        return getBbHeight() + offset;
     }
 
     @Override
@@ -489,7 +491,7 @@ public class FireDragon extends Monster implements GeoEntity, Saddleable, Flying
     @Override
     protected void dropCustomDeathLoot(DamageSource source, int looting, boolean recentlyHitIn) {
         super.dropCustomDeathLoot(source, looting, recentlyHitIn);
-        if (isSaddled()) spawnAtLocation(Items.SADDLE);
+        if (isSaddled()) spawnAtLocation(ObjectRegistry.DRAGON_SADDLE.get());
     }
     @Override
     public void die(DamageSource damageSource) {

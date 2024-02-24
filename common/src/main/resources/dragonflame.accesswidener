@@ -7,3 +7,4 @@ accessible method net/minecraft/client/Camera getMaxZoom (D)D
 accessible field net/minecraft/world/item/CreativeModeTab$Builder displayName Lnet/minecraft/network/chat/Component;
 accessible method net/minecraft/world/item/StandingAndWallBlockItem getPlacementState (Lnet/minecraft/world/item/context/BlockPlaceContext;)Lnet/minecraft/world/level/block/state/BlockState;
 accessible field net/minecraft/world/entity/Entity deltaMovement Lnet/minecraft/world/phys/Vec3;
+accessible method net/minecraft/client/renderer/item/ItemProperties register (Lnet/minecraft/world/item/Item;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/client/renderer/item/ClampedItemPropertyFunction;)V

@@ -1,11 +1,13 @@
 {
   "required": true,
-  "package": "satisfy.dragonflame.mixin",
+  "package": "satisfy.dragonflame.fabric.mixin",
   "compatibilityLevel": "JAVA_17",
   "minVersion": "0.8",
   "client": [
+    "GuiMixin"
   ],
   "mixins": [
+    "ItemStackMixin"
   ],
   "injectors": {
     "defaultRequire": 1

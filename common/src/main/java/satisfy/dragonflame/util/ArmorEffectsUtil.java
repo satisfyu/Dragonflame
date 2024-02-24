@@ -24,7 +24,7 @@ public class ArmorEffectsUtil {
     }
 
     private static void applyReinforcedLeatherSetBonus(Player player) {
-        player.addEffect(new MobEffectInstance(MobEffectRegistry.IMPROVED_LEATHER_ARMOR, 1200, 0));
+        player.addEffect(new MobEffectInstance(MobEffectRegistry.IMPROVED_LEATHER_ARMOR.get(), 1200, 0));
     }
 
     private static void applyDragonSetBonus(Player player) {
@@ -32,10 +32,10 @@ public class ArmorEffectsUtil {
     }
 
     private static void applyTitanSetBonus(Player player) {
-        player.addEffect(new MobEffectInstance(MobEffectRegistry.TITAN_ARMOR, 1200, 0));
+        player.addEffect(new MobEffectInstance(MobEffectRegistry.TITAN_ARMOR.get(), 1200, 0));
     }
 
     private static void applyHardenedTitanSetBonus(Player player) {
-        player.addEffect(new MobEffectInstance(MobEffectRegistry.HARDENED_TITAN_ARMOR, 1200, 0));
+        player.addEffect(new MobEffectInstance(MobEffectRegistry.HARDENED_TITAN_ARMOR.get(), 1200, 0));
     }
 }

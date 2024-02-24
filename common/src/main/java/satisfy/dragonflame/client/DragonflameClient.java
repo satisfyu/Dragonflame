@@ -5,7 +5,6 @@ import dev.architectury.registry.client.level.entity.EntityRendererRegistry;
 import dev.architectury.registry.client.rendering.BlockEntityRendererRegistry;
 import dev.architectury.registry.client.rendering.RenderTypeRegistry;
 import dev.architectury.registry.menu.MenuRegistry;
-import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.renderer.RenderType;
@@ -23,13 +22,13 @@ import java.util.Set;
 import java.util.UUID;
 
 @Environment(EnvType.CLIENT)
-public class DragonflameClient implements ClientModInitializer {
+public class DragonflameClient {
 
-        public static Set<UUID> dragonRiders = new HashSet<>();
+        public static final Set<UUID> dragonRiders = new HashSet<>();
 
         public static boolean isYPressed = false;
 
-        public void onInitializeClient() {
+        public static void onInitializeClient() {
                 //EntityRendererRegistry.register(EntityRegistry.SKELETON_BSP, SkeletonRenderer::new);
 
 
@@ -71,8 +70,8 @@ public class DragonflameClient implements ClientModInitializer {
         }
 
         public static void registerBlockEntityRenderers() {
-                BlockEntityRendererRegistry.register(BlockEntityRegistry.GRIM_ANVIL_BLOCK_ENTITY, GrimAnvilRenderer::new);
-                BlockEntityRendererRegistry.register(BlockEntityRegistry.LOOTCHEST_BLOCK_ENTITY, LootChestRenderer::new);
+                BlockEntityRendererRegistry.register(BlockEntityRegistry.GRIM_ANVIL_BLOCK_ENTITY.get(), GrimAnvilRenderer::new);
+                BlockEntityRendererRegistry.register(BlockEntityRegistry.LOOTCHEST_BLOCK_ENTITY.get(), LootChestRenderer::new);
         }
 
         public static void registerEntityModelLayers() {

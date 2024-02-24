@@ -242,7 +242,7 @@ public class GrimAnvilBlock extends BaseEntityBlock {
 
     @Nullable
     private static <T extends BlockGetter> GrimAnvilBlockEntity findGrimAnvilEntity(BlockPos blockPos, T blockGetter) {
-        return blockGetter.getBlockEntity(blockPos, BlockEntityRegistry.GRIM_ANVIL_BLOCK_ENTITY).orElse(null);
+        return blockGetter.getBlockEntity(blockPos, BlockEntityRegistry.GRIM_ANVIL_BLOCK_ENTITY.get()).orElse(null);
     }
 
     @Override

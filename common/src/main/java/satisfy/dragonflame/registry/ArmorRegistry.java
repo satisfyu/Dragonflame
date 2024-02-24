@@ -19,9 +19,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
-import satisfy.dragonflame.client.model.DragonHelmet;
-import satisfy.dragonflame.client.model.HardenedTitanHelmet;
-import satisfy.dragonflame.client.model.ReinforcedLeatherHelmet;
 import satisfy.dragonflame.client.model.*;
 import satisfy.dragonflame.config.DragonflameConfig;
 import satisfy.dragonflame.util.DragonflameIdentifier;
@@ -100,7 +97,7 @@ public interface ArmorRegistry {
         tooltip.add(Component.nullToEmpty(""));
         if (Screen.hasShiftDown() || !DragonflameConfig.DEFAULT.getConfig().simplifiedArmorSetBonusTooltip()) {
             tooltip.add(Component.nullToEmpty(color + I18n.get("tooltip.dragonflame.fullsetbonus")));
-            fullSetBonuses.stream().forEach(bonus -> {
+            fullSetBonuses.forEach(bonus -> {
                 String bonusString;
                 if (bonus instanceof String bonusAsString) bonusString = bonusAsString;
                 else if (bonus instanceof Component bonusComponent) bonusString = bonusComponent.getString();

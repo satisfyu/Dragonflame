@@ -40,7 +40,7 @@ public class HardenedTitanAxeItem extends AxeItem {
         double radius = 2.0D;
         List<LivingEntity> nearbyEntities = world.getEntitiesOfClass(LivingEntity.class, attacker.getBoundingBox().inflate(radius), e -> e != attacker && e.isAlive());
         for (LivingEntity entity : nearbyEntities) {
-            entity.addEffect(new MobEffectInstance(MobEffectRegistry.CONFUSION, 100, 0));
+            entity.addEffect(new MobEffectInstance(MobEffectRegistry.CONFUSION.get(), 100, 0));
             entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 120, 0));
         }
     }

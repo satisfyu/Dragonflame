@@ -19,11 +19,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.*;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
-import net.minecraft.core.Vec3i;
 import org.jetbrains.annotations.NotNull;
-import satisfy.dragonflame.block.LootChestBlock;
 import satisfy.dragonflame.registry.BlockEntityRegistry;
 import satisfy.dragonflame.client.gui.LootChestScreenhandler;
 import satisfy.dragonflame.registry.ObjectRegistry;
@@ -43,7 +40,7 @@ public class LootChestEntity extends RandomizableContainerBlockEntity implements
     private boolean isFireworkActive = false;
 
     public LootChestEntity(BlockPos blockPos, BlockState blockState) {
-        super(BlockEntityRegistry.LOOTCHEST_BLOCK_ENTITY, blockPos, blockState);
+        super(BlockEntityRegistry.LOOTCHEST_BLOCK_ENTITY.get(), blockPos, blockState);
         this.items = NonNullList.withSize(9, ItemStack.EMPTY);
         this.openersCounter = new ContainerOpenersCounter() {
             protected void onOpen(Level level, BlockPos blockPos, BlockState blockState) {

@@ -164,14 +164,12 @@ public class HearthstoneItem extends Item {
             }
 
             tooltip.add(countdownText);
-            tooltip.add(Component.empty());
-            tooltip.add(Component.translatable("lore.dragonflame.hearthstone").withStyle(ChatFormatting.GOLD, ChatFormatting.ITALIC));
         } else {
             Component noCooldownText = Component.translatable("item.dragonflame.hearthstone.cooldown.none").withStyle(ChatFormatting.GREEN);
             tooltip.add(noCooldownText);
-            tooltip.add(Component.empty());
-            tooltip.add(Component.translatable("lore.dragonflame.hearthstone").withStyle(ChatFormatting.GOLD, ChatFormatting.ITALIC));
         }
+        tooltip.add(Component.empty());
+        tooltip.add(Component.translatable("lore.dragonflame.hearthstone").withStyle(ChatFormatting.GOLD, ChatFormatting.ITALIC));
     }
 
     @Override

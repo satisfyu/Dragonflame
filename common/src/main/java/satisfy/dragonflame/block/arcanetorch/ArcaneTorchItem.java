@@ -5,8 +5,6 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.DyeableLeatherItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.StandingAndWallBlockItem;
@@ -27,8 +25,8 @@ import java.util.Objects;
 
 public class ArcaneTorchItem extends StandingAndWallBlockItem implements DyeableLeatherItem { // I hate these mappings
 
-    protected static Color defaultFirstColor = new Color(107, 59, 45);
-    protected static Color defaultSecondColor = new Color(79, 107, 45);
+    protected static final Color defaultFirstColor = new Color(107, 59, 45);
+    protected static final Color defaultSecondColor = new Color(79, 107, 45);
     public ArcaneTorchItem(Block block, Block block2, Properties settings) {
         super(block, block2, settings, Direction.DOWN);
     }

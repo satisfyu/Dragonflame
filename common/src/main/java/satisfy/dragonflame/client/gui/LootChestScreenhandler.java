@@ -48,7 +48,7 @@ public class LootChestScreenhandler extends AbstractContainerMenu {
     @Override
     public @NotNull ItemStack quickMoveStack(Player player, int i) {
         ItemStack itemStack = ItemStack.EMPTY;
-        Slot slot = (Slot)this.slots.get(i);
+        Slot slot = this.slots.get(i);
         if (slot != null && slot.hasItem()) {
             ItemStack itemStack2 = slot.getItem();
             itemStack = itemStack2.copy();

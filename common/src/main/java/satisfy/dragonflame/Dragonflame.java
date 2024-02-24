@@ -2,7 +2,6 @@ package satisfy.dragonflame;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import satisfy.dragonflame.client.DragonflameClient;
 import satisfy.dragonflame.config.DragonflameConfig;
 import satisfy.dragonflame.registry.*;
 
@@ -12,7 +11,6 @@ public class Dragonflame {
 	public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
 
 	public static void init() {
-		DragonflameClient.preInitClient();
 		DragonflameConfig.DEFAULT.getConfig();
 		//ParticleRegistry.init();
 		ObjectRegistry.init();
@@ -25,5 +23,9 @@ public class Dragonflame {
 		MobEffectRegistry.init();
 		EnchantmentRegistry.init();
 		PlacerTypesRegistry.init();
+	}
+
+	public static void commonSetup(){
+		DragonflameProperties.init();
 	}
 }

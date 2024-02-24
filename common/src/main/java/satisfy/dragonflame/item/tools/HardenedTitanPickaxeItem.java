@@ -2,7 +2,6 @@ package satisfy.dragonflame.item.tools;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
@@ -15,9 +14,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-//import satisfy.dragonflame.registry.ParticleRegistry;
 import satisfy.dragonflame.util.GeneralUtil;
-import satisfyu.dragonflame.util.MathUtil;
+import satisfy.dragonflame.util.MathUtil;
 
 import java.util.List;
 

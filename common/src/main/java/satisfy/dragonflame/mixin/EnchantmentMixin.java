@@ -57,7 +57,7 @@ public class EnchantmentMixin {
         boolean hasEnchantment = false;
 
         for (ItemStack itemStack : equipment) {
-            if (EnchantmentHelper.getEnchantments(itemStack).containsKey(EnchantmentRegistry.DRAGON_EYE)) {
+            if (EnchantmentHelper.getEnchantments(itemStack).containsKey(EnchantmentRegistry.DRAGON_EYE.get())) {
                 hasEnchantment = true;
                 break;
             }

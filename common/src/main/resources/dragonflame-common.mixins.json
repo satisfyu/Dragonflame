@@ -7,13 +7,12 @@
     "ArcaneTorchItemRendererMixin",
     "CameraMixin",
     "EnchantmentMixin",
-    "GuiMixin",
     "PlayerRendererMixin"
   ],
   "mixins": [
-    "ItemStackMixin",
     "RarityMixin",
-    "ServerLevelMixin"
+    "ServerLevelMixin",
+    "ServerPlayerMixin"
   ],
   "injectors": {
     "defaultRequire": 1

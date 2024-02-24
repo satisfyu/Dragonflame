@@ -7,10 +7,6 @@ architectury {
     forge()
 }
 
-def jarFileName = 'letsdo-dragonflame-forge'
-
-archivesBaseName = jarFileName
-
 
 loom {
     accessWidenerPath = project(":common").loom.accessWidenerPath
@@ -19,8 +15,8 @@ loom {
         convertAccessWideners = true
         extraAccessWideners.add loom.accessWidenerPath.get().asFile.name
 
-        mixinConfig "dragonflame-common.mixins.json"
         mixinConfig "dragonflame.mixins.json"
+        mixinConfig "dragonflame-common.mixins.json"
     }
 }
 
@@ -40,7 +36,7 @@ dependencies {
     modCompileOnlyApi("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
     modCompileOnlyApi("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}")
     modRuntimeOnly("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
-    modImplementation("net.tslat.smartbrainlib:SmartBrainLib-neoforge-${minecraft_version}:${project.sbl_version}")
+    include(modImplementation("net.tslat.smartbrainlib:SmartBrainLib-neoforge-${minecraft_version}:${project.sbl_version}"))
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }
@@ -65,7 +61,7 @@ shadowJar {
 remapJar {
     input.set shadowJar.archiveFile
     dependsOn shadowJar
-    archiveClassifier.set(null)
+    archiveClassifier.set("forge")
 }
 
 jar {

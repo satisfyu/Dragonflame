@@ -1,4 +1,4 @@
-package satisfy.dragonflame.mixin;
+package satisfy.dragonflame.fabric.mixin;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.Gui;

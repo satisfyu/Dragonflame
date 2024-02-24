@@ -1,17 +1,5 @@
 package satisfy.dragonflame.client.particle;
 
-import net.minecraft.util.Mth;
-import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
-import satisfy.dragonflame.Dragonflame;
-import satisfy.dragonflame.item.HearthstoneItem;
-
-
-import java.awt.*;
-import java.util.Objects;
 /*
 public class HearthstoneParticleEffect {
     private int ticksSinceInit;

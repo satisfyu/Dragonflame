@@ -1,4 +1,4 @@
-package satisfyu.dragonflame.util;
+package satisfy.dragonflame.util;
 
 import java.util.ArrayList;
 import java.util.Collection;

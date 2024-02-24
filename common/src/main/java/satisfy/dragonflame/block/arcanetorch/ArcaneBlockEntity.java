@@ -1,11 +1,9 @@
 package satisfy.dragonflame.block.arcanetorch;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.WallTorchBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -23,7 +21,7 @@ public class ArcaneBlockEntity extends BlockEntity {
     public Color secondColor;
 
     public ArcaneBlockEntity(BlockPos pos, BlockState state, int firstColor, int secondColor) {
-        this(BlockEntityRegistry.ARCANE_BLOCK_ENTITY, pos, state, firstColor, secondColor);
+        this(BlockEntityRegistry.ARCANE_BLOCK_ENTITY.get(), pos, state, firstColor, secondColor);
     }
 
     public ArcaneBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state, int firstColor, int secondColor) {
