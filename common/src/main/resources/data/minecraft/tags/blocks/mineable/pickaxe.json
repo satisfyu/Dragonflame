@@ -1,5 +1,27 @@
 {
   "replace": false,
   "values": [
+    "dragonflame:titan_ore",
+    "dragonflame:titan_block",
+    "dragonflame:titan_block_slab",
+    "dragonflame:titan_block_stairs",
+    "dragonflame:mossy_cobbled_dragonstone",
+    "dragonflame:mossy_cobbled_dragonstone_slab",
+    "dragonflame:mossy_cobbled_dragonstone_stairs",
+    "dragonflame:mossy_cobbled_dragonstone_wall",
+    "dragonflame:mossy_dragonstone_brick_slab",
+    "dragonflame:mossy_dragonstone_brick_stairs",
+    "dragonflame:mossy_dragonstone_brick_wall",
+    "dragonflame:mossy_dragonstone_bricks",
+    "dragonflame:polished_dragonstone",
+    "dragonflame:chiseled_dragonstone",
+    "dragonflame:dragonstone",
+    "dragonflame:dragonstone_brick_slab",
+    "dragonflame:dragonstone_brick_stairs",
+    "dragonflame:dragonstone_brick_wall",
+    "dragonflame:dragonstone_bricks",
+    "dragonflame:dragonstone_slab",
+    "dragonflame:dragonstone_stairs",
+    "dragonflame:dragonstone_wall"
   ]
 }

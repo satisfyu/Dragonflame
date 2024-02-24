@@ -1,6 +1,31 @@
 {
   "replace": false,
   "values": [
-
+    "dragonflame:dragon_button",
+    "dragonflame:dragon_door",
+    "dragonflame:dragon_fence",
+    "dragonflame:dragon_fence_gate",
+    "dragonflame:dragon_hanging_sign",
+    "dragonflame:dragon_log",
+    "dragonflame:dragon_planks",
+    "dragonflame:dragon_pressure_plate",
+    "dragonflame:dragon_sign",
+    "dragonflame:dragon_slab",
+    "dragonflame:dragon_stairs",
+    "dragonflame:dragon_trapdoor",
+    "dragonflame:dragon_wall_hanging_sign",
+    "dragonflame:dragon_wall_sign",
+    "dragonflame:dragon_window",
+    "dragonflame:burnt_button",
+    "dragonflame:burnt_door",
+    "dragonflame:burnt_fence",
+    "dragonflame:burnt_fence_gate",
+    "dragonflame:burnt_log",
+    "dragonflame:burnt_planks",
+    "dragonflame:burnt_pressure_plate",
+    "dragonflame:burnt_slab",
+    "dragonflame:burnt_stairs",
+    "dragonflame:burnt_trapdoor",
+    "dragonflame:burnt_wood"
   ]
 }

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "cookingtime": 500,
+  "experience": 0.4,
+  "ingredient": {
+    "item": "dragonflame:titan_ore"
+  },
+  "result": "dragonflame:titan_dust"
+}

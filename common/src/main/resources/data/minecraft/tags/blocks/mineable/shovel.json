@@ -1,5 +1,7 @@
 {
   "replace": false,
   "values": [
+    "dragonflame:black_sand",
+    "dragonflame:white_sand"
   ]
 }
