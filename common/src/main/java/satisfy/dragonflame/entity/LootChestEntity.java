@@ -212,6 +212,7 @@ public class LootChestEntity extends RandomizableContainerBlockEntity implements
         if (random.nextFloat() < 0.12) possibleLoot.add(new ItemStack(ObjectRegistry.DRAGON_HEAD_HELMET.get(), 1));
         if (random.nextFloat() < 0.15) possibleLoot.add(new ItemStack(ObjectRegistry.DRAGON_EYE.get(), 1));
         if (random.nextFloat() < 0.005) possibleLoot.add(new ItemStack(ObjectRegistry.FIERY_WARHORSE_SPAWN_EGG.get(), 1));
+        if (random.nextFloat() < 0.008) possibleLoot.add(new ItemStack(ObjectRegistry.SHATTERBRAND.get(), 1));
         for (int i = 0; i < (random.nextInt(33) + 1); i++) possibleLoot.add(new ItemStack(ObjectRegistry.DRAGON_BONES.get(), 1));
         for (int i = 0; i < (random.nextInt(44) + 1); i++) possibleLoot.add(new ItemStack(ObjectRegistry.DRAGONSCALE.get(), 1));
 

@@ -192,7 +192,9 @@
   "template.dragonflame.ingredient_for": "Hardened Titan Plates",
   "entity.dragonflame.dragon_whelpling": "Dragon Whelpling",
   "item.dragonflame.dragonscale": "Dragonscale",
-
+  "lore.dragonflame.shatterbrand1": "A dull, heavily ornamented sword - looks like a part of the shaft is missing...",
+  "lore.dragonflame.shatterbrand2": "Combine Shatterbrand with Dawnbreaker to get Shatterbreaker",
+  "item.dragonflame.shatterbrand": "Shatterbrand",
 
 
   "item.dragonflame.tooltip.item.dragonflame.dragon_boat": "Needs DoAPI implementation",

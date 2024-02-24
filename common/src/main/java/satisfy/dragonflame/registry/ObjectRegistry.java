@@ -149,7 +149,7 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Item> FLAMETHROWER = registerItem("flamethrower", () -> new FlamethrowerItem(getSettings()));
     public static final RegistrySupplier<Item> EMBERGRASP = registerItem("embergrasp", () -> new EmbergraspItem(ToolTiersRegistry.EMBERGRASP, getSettings().fireResistant().rarity(Rarity.EPIC)));
     public static final RegistrySupplier<Item> ARMORED_VINDICATOR_AXE = registerItem("armored_vindicator_axe", () -> new AxeItem(Tiers.DIAMOND, 5.0F, -3.0F, new Item.Properties().rarity(Rarity.UNCOMMON)));
-    public static final RegistrySupplier<Item> SHATTERBRAND = registerItem("shatterbrand", () -> new SwordItem(Tiers.STONE, 0, 0.0F, new Item.Properties().rarity(Rarity.UNCOMMON)));
+    public static final RegistrySupplier<Item> SHATTERBRAND = registerItem("shatterbrand", () -> new ShatterbrandSwordItem(ToolTiersRegistry.EMBERGRASP, new Item.Properties().rarity(Rarity.UNCOMMON)));
     public static final RegistrySupplier<Item> DRAGON_BONES = registerItem("dragon_bones", () -> new TooltipItem(getSettings().rarity(Rarity.UNCOMMON)));
     public static final RegistrySupplier<Item> DRAGON_EYE = registerItem("dragon_eye", () -> new EnchantedItem(getSettings().rarity(Rarity.RARE)));
     public static final RegistrySupplier<Item> DRAGON_HEARTH = registerItem("dragon_hearth", () -> new EnchantedItem(getSettings().rarity(Rarity.EPIC)));
