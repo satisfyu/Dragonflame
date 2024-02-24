@@ -62,18 +62,19 @@ public class ArmoredPillagerDog extends Animal implements NeutralMob, IPatrollin
         super(entityType, world);
 
         this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(4, new PatrolGoal<>(this, 0.7, 0.595));
-        this.goalSelector.addGoal(11, new PillagerDogAttackGoal(this, 1.0D, true));
-        this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, true));
-        this.goalSelector.addGoal(2, new TemptGoal(this, 1.2D, Ingredient.of(ObjectRegistry.DRAGON_BONES.get()), false));
-        this.goalSelector.addGoal(4, new WaterAvoidingRandomStrollGoal(this, 1.1D));
-        this.goalSelector.addGoal(5, new LookAtPlayerGoal(this, Player.class, 3f));
-        this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
-        this.targetSelector.addGoal(7, new HurtByTargetGoal(this));
-        this.targetSelector.addGoal(8, new NearestAttackableTargetGoal<>(this, Zombie.class, true));
-        this.targetSelector.addGoal(9, new NearestAttackableTargetGoal<>(this, Skeleton.class, true));
-        this.targetSelector.addGoal(10, new NearestAttackableTargetGoal<>(this, EnderMan.class, true));
-        //TODO: Add Dragons
+        this.goalSelector.addGoal(2, new PillagerDogAttackGoal(this, 1.0D, true));
+        this.goalSelector.addGoal(3, new PatrolGoal<>(this, 0.7, 0.595));
+        this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
+        this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.1D));
+        this.goalSelector.addGoal(6, new TemptGoal(this, 1.2D, Ingredient.of(ObjectRegistry.DRAGON_BONES.get()), false));
+        this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, Player.class, 3f));
+        this.targetSelector.addGoal(0, new NearestAttackableTargetGoal<>(this, Player.class, true));
+        this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Zombie.class, true));
+        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Skeleton.class, true));
+        this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, EnderMan.class, true));
+        this.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, DragonWhelpling.class, true));
+
     }
 
     public static AttributeSupplier.@NotNull Builder createAttributes() {
@@ -294,10 +295,6 @@ public class ArmoredPillagerDog extends Animal implements NeutralMob, IPatrollin
         super.readAdditionalSaveData(compoundTag);
         this.readPatrolData(compoundTag);
     }
-
-    /**
-     * ANIMATION
-     */
 
     public State getState() {
         return this.entityData.get(DATA_STATE);

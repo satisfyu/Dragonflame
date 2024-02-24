@@ -31,17 +31,16 @@ public class ArmoredPillagerEntity extends Pillager implements IPatrollingMob {
     @Override
     protected void registerGoals() {
         super.registerGoals();
+        this.targetSelector.addGoal(0, new NearestAttackableTargetGoal<>(this, DragonWhelpling.class, true));
+        this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Skeleton.class, true));
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Zombie.class, true));
-        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Skeleton.class, true));
-        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, EnderMan.class, true));
-
-        this.goalSelector.addGoal(4, new PatrolGoal<>(this, 0.7, 0.595));
-        //TODO: Add Dragons
+        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, EnderMan.class, true));
+        this.goalSelector.addGoal(0, new PatrolGoal<>(this, 0.7, 0.595));
     }
 
     public static AttributeSupplier.@NotNull Builder createAttributes() {
         return Mob.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 32.0)
+                .add(Attributes.MAX_HEALTH, 48.0)
                 .add(Attributes.ARMOR, 1.5)
                 .add(Attributes.ATTACK_DAMAGE, 0.30)
                 .add(Attributes.ARMOR_TOUGHNESS, 1.5)
@@ -76,10 +75,6 @@ public class ArmoredPillagerEntity extends Pillager implements IPatrollingMob {
     public boolean canJoinRaid() {
         return false;
     }
-
-    /**
-     * PARTROL
-     **/
 
     @Override
     public boolean isPatrolling() {

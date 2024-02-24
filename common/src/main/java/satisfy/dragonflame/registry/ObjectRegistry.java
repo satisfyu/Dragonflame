@@ -100,8 +100,9 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Block> TITAN_BLOCK_SLAB = registerWithItem("titan_block_slab", () -> new SlabBlock(BlockBehaviour.Properties.of().strength(2.0F, 3.0F).requiresCorrectToolForDrops().sound(SoundType.METAL)));
     public static final RegistrySupplier<Item>  ARMORED_PILLAGER_SPAWN_EGG = registerItem("armored_pillager_spawn_egg", () -> new ArchitecturySpawnEggItem(EntityRegistry.ARMORED_PILLAGER, -1, -1, getSettings()));
     public static final RegistrySupplier<Item>  ARMORED_VINDICATOR_SPAWN_EGG = registerItem("armored_vindicator_spawn_egg", () -> new ArchitecturySpawnEggItem(EntityRegistry.ARMORED_VINDICATOR, -1, -1, getSettings()));
-    public static final RegistrySupplier<Item>  FIREDRAGON_SPAWN_EGG = registerItem("fire_dragon_spawn_egg", () ->  new ArchitecturySpawnEggItem(EntityRegistry.FIREDRAGON, 0x725D78, 0xE6792C, getSettings()));
     public static final RegistrySupplier<Item>  PILLAGER_DOG_SPAWN_EGG = registerItem("pillager_dog_spawn_egg",  () -> new ArchitecturySpawnEggItem(EntityRegistry.ARMORED_PILLAGER_DOG, -1, -1, getSettings()));
+    public static final RegistrySupplier<Item>  FIREDRAGON_SPAWN_EGG = registerItem("fire_dragon_spawn_egg", () ->  new ArchitecturySpawnEggItem(EntityRegistry.FIREDRAGON, 0x725D78, 0xE6792C, getSettings()));
+    public static final RegistrySupplier<Item>  DRAGON_WHELPLING_SPAWN_EGG = registerItem("dragon_whelpling_spawn_egg", () ->  new ArchitecturySpawnEggItem(EntityRegistry.DRAGON_WHELPLING, 0x725D78, 0xE6792C, getSettings()));
     public static final RegistrySupplier<Block> ARCANE_WALL_TORCH = registerWithItem("arcane_wall_torch", () -> new ArcaneWallTorchBlock(BlockBehaviour.Properties.of().noCollission().instabreak().lightLevel(state -> 5).sound(SoundType.WOOD)));
     public static final RegistrySupplier<Block> ARCANE_GROUND_TORCH = registerWithItem("arcane_ground_torch", () -> new ArcaneGroundTorchBlock(BlockBehaviour.Properties.of().noCollission().instabreak().lightLevel(state -> 5).sound(SoundType.WOOD)));
     public static final RegistrySupplier<Item> ARCANE_TORCH = registerItem("arcane_torch", () -> new ArcaneTorchItem(ARCANE_GROUND_TORCH.get(), ARCANE_WALL_TORCH.get(), getSettings()));
@@ -148,6 +149,7 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Item> FLAMETHROWER = registerItem("flamethrower", () -> new FlamethrowerItem(getSettings()));
     public static final RegistrySupplier<Item> EMBERGRASP = registerItem("embergrasp", () -> new EmbergraspItem(ToolTiersRegistry.EMBERGRASP, getSettings().fireResistant().rarity(Rarity.EPIC)));
     public static final RegistrySupplier<Item> ARMORED_VINDICATOR_AXE = registerItem("armored_vindicator_axe", () -> new AxeItem(Tiers.DIAMOND, 5.0F, -3.0F, new Item.Properties().rarity(Rarity.UNCOMMON)));
+    public static final RegistrySupplier<Item> SHATTERBRAND = registerItem("shatterbrand", () -> new SwordItem(Tiers.STONE, 0, 0.0F, new Item.Properties().rarity(Rarity.UNCOMMON)));
     public static final RegistrySupplier<Item> DRAGON_BONES = registerItem("dragon_bones", () -> new TooltipItem(getSettings().rarity(Rarity.UNCOMMON)));
     public static final RegistrySupplier<Item> DRAGON_EYE = registerItem("dragon_eye", () -> new EnchantedItem(getSettings().rarity(Rarity.RARE)));
     public static final RegistrySupplier<Item> DRAGON_HEARTH = registerItem("dragon_hearth", () -> new EnchantedItem(getSettings().rarity(Rarity.EPIC)));

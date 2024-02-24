@@ -190,6 +190,8 @@
   "template.dragonflame.upgrade_description": "Hardened Titan Upgrade",
   "template.dragonflame.applies_to": "Titan Equipment",
   "template.dragonflame.ingredient_for": "Hardened Titan Plates",
+  "entity.dragonflame.dragon_whelpling": "Dragon Whelpling",
+  "item.dragonflame.dragonscale": "Dragonscale",
 
 
 
@@ -203,5 +205,10 @@
   "item.dragonflame.dragon_hanging_sign": "Dragon Hanging Sign",
 
   "item.dragonflame.tooltip.item.dragonflame.dragon_sign": "Needs DoAPI implementation",
-  "item.dragonflame.dragon_sign": "Dragon Sign"
+  "item.dragonflame.dragon_sign": "Dragon Sign",
+
+  "dragonflame.sound.dragon_whelpling_hurt": "Whelpling Shrieks",
+  "dragonflame.sound.dragon_whelpling_dies": "Whelpling Scream",
+  "dragonflame.sound.dragon_whelpling_ambient": "Whelpling Screech"
+
 }

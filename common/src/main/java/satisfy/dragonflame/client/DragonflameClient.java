@@ -9,11 +9,9 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.renderer.RenderType;
 import satisfy.dragonflame.client.gui.LootChestScreen;
-import satisfy.dragonflame.client.model.ArmoredPillagerDogModel;
-import satisfy.dragonflame.client.model.ArmoredPillagerModel;
-import satisfy.dragonflame.client.model.ArmoredVindicatorModel;
-import satisfy.dragonflame.client.model.FieryWarhorseModel;
+import satisfy.dragonflame.client.model.*;
 import satisfy.dragonflame.client.render.*;
+import satisfy.dragonflame.entity.DragonWhelpling;
 import satisfy.dragonflame.entity.fire_dragon.FireDragonRenderer;
 import satisfy.dragonflame.registry.*;
 
@@ -54,6 +52,7 @@ public class DragonflameClient {
                 EntityModelLayerRegistry.register(ArmoredPillagerDogModel.LAYER_LOCATION, ArmoredPillagerDogModel::getTexturedModelData);
                 EntityModelLayerRegistry.register(ArmoredVindicatorModel.ARMORED_VINDICATOR_MODEL_LAYER, ArmoredVindicatorModel::getTexturedModelData);
                 EntityModelLayerRegistry.register(ArmoredPillagerModel.ARMORED_PILLAGER_MODEL_LAYER, ArmoredPillagerModel::getTexturedModelData);
+                EntityModelLayerRegistry.register(DragonWhelplingModel.LAYER_LOCATION, DragonWhelplingModel::getTexturedModelData);
                 EntityModelLayerRegistry.register(LootChestRenderer.LAYER_LOCATION, LootChestRenderer::getTexturedModelData);
 
                 registerEntityModelLayers();
@@ -67,6 +66,7 @@ public class DragonflameClient {
                 EntityRendererRegistry.register(EntityRegistry.ARMORED_VINDICATOR, ArmoredVindicatorRenderer::new);
                 EntityRendererRegistry.register(EntityRegistry.ARMORED_PILLAGER, ArmoredPillagerRenderer::new);
                 EntityRendererRegistry.register(EntityRegistry.FIREDRAGON, FireDragonRenderer::new);
+                EntityRendererRegistry.register(EntityRegistry.DRAGON_WHELPLING, DragonWhelplingRenderer::new);
         }
 
         public static void registerBlockEntityRenderers() {

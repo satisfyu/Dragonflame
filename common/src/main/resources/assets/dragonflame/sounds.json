@@ -22,5 +22,25 @@
     "sounds": [
       "dragonflame:lootchest_close"
     ]
+  },
+  "dragon_whelpling_hurt": {
+    "subtitle": "dragonflame.sound.dragon_whelpling_hurt",
+    "sounds": [
+      "dragonflame:dragon_whelpling_hurt_0",
+      "dragonflame:dragon_whelpling_hurt_1",
+      "dragonflame:dragon_whelpling_hurt_2"
+    ]
+  },
+  "dragon_whelpling_ambient": {
+    "subtitle": "dragonflame.sound.dragon_whelpling_ambient",
+    "sounds": [
+      "dragonflame:dragon_whelpling_ambient"
+    ]
+  },
+  "dragon_whelpling_death": {
+    "subtitle": "dragonflame.sound.dragon_whelpling_death",
+    "sounds": [
+      "dragonflame:dragon_whelpling_death"
+    ]
   }
 }

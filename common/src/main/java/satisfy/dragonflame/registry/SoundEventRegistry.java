@@ -15,6 +15,9 @@ public class SoundEventRegistry {
     public static final RegistrySupplier<SoundEvent> LOOTCHEST_OPEN = create("lootchest_open");
     public static final RegistrySupplier<SoundEvent> LOOTCHEST_CLOSE = create("lootchest_close");
     public static final RegistrySupplier<SoundEvent> IMPROVED_RAID_HORN = create("improved_raid_horn");
+    public static final RegistrySupplier<SoundEvent> DRAGON_WHELPLING_AMBIENT = create("dragon_whelpling_ambient");
+    public static final RegistrySupplier<SoundEvent> DRAGON_WHELPLING_HURT = create("dragon_whelpling_hurt");
+    public static final RegistrySupplier<SoundEvent> DRAGON_WHELPLING_DEATH = create("dragon_whelpling_death");
 
 
     private static RegistrySupplier<SoundEvent> create(String name) {

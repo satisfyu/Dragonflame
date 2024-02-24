@@ -31,18 +31,17 @@ public class ArmoredVindicatorEntity extends Vindicator implements IPatrollingMo
     @Override
     protected void registerGoals() {
         super.registerGoals();
+        this.targetSelector.addGoal(0, new NearestAttackableTargetGoal<>(this, DragonWhelpling.class, true));
+        this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Skeleton.class, true));
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Zombie.class, true));
-        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Skeleton.class, true));
-        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, EnderMan.class, true));
-
-        this.goalSelector.addGoal(4, new PatrolGoal<>(this, 0.7, 0.595));
-        //TODO: Add Dragons
+        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, EnderMan.class, true));
+        this.goalSelector.addGoal(0, new PatrolGoal<>(this, 0.7, 0.595));
     }
 
 
     public static AttributeSupplier.@NotNull Builder createAttributes() {
         return Mob.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 40.0)
+                .add(Attributes.MAX_HEALTH, 60.0)
                 .add(Attributes.ARMOR, 2)
                 .add(Attributes.ATTACK_DAMAGE, 0.40)
                 .add(Attributes.ARMOR_TOUGHNESS, 2)
@@ -61,10 +60,6 @@ public class ArmoredVindicatorEntity extends Vindicator implements IPatrollingMo
     protected SoundEvent getHurtSound(@NotNull DamageSource damageSource) {
         return SoundEvents.BLAZE_HURT;
     }
-
-    /**
-     * PARTROL
-     **/
 
     @Override
     public boolean isPatrolling() {

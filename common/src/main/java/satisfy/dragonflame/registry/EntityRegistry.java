@@ -8,10 +8,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import satisfy.dragonflame.Dragonflame;
-import satisfy.dragonflame.entity.ArmoredPillagerDog;
-import satisfy.dragonflame.entity.ArmoredPillagerEntity;
-import satisfy.dragonflame.entity.ArmoredVindicatorEntity;
-import satisfy.dragonflame.entity.FieryWarhorse;
+import satisfy.dragonflame.entity.*;
 import satisfy.dragonflame.entity.fire_dragon.FireDragon;
 import satisfy.dragonflame.util.DragonflameIdentifier;
 
@@ -26,6 +23,7 @@ public class EntityRegistry {
 
     public static final RegistrySupplier<EntityType<FireDragon>> FIREDRAGON = create("firedragon",  () -> EntityType.Builder.of(FireDragon::new, MobCategory.CREATURE).sized(2.75f, 2.75f).clientTrackingRange(10).updateInterval(3).build(new DragonflameIdentifier("firedragon").toString()));
 
+    public static final RegistrySupplier<EntityType<DragonWhelpling>> DRAGON_WHELPLING = create("dragon_whelpling",  () -> EntityType.Builder.of(DragonWhelpling::new, MobCategory.CREATURE).sized(2.75f, 2.75f).clientTrackingRange(10).updateInterval(3).build(new DragonflameIdentifier("dragon_whelpling").toString()));
 
     public static <T extends EntityType<?>> RegistrySupplier<T> create(final String path, final Supplier<T> type) {
         return ENTITY_TYPES.register(new DragonflameIdentifier(path), type);
@@ -42,8 +40,9 @@ public class EntityRegistry {
     static void registerAttributes(){
         EntityAttributeRegistry.register(ARMORED_VINDICATOR, ArmoredVindicatorEntity::createAttributes);
         EntityAttributeRegistry.register(ARMORED_PILLAGER, ArmoredPillagerEntity::createAttributes);
+        EntityAttributeRegistry.register(ARMORED_PILLAGER, DragonWhelpling::createAttributes);
         EntityAttributeRegistry.register(FIERY_WARHORSE, FieryWarhorse::createAttributes);
         EntityAttributeRegistry.register(ARMORED_PILLAGER_DOG, ArmoredPillagerDog::createAttributes);
-        EntityAttributeRegistry.register(FIREDRAGON, FireDragon::createAttributes);
+        EntityAttributeRegistry.register(DRAGON_WHELPLING, FireDragon::createAttributes);
     }
 }
