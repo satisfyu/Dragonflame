@@ -12,7 +12,7 @@ public record DragonflameConfig(boolean simplifiedArmorSetTooltip, boolean simpl
 
     private static DragonflameConfig INSTANCE = null;
 
-    public static final DragonflameConfig DEFAULT = new DragonflameConfig(true, true);
+    public static final DragonflameConfig DEFAULT = new DragonflameConfig(false, false);
 
     public static final Codec<DragonflameConfig> CODEC = RecordCodecBuilder.create(builder ->
             builder.group(

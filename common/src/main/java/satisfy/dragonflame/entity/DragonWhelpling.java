@@ -28,8 +28,10 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
+import net.minecraft.world.phys.AABB;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.joml.Vector3d;
 import satisfy.dragonflame.entity.ai.WhelplingFlyingGoal;
 import satisfy.dragonflame.registry.SoundEventRegistry;
 
@@ -159,7 +161,8 @@ public class DragonWhelpling extends PathfinderMob implements FlyingAnimal {
             if (this.fireBreathDuration > 0) {
                 LivingEntity target = this.getTarget();
                 if (target != null) {
-                    this.fireBreathAttack(target);
+                    double angleDegrees = 15.0;
+                    this.fireBreathAttack(target, angleDegrees);
                 }
                 this.fireBreathDuration--;
             } else {
@@ -170,7 +173,8 @@ public class DragonWhelpling extends PathfinderMob implements FlyingAnimal {
             this.castingTime--;
             if (this.castingTime <= 0) {
                 this.isCastingFireball = false;
-                this.shootFireballAtTarget(this.getTarget());
+                double angleDegrees = 15.0;
+                this.shootFireballAtTarget(this.getTarget(), angleDegrees);
                 this.fireballCooldown = 140;
             }
             this.getNavigation().stop();
@@ -201,29 +205,48 @@ public class DragonWhelpling extends PathfinderMob implements FlyingAnimal {
     }
 
 
-    private void shootFireballAtTarget(LivingEntity target) {
+    private void adjustDirectionForAngle(Vector3d direction, double angleDegrees) {
+        double angleRadians = Math.toRadians(angleDegrees);
+        double adjustedX = direction.x * Math.cos(angleRadians) - direction.z * Math.sin(angleRadians);
+        double adjustedZ = direction.x * Math.sin(angleRadians) + direction.z * Math.cos(angleRadians);
+        direction.x = adjustedX;
+        direction.z = adjustedZ;
+    }
+
+    private void shootFireballAtTarget(LivingEntity target, double angleDegrees) {
         if (target != null) {
-            double dX = target.getX() - this.getX();
-            double dY = target.getEyeY() - this.getEyeY();
-            double dZ = target.getZ() - this.getZ();
-            SmallFireball fireball = new SmallFireball(this.level(), this, dX, dY, dZ);
+            Vector3d direction = new Vector3d(target.getX() - this.getX(), target.getEyeY() - this.getEyeY(), target.getZ() - this.getZ());
+            adjustDirectionForAngle(direction, angleDegrees);
+            SmallFireball fireball = new SmallFireball(this.level(), this, direction.x, direction.y, direction.z);
             fireball.setPos(this.getX(), this.getEyeY(), this.getZ());
             this.level().addFreshEntity(fireball);
         }
     }
 
-    private void fireBreathAttack(LivingEntity target) {
+    private void fireBreathAttack(LivingEntity target, double angleDegrees) {
         if (target != null) {
+            double dX = target.getX() - this.getX();
+            double dZ = target.getZ() - this.getZ();
+            double distance = Math.sqrt(dX * dX + dZ * dZ);
+
+            double angleRadians = Math.toRadians(angleDegrees);
+
+            double adjustedDX = distance * Math.cos(angleRadians);
+            double adjustedDZ = distance * Math.sin(angleRadians);
+
+            double targetX = this.getX() + adjustedDX;
+            double targetZ = this.getZ() + adjustedDZ;
+
             if (this.level().isClientSide) {
                 for (int i = 0; i < 100; i++) {
                     double d0 = this.getRandom().nextGaussian() * 0.02D;
                     double d1 = this.getRandom().nextGaussian() * 0.02D;
                     double d2 = this.getRandom().nextGaussian() * 0.02D;
-                    this.level().addParticle(ParticleTypes.FLAME, this.getX() + this.getRandom().nextDouble() - 0.5D, this.getEyeY(), this.getZ() + this.getRandom().nextDouble() - 0.5D, d0, d1, d2);
+                    this.level().addParticle(ParticleTypes.FLAME, targetX + this.getRandom().nextDouble() - 0.5D, this.getEyeY(), targetZ + this.getRandom().nextDouble() - 0.5D, d0, d1, d2);
                 }
             }
             if (!this.level().isClientSide && this.fireBreathDuration % 4 == 0) {
-                List<LivingEntity> entities = this.level().getEntitiesOfClass(LivingEntity.class, target.getBoundingBox().inflate(1.0D, 0.5D, 1.0D));
+                List<LivingEntity> entities = this.level().getEntitiesOfClass(LivingEntity.class, new AABB(targetX - 1.0D, this.getY() - 1.0D, targetZ - 1.0D, targetX + 1.0D, this.getY() + 1.0D, targetZ + 1.0D));
                 for (LivingEntity entity : entities) {
                     if (!entity.equals(this)) {
                         entity.setSecondsOnFire(4);
@@ -232,8 +255,6 @@ public class DragonWhelpling extends PathfinderMob implements FlyingAnimal {
             }
         }
     }
-
-
 
     protected double getFollowDistance() {
         return this.getAttributeValue(Attributes.FOLLOW_RANGE);
