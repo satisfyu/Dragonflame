@@ -39,6 +39,7 @@ import net.tslat.smartbrainlib.api.core.behaviour.custom.attack.AnimatableMeleeA
 import net.tslat.smartbrainlib.api.core.behaviour.custom.look.LookAtTarget;
 import net.tslat.smartbrainlib.api.core.behaviour.custom.misc.Idle;
 import net.tslat.smartbrainlib.api.core.behaviour.custom.path.SetRandomWalkTarget;
+import net.tslat.smartbrainlib.api.core.behaviour.custom.path.SetWalkTargetToAttackTarget;
 import net.tslat.smartbrainlib.api.core.behaviour.custom.target.InvalidateAttackTarget;
 import net.tslat.smartbrainlib.api.core.behaviour.custom.target.SetPlayerLookTarget;
 import net.tslat.smartbrainlib.api.core.behaviour.custom.target.SetRandomLookTarget;
@@ -53,7 +54,6 @@ import satisfy.dragonflame.entity.fire_dragon.ai.FireDragonAi;
 import satisfy.dragonflame.entity.fire_dragon.ai.JumpFromGround;
 import satisfy.dragonflame.entity.fire_dragon.ai.upgrade.GroundNavigation;
 import satisfy.dragonflame.entity.fire_dragon.ai.upgrade.MoveToWalkTarget;
-import satisfy.dragonflame.entity.fire_dragon.ai.upgrade.SetWalkTargetToAttackTarget;
 import satisfy.dragonflame.entity.fire_dragon.control.DragonBodyController;
 import satisfy.dragonflame.entity.fire_dragon.control.DragonMoveControl;
 import satisfy.dragonflame.registry.ObjectRegistry;
@@ -322,7 +322,7 @@ public class FireDragon extends Monster implements GeoEntity, Saddleable, Flying
     public BrainActivityGroup<FireDragon> getFightTasks() { // These are the tasks that handle fighting
         return BrainActivityGroup.fightTasks(
                 new InvalidateAttackTarget<>().stopTryingToPathAfter(600).invalidateIf((t, e) -> changedFly), // Cancel fighting if the target is no longer valid
-                new SetWalkTargetToAttackTarget<>(),      // Set the walk target to the attack target
+                new SetWalkTargetToAttackTarget<FireDragon>().speedMod((owner, target) -> owner.isFlying() ? 1 : (float) owner.getAttributeBaseValue(Attributes.MOVEMENT_SPEED)),      // Set the walk target to the attack target
                 new AnimatableMeleeAttack<>(0)
         ); // Melee attack the target if close enough
     }

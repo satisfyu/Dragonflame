@@ -39,10 +39,10 @@ public class EntityRegistry {
 
     static void registerAttributes(){
         EntityAttributeRegistry.register(ARMORED_VINDICATOR, ArmoredVindicatorEntity::createAttributes);
+        EntityAttributeRegistry.register(FIREDRAGON, FireDragon::createAttributes);
         EntityAttributeRegistry.register(ARMORED_PILLAGER, ArmoredPillagerEntity::createAttributes);
-        EntityAttributeRegistry.register(ARMORED_PILLAGER, DragonWhelpling::createAttributes);
         EntityAttributeRegistry.register(FIERY_WARHORSE, FieryWarhorse::createAttributes);
         EntityAttributeRegistry.register(ARMORED_PILLAGER_DOG, ArmoredPillagerDog::createAttributes);
-        EntityAttributeRegistry.register(DRAGON_WHELPLING, FireDragon::createAttributes);
+        EntityAttributeRegistry.register(DRAGON_WHELPLING, DragonWhelpling::createAttributes);
     }
 }
