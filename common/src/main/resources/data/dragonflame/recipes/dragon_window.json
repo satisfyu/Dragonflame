@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "GGG",
+        "G#G",
+        "GGG"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:glass_pane"
+        },
+        "G": {
+            "item": "dragonflame:dragon_planks"
+        }
+    },
+    "result": {
+        "item": "dragonflame:dragon_window",
+        "count": 16
+    }
+}

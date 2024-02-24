@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "titan",
+  "key": {
+    "#": {
+      "item": "dragonflame:titan_ingot"
+    }
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "item": "dragonflame:titan_block"
+  },
+  "show_notification": true
+}

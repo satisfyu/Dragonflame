@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "item": "dragonflame:cobbled_dragonstone"
+  },
+  "result": "dragonflame:cobbled_dragonstone_wall"
+}

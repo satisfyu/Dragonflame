@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "titan",
+  "key": {
+    "#": {
+      "item": "dragonflame:titan_block"
+    }
+  },
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "result": {
+    "count": 4,
+    "item": "dragonflame:titan_block_stairs"
+  },
+  "show_notification": true
+}

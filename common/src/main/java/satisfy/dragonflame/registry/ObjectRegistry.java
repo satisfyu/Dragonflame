@@ -94,7 +94,7 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Block> MOSSY_DRAGONSTONE_BRICK_WALL = registerWithItem("mossy_dragonstone_brick_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(MOSSY_DRAGONSTONE_BRICKS.get())));
     public static final RegistrySupplier<Block> CHISELED_DRAGONSTONE = registerWithItem("chiseled_dragonstone", () -> new Block(BlockBehaviour.Properties.copy(Blocks.CHISELED_STONE_BRICKS)));
     public static final RegistrySupplier<Block> POLISHED_DRAGONSTONE = registerWithItem("polished_dragonstone", () -> new Block(BlockBehaviour.Properties.copy(Blocks.POLISHED_ANDESITE)));
-    public static final RegistrySupplier<Block> TITAN_ORE = registerWithItem("titan_ore", () -> new Block(BlockBehaviour.Properties.of().requiresCorrectToolForDrops().strength(50.0F, 1200.0F)));
+    public static final RegistrySupplier<Block> TITAN_ORE = registerWithItem("titan_ore", () -> new Block(BlockBehaviour.Properties.of().strength(25.0F, 600.0F)));
     public static final RegistrySupplier<Block> TITAN_BLOCK = registerWithItem("titan_block", () -> new Block(BlockBehaviour.Properties.of().requiresCorrectToolForDrops().strength(2.0F, 3.0F).sound(SoundType.METAL)));
     public static final RegistrySupplier<Block> TITAN_BLOCK_STAIRS = registerWithItem("titan_block_stairs", () -> new StairBlock(TITAN_BLOCK.get().defaultBlockState(), BlockBehaviour.Properties.of().requiresCorrectToolForDrops().strength(2.0F, 3.0F).sound(SoundType.METAL)));
     public static final RegistrySupplier<Block> TITAN_BLOCK_SLAB = registerWithItem("titan_block_slab", () -> new SlabBlock(BlockBehaviour.Properties.of().strength(2.0F, 3.0F).requiresCorrectToolForDrops().sound(SoundType.METAL)));

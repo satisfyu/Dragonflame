@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 2,
+  "ingredient": {
+    "item": "dragonflame:mossy_cobbled_dragonstone"
+  },
+  "result": "dragonflame:mossy_cobbled_dragonstone_slab"
+}

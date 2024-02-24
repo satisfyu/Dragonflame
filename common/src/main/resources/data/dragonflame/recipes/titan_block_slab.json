@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "titan",
+  "key": {
+    "#": {
+      "item": "dragonflame:titan_block"
+    }
+  },
+  "pattern": [
+    "###"
+  ],
+  "result": {
+    "count": 6,
+    "item": "dragonflame:titan_block_slab"
+  },
+  "show_notification": true
+}
