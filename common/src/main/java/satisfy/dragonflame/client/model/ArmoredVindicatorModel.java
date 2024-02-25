@@ -12,12 +12,12 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.entity.monster.AbstractIllager;
-import satisfy.dragonflame.entity.ArmoredVindicatorEntity;
+import satisfy.dragonflame.entity.ArmoredVindicator;
 
 import static satisfy.dragonflame.Dragonflame.MOD_ID;
 
 
-public class ArmoredVindicatorModel<T extends ArmoredVindicatorEntity> extends IllagerModel<T> {
+public class ArmoredVindicatorModel<T extends ArmoredVindicator> extends IllagerModel<T> {
 
     public static final ModelLayerLocation ARMORED_VINDICATOR_MODEL_LAYER = new ModelLayerLocation(new ResourceLocation(MOD_ID, "armored_vindicator"), "main");
     private final ModelPart head;

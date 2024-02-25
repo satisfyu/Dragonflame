@@ -39,8 +39,6 @@ public class LootChestEntity extends RandomizableContainerBlockEntity implements
     private final ContainerOpenersCounter openersCounter;
     private final ChestLidController chestLidController = new ChestLidController();
     private final Random random = new Random();
-    private int fireworkTicks = 0;
-    private boolean isFireworkActive = false;
 
     public LootChestEntity(BlockPos blockPos, BlockState blockState) {
         super(BlockEntityRegistry.LOOTCHEST_BLOCK_ENTITY.get(), blockPos, blockState);

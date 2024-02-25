@@ -11,25 +11,25 @@ import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
 import satisfy.dragonflame.Dragonflame;
 import satisfy.dragonflame.client.model.ArmoredPillagerModel;
-import satisfy.dragonflame.entity.ArmoredPillagerEntity;
+import satisfy.dragonflame.entity.ArmoredPillager;
 
 
 @Environment(EnvType.CLIENT)
-public class ArmoredPillagerRenderer extends MobRenderer<ArmoredPillagerEntity, ArmoredPillagerModel<ArmoredPillagerEntity>> {
+public class ArmoredPillagerRenderer extends MobRenderer<ArmoredPillager, ArmoredPillagerModel<ArmoredPillager>> {
     private static final ResourceLocation TEXTURE = new ResourceLocation(Dragonflame.MOD_ID, "textures/entity/armored_pillager.png");
 
     public ArmoredPillagerRenderer(EntityRendererProvider.Context context) {
         super(context, new ArmoredPillagerModel<>(context.bakeLayer(ArmoredPillagerModel.ARMORED_PILLAGER_MODEL_LAYER)), 0.5F);
         this.addLayer(new ItemInHandLayer<>(this, context.getItemInHandRenderer()) {
             @Override
-            public void render(@NotNull PoseStack poseStack, @NotNull MultiBufferSource multiBufferSource, int i, @NotNull ArmoredPillagerEntity entity, float f, float g, float h, float j, float k, float l) {
+            public void render(@NotNull PoseStack poseStack, @NotNull MultiBufferSource multiBufferSource, int i, @NotNull ArmoredPillager entity, float f, float g, float h, float j, float k, float l) {
                 super.render(poseStack, multiBufferSource, i, entity, f, g, h, j, k, l);
             }
         });
     }
 
     @Override
-    public @NotNull ResourceLocation getTextureLocation(@NotNull ArmoredPillagerEntity entity) {
+    public @NotNull ResourceLocation getTextureLocation(@NotNull ArmoredPillager entity) {
         return TEXTURE;
     }
 }

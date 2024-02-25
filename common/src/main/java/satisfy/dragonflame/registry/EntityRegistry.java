@@ -16,8 +16,8 @@ import java.util.function.Supplier;
 
 public class EntityRegistry {
     private static final Registrar<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(Dragonflame.MOD_ID, Registries.ENTITY_TYPE).getRegistrar();
-    public static final RegistrySupplier<EntityType<ArmoredVindicatorEntity>> ARMORED_VINDICATOR = create("armored_vindicator",  () -> EntityType.Builder.of(ArmoredVindicatorEntity::new, MobCategory.CREATURE).sized(0.9f, 1.87f).clientTrackingRange(10).updateInterval(3).build(new DragonflameIdentifier("armored_vindicator").toString()));
-    public static final RegistrySupplier<EntityType<ArmoredPillagerEntity>> ARMORED_PILLAGER = create("armored_pillager",  () -> EntityType.Builder.of(ArmoredPillagerEntity::new, MobCategory.CREATURE).sized(0.9f, 1.87f).clientTrackingRange(10).updateInterval(3).build(new DragonflameIdentifier("armored_pillager_dog").toString()));
+    public static final RegistrySupplier<EntityType<ArmoredVindicator>> ARMORED_VINDICATOR = create("armored_vindicator",  () -> EntityType.Builder.of(ArmoredVindicator::new, MobCategory.CREATURE).sized(0.9f, 1.87f).clientTrackingRange(10).updateInterval(3).build(new DragonflameIdentifier("armored_vindicator").toString()));
+    public static final RegistrySupplier<EntityType<ArmoredPillager>> ARMORED_PILLAGER = create("armored_pillager",  () -> EntityType.Builder.of(ArmoredPillager::new, MobCategory.CREATURE).sized(0.9f, 1.87f).clientTrackingRange(10).updateInterval(3).build(new DragonflameIdentifier("armored_pillager_dog").toString()));
     public static final RegistrySupplier<EntityType<ArmoredPillagerDog>> ARMORED_PILLAGER_DOG = create("armored_pillager_dog",  () -> EntityType.Builder.of(ArmoredPillagerDog::new, MobCategory.CREATURE).sized(0.9f, 1.87f).clientTrackingRange(10).updateInterval(3).build(new DragonflameIdentifier("armored_pillager_dog").toString()));
     public static final RegistrySupplier<EntityType<FieryWarhorse>> FIERY_WARHORSE = create("fiery_warhorse",  () -> EntityType.Builder.of(FieryWarhorse::new, MobCategory.CREATURE).sized(0.9f, 1.87f).clientTrackingRange(10).updateInterval(3).build(new DragonflameIdentifier("fiery_warhorse").toString()));
 
@@ -38,9 +38,9 @@ public class EntityRegistry {
 
 
     static void registerAttributes(){
-        EntityAttributeRegistry.register(ARMORED_VINDICATOR, ArmoredVindicatorEntity::createAttributes);
+        EntityAttributeRegistry.register(ARMORED_VINDICATOR, ArmoredVindicator::createAttributes);
         EntityAttributeRegistry.register(FIREDRAGON, FireDragon::createAttributes);
-        EntityAttributeRegistry.register(ARMORED_PILLAGER, ArmoredPillagerEntity::createAttributes);
+        EntityAttributeRegistry.register(ARMORED_PILLAGER, ArmoredPillager::createAttributes);
         EntityAttributeRegistry.register(FIERY_WARHORSE, FieryWarhorse::createAttributes);
         EntityAttributeRegistry.register(ARMORED_PILLAGER_DOG, ArmoredPillagerDog::createAttributes);
         EntityAttributeRegistry.register(DRAGON_WHELPLING, DragonWhelpling::createAttributes);

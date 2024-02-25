@@ -12,12 +12,12 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.entity.monster.AbstractIllager;
-import satisfy.dragonflame.entity.ArmoredPillagerEntity;
+import satisfy.dragonflame.entity.ArmoredPillager;
 
 import static satisfy.dragonflame.Dragonflame.MOD_ID;
 
 
-public class ArmoredPillagerModel<T extends ArmoredPillagerEntity> extends IllagerModel<T> {
+public class ArmoredPillagerModel<T extends ArmoredPillager> extends IllagerModel<T> {
 
     public static final ModelLayerLocation ARMORED_PILLAGER_MODEL_LAYER = new ModelLayerLocation(new ResourceLocation(MOD_ID, "armored_pillager"), "main");
     private final ModelPart head;

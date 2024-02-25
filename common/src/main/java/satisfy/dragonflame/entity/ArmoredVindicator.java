@@ -22,9 +22,9 @@ import org.jetbrains.annotations.Nullable;
 import satisfy.dragonflame.entity.ai.PatrolGoal;
 import satisfy.dragonflame.registry.ObjectRegistry;
 
-public class ArmoredVindicatorEntity extends Vindicator implements IPatrollingMob {
+public class ArmoredVindicator extends Vindicator implements IPatrollingMob {
 
-    public ArmoredVindicatorEntity(EntityType<? extends Vindicator> entityType, Level level) {
+    public ArmoredVindicator(EntityType<? extends Vindicator> entityType, Level level) {
         super(entityType, level);
     }
 

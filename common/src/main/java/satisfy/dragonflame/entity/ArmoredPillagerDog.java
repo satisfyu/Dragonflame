@@ -92,34 +92,6 @@ public class ArmoredPillagerDog extends Animal implements NeutralMob, IPatrollin
         this.entityData.define(DATA_STATE, State.IDLE);
     }
 
-    //TODO - DOESNT WORK YET
-    @Override
-    public @NotNull InteractionResult mobInteract(Player player, @NotNull InteractionHand hand) {
-        ItemStack itemStack = player.getItemInHand(hand);
-        if (itemStack.is(ObjectRegistry.DRAGON_BONES.get())) {
-            if (!this.level().isClientSide) {
-                if (this.isAngry()) {
-                    this.setTarget(null);
-                    for (int i = 0; i < 10; i++) {
-                        double d0 = this.random.nextGaussian() * 0.02D;
-                        double d1 = this.random.nextGaussian() * 0.02D;
-                        double d2 = this.random.nextGaussian() * 0.02D;
-                        this.level().addParticle(ParticleTypes.HAPPY_VILLAGER, this.getRandomX(1.0D), this.getRandomY() + 0.5D, this.getRandomZ(1.0D), d0, d1, d2);
-                    }
-
-                    if (!player.getAbilities().instabuild) {
-                        itemStack.shrink(1);
-                    }
-
-                    return InteractionResult.SUCCESS;
-                }
-            }
-            return InteractionResult.CONSUME;
-        }
-
-        return super.mobInteract(player, hand);
-    }
-
     @Override
     protected SoundEvent getAmbientSound() {
         if (this.isAngry()) {
@@ -215,7 +187,7 @@ public class ArmoredPillagerDog extends Animal implements NeutralMob, IPatrollin
     private void summonPillagers() {
         if (!this.level().isClientSide) {
             for (int i = 0; i < 2; i++) {
-                Pillager pillager = EntityRegistry.ARMORED_PILLAGER.get().create(this.level());
+                ArmoredPillager pillager = EntityRegistry.ARMORED_PILLAGER.get().create(this.level());
                 if (pillager != null) {
                     double spawnX = this.getX() + (i == 0 ? -1 : 1) * 4;
                     double spawnY = this.getY();
