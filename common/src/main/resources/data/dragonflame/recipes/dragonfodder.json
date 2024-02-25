@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": {
+      "item": "minecraft:mutton"
+    },
+    "B": {
+      "item": "minecraft:porkchop"
+    },
+    "C": {
+      "item": "minecraft:beef"
+    },
+    "W": {
+      "item": "minecraft:chicken"
+    }
+  },
+  "pattern": [
+    "##B",
+    "#WB",
+    "CWC"
+  ],
+  "result": {
+    "count": 2,
+    "item": "dragonflame:dragonfodder"
+  },
+  "show_notification": true
+}

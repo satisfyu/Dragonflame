@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "dragonflame:block/dragonfodder",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "dragonflame:block/dragonfodder"
+    },
+    "facing=south": {
+      "model": "dragonflame:block/dragonfodder",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "dragonflame:block/dragonfodder",
+      "y": 270
+    }
+  }
+}

@@ -157,7 +157,7 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Item> DRAGON_HEAD_HELMET = registerItem("dragon_head_helmet", () -> new TooltipItem(getSettings().rarity(Rarity.UNCOMMON)));
     public static final RegistrySupplier<Item> DRAGON_EMBLEM = registerItem("dragon_emblem", () -> new TooltipItem(getSettings().rarity(Rarity.UNCOMMON)));
     public static final RegistrySupplier<Item> DRAGONSCALE = registerItem("dragonscale", () -> new Item(getSettings()));
-    public static final RegistrySupplier<Item> DRAGONFODDER = registerItem("dragonfodder", () -> new Item(getSettings()));
+    public static final RegistrySupplier<Block> DRAGONFODDER = registerWithItem("dragonfodder", () -> new DragonfodderBlock(BlockBehaviour.Properties.copy(Blocks.CAKE)));
     public static final RegistrySupplier<Item> DRAGON_SADDLE = registerItem("dragon_saddle", () -> new Item(getSettings()));
     public static final RegistrySupplier<Item> DRACONIC_FOR_DUMMIES = registerItem("draconic_for_dummies", () -> new DraconicForDummiesItem(getSettings().rarity(Rarity.EPIC)));
     public static final RegistrySupplier<Block> GRIM_ANVIL = registerWithItem("grim_anvil", () -> new GrimAnvilBlock(BlockBehaviour.Properties.of().strength(-1.0F, 3600000.0F).noLootTable().sound(SoundType.STONE).pushReaction(PushReaction.IGNORE)));
