@@ -1,6 +1,9 @@
 package satisfy.dragonflame.entity;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleType;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.network.chat.Component;
@@ -107,51 +110,7 @@ public class LootChestEntity extends RandomizableContainerBlockEntity implements
             if (this.items.stream().allMatch(ItemStack::isEmpty)) {
                 generateLoot();
             }
-            if (!level.isClientSide) {
-                this.isFireworkActive = true;
-                this.fireworkTicks = 100;
-                shootFireworks(level, worldPosition, random);
-            }
             this.openersCounter.incrementOpeners(player, Objects.requireNonNull(this.getLevel()), this.getBlockPos(), this.getBlockState());
-        }
-    }
-
-    public void shootFireworks(Level level, BlockPos pos, Random random) {
-        int fireworkCount = 8 + random.nextInt(7);
-        for (int i = 0; i < fireworkCount; i++) {
-            int color = random.nextInt(0xFFFFFF);
-            ItemStack fireworkStack = new ItemStack(Items.FIREWORK_ROCKET);
-            CompoundTag fireworkTag = new CompoundTag();
-            CompoundTag fireworkExplosions = new CompoundTag();
-            ListTag explosionsList = new ListTag();
-            CompoundTag explosion = new CompoundTag();
-
-            explosion.putByte("Flicker", (byte) (random.nextBoolean() ? 1 : 0));
-            explosion.putByte("Trail", (byte) (random.nextBoolean() ? 1 : 0));
-            explosion.putIntArray("Colors", new int[]{color});
-            explosion.putByte("Type", (byte) 0);
-            explosionsList.add(explosion);
-
-            fireworkExplosions.put("Explosions", explosionsList);
-            fireworkStack.setTag(fireworkTag);
-            double x = pos.getX() + 0.5 + (random.nextDouble() - 0.5) * 2.0;
-            double y = pos.getY() + 1.0;
-            double z = pos.getZ() + 0.5 + (random.nextDouble() - 0.5) * 2.0;
-            FireworkRocketEntity fireworkRocket = new FireworkRocketEntity(level, x, y, z, fireworkStack);
-            level.addFreshEntity(fireworkRocket);
-        }
-    }
-
-    public void tick(Level level, BlockPos pos, BlockState state, LootChestEntity entity) {
-        if (!level.isClientSide && entity.isFireworkActive) {
-            if (entity.fireworkTicks > 0) {
-                if (entity.fireworkTicks % 15 == 0) {
-                    entity.shootFireworks(level, pos, entity.random);
-                }
-                entity.fireworkTicks--;
-            } else {
-                entity.isFireworkActive = false;
-            }
         }
     }
 
