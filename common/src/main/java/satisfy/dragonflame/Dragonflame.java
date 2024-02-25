@@ -1,5 +1,7 @@
 package satisfy.dragonflame;
 
+import dev.architectury.hooks.item.tool.AxeItemHooks;
+import net.minecraft.world.level.block.Blocks;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import satisfy.dragonflame.config.DragonflameConfig;
@@ -27,5 +29,7 @@ public class Dragonflame {
 
 	public static void commonSetup(){
 		DragonflameProperties.init();
+		AxeItemHooks.addStrippable(ObjectRegistry.DRAGON_LOG.get(), ObjectRegistry.STRIPPED_DRAGON_LOG.get());
+		AxeItemHooks.addStrippable(ObjectRegistry.DRAGON_WOOD.get(), ObjectRegistry.STRIPPED_DRAGON_WOOD.get());
 	}
 }

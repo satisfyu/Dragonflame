@@ -1,6 +1,9 @@
 {
   "values": [
     "dragonflame:cobbled_dragonstone_wall",
-    "dragonflame:dragonstone_brick_wall"
+    "dragonflame:dragonstone_brick_wall",
+    "dragonflame:mossy_dragonstone_brick_wall",
+    "dragonflame:mossy_cobbled_dragonstone_wall",
+    "dragonflame:dragonstone_wall"
   ]
 }

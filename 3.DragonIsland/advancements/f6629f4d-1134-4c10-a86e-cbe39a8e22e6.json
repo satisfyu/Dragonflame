@@ -49,7 +49,7 @@
     },
     "done": true
   },
-  "meadow:main/root": {
+  "dragonflame:main/root": {
     "criteria": {
       "seeds": "2024-02-17 20:36:54 +0100"
     },
@@ -878,7 +878,7 @@
     },
     "done": true
   },
-  "meadow:recipes/frame": {
+  "dragonflame:recipes/frame": {
     "criteria": {
       "has_campfire": "2024-02-17 21:27:22 +0100"
     },
@@ -1881,7 +1881,7 @@
     },
     "done": true
   },
-  "meadow:recipes/bench": {
+  "dragonflame:recipes/bench": {
     "criteria": {
       "has_stick": "2024-02-17 22:10:24 +0100"
     },
@@ -1917,7 +1917,7 @@
     },
     "done": true
   },
-  "meadow:recipes/cheese_stick": {
+  "dragonflame:recipes/cheese_stick": {
     "criteria": {
       "has_stick": "2024-02-17 22:10:24 +0100"
     },
@@ -2007,7 +2007,7 @@
     },
     "done": true
   },
-  "meadow:recipes/camera": {
+  "dragonflame:recipes/camera": {
     "criteria": {
       "has_stick": "2024-02-17 22:10:24 +0100"
     },
@@ -3315,7 +3315,7 @@
     },
     "done": true
   },
-  "meadow:recipes/wooden_bucket": {
+  "dragonflame:recipes/wooden_bucket": {
     "criteria": {
       "has_planks": "2024-02-19 18:53:40 +0100"
     },
@@ -3411,7 +3411,7 @@
     },
     "done": true
   },
-  "meadow:recipes/window": {
+  "dragonflame:recipes/window": {
     "criteria": {
       "has_glass_pane": "2024-02-19 18:53:44 +0100"
     },
@@ -3429,7 +3429,7 @@
     },
     "done": true
   },
-  "meadow:recipes/patched_bed": {
+  "dragonflame:recipes/patched_bed": {
     "criteria": {
       "has_planks": "2024-02-19 18:53:40 +0100"
     },
@@ -3507,7 +3507,7 @@
     },
     "done": true
   },
-  "meadow:recipes/umbra_bed": {
+  "dragonflame:recipes/umbra_bed": {
     "criteria": {
       "has_oak_planks": "2024-02-19 18:53:40 +0100"
     },
@@ -3693,7 +3693,7 @@
     },
     "done": true
   },
-  "meadow:recipes/wooden_flower_pot": {
+  "dragonflame:recipes/wooden_flower_pot": {
     "criteria": {
       "has_oak_planks": "2024-02-19 18:53:40 +0100"
     },
@@ -3922,7 +3922,7 @@
     },
     "done": true
   },
-  "meadow:recipes/highland_bed": {
+  "dragonflame:recipes/highland_bed": {
     "criteria": {
       "has_planks": "2024-02-19 18:53:40 +0100"
     },
@@ -4162,7 +4162,7 @@
     },
     "done": true
   },
-  "meadow:recipes/wooly_bed": {
+  "dragonflame:recipes/wooly_bed": {
     "criteria": {
       "has_oak_planks": "2024-02-19 18:53:40 +0100"
     },
@@ -4253,7 +4253,7 @@
     },
     "done": true
   },
-  "meadow:recipes/flecked_bed": {
+  "dragonflame:recipes/flecked_bed": {
     "criteria": {
       "has_planks": "2024-02-19 18:53:40 +0100"
     },
