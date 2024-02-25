@@ -154,7 +154,7 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Item> DRAGON_BONES = registerItem("dragon_bones", () -> new TooltipItem(getSettings().rarity(Rarity.UNCOMMON)));
     public static final RegistrySupplier<Item> DRAGON_EYE = registerItem("dragon_eye", () -> new EnchantedItem(getSettings().rarity(Rarity.RARE)));
     public static final RegistrySupplier<Item> DRAGON_HEARTH = registerItem("dragon_hearth", () -> new EnchantedItem(getSettings().rarity(Rarity.EPIC)));
-    public static final RegistrySupplier<Item> DRAGON_HEAD_HELMET = registerItem("dragon_head_helmet", () -> new TooltipItem(getSettings().rarity(Rarity.UNCOMMON)));
+    public static final RegistrySupplier<Item> DRAGON_HEAD_HELMET = registerItem("dragon_head_helmet", () -> new DragonHeadHelmet(ArmorMaterialRegistry.DRAGON_HEAD_HELMET, getSettings().rarity(Rarity.EPIC).fireResistant()));
     public static final RegistrySupplier<Item> DRAGON_EMBLEM = registerItem("dragon_emblem", () -> new TooltipItem(getSettings().rarity(Rarity.UNCOMMON)));
     public static final RegistrySupplier<Item> DRAGONSCALE = registerItem("dragonscale", () -> new Item(getSettings()));
     public static final RegistrySupplier<Block> DRAGONFODDER = registerWithItem("dragonfodder", () -> new DragonfodderBlock(BlockBehaviour.Properties.copy(Blocks.CAKE)));

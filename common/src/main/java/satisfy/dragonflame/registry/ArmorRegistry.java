@@ -37,7 +37,7 @@ public interface ArmorRegistry {
         EntityModelLayerRegistry.register(DragonOuter.LAYER_LOCATION, DragonOuter::createBodyLayer);
 
 
-        EntityModelLayerRegistry.register(satisfy.dragonflame.client.model.TitanHelmet.LAYER_LOCATION, satisfy.dragonflame.client.model.TitanHelmet::getTexturedModelData);
+        EntityModelLayerRegistry.register(TitanHelmet.LAYER_LOCATION, satisfy.dragonflame.client.model.TitanHelmet::getTexturedModelData);
         EntityModelLayerRegistry.register(TitanInner.LAYER_LOCATION, TitanInner::createBodyLayer);
         EntityModelLayerRegistry.register(TitanOuter.LAYER_LOCATION, TitanOuter::createBodyLayer);
 
@@ -45,6 +45,7 @@ public interface ArmorRegistry {
         EntityModelLayerRegistry.register(HardenedTitanInner.LAYER_LOCATION, HardenedTitanInner::createBodyLayer);
         EntityModelLayerRegistry.register(HardenedTitanOuter.LAYER_LOCATION, HardenedTitanOuter::createBodyLayer);
 
+        EntityModelLayerRegistry.register(DragonHeadHelmet.LAYER_LOCATION, DragonHeadHelmet::getTexturedModelData);
 
     }
 
@@ -62,6 +63,7 @@ public interface ArmorRegistry {
         models.put(ObjectRegistry.DRAGON_HELMET.get(), new DragonHelmet<>(modelLoader.bakeLayer(DragonHelmet.LAYER_LOCATION)));
         models.put(ObjectRegistry.TITAN_HELMET.get(), new satisfy.dragonflame.client.model.TitanHelmet<>(modelLoader.bakeLayer(satisfy.dragonflame.client.model.TitanHelmet.LAYER_LOCATION)));
         models.put(ObjectRegistry.HARDENED_TITAN_HELMET.get(), new HardenedTitanHelmet<>(modelLoader.bakeLayer(HardenedTitanHelmet.LAYER_LOCATION)));
+        models.put(ObjectRegistry.DRAGON_HEAD_HELMET.get(), new DragonHeadHelmet<>(modelLoader.bakeLayer(DragonHeadHelmet.LAYER_LOCATION)));
     }
 
 

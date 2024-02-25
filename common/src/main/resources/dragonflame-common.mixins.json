@@ -5,9 +5,10 @@
   "minVersion": "0.8",
   "client": [
     "ArcaneTorchItemRendererMixin",
-    "EnchantmentMixin"
+    "PlayerMixin"
   ],
   "mixins": [
+    "LivingEntityMixin",
     "RarityMixin",
     "ServerLevelMixin",
     "ServerPlayerMixin"

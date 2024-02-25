@@ -93,7 +93,7 @@
   "item.dragonflame.dragon_emblem": "Dragon Emblem",
   "item.dragonflame.dragon_eye": "Dragon Eye",
   "item.dragonflame.dragon_hanging_sign": "Dragon Hanging Sign",
-  "item.dragonflame.dragon_head_helmet": "Dragon Head",
+  "item.dragonflame.dragon_head_helmet": "Dragon Head Helmet",
   "item.dragonflame.dragon_hearth": "Dragon Hearth",
   "item.dragonflame.dragon_helmet": "Dragon Helmet",
   "item.dragonflame.dragon_hoe": "Dragon Hoe",
@@ -208,5 +208,10 @@
   "tooltip.dragonflame.titan_armor_bonus_1": "+2 Armor",
   "tooltip.dragonflame.titan_armor_bonus_2": "+1 Armor Toughness",
   "tooltip.dragonflame.titan_armor_bonus_3": "+2 Knockback Resistance",
-  "tooltip.dragonflame.unobtainable": "Unobtainable in Survival Mode"
+  "tooltip.dragonflame.unobtainable": "Unobtainable in Survival Mode",
+  "tooltip.dragonflame.equip": "Equip: ",
+  "item.dragonflame.tooltip1.item.dragonflame.dragon_head_helmet": "Nightvision",
+  "item.dragonflame.tooltip2.item.dragonflame.dragon_head_helmet": "Fire Resistance IV",
+  "item.dragonflame.tooltip3.item.dragonflame.dragon_head_helmet": "Attackers take fire damage",
+  "lore.dragonflame.dragon_head_helmet": "Who even comes up with the idea to wear this thing ... ?!"
 }

@@ -13,13 +13,14 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import satisfy.dragonflame.item.armor.DragonHeadHelmet;
 import satisfy.dragonflame.registry.EnchantmentRegistry;
 
 import java.util.Objects;
 import java.util.UUID;
 
 @Mixin(Player.class)
-public class EnchantmentMixin {
+public class PlayerMixin {
 
     @Unique
     private static final UUID HEART_BOOST_ID = UUID.fromString("a62f6f3f-19b9-4d58-a499-795b9a205203");
@@ -69,6 +70,16 @@ public class EnchantmentMixin {
             }
         } else if (player.hasEffect(MobEffects.NIGHT_VISION)) {
             player.removeEffect(MobEffects.NIGHT_VISION);
+        }
+    }
+
+    @Inject(method = "tick", at = @At("HEAD"))
+    private void giveEffectsOnTick(CallbackInfo info) {
+        Player player = (Player) (Object) this;
+        ItemStack helmet = player.getInventory().armor.get(3);
+        if (!helmet.isEmpty() && helmet.getItem() instanceof DragonHeadHelmet) {
+            player.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 400, 3, false, false, true));
+            player.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, 400, 0, false, false, true));
         }
     }
 }

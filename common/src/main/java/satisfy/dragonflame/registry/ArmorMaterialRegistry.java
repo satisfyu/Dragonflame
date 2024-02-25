@@ -258,4 +258,68 @@ public interface ArmorMaterialRegistry {
             return this.knockbackResistance;
         }
     };
+
+
+    ArmorMaterial DRAGON_HEAD_HELMET = new ArmorMaterial() {
+        private final int durabilityMultiplier = 48;
+        private final int[] defensePoints = {6, 10, 10, 5};
+        private final int enchantability = 25;
+        private final SoundEvent equipSound = SoundEvents.ARMOR_EQUIP_GENERIC;
+        private final float toughness = 4.0F;
+        private final float knockbackResistance = 0.3F;
+
+        @Override
+        public int getDurabilityForType(ArmorItem.Type type) {
+            int durability = switch (type) {
+                case BOOTS -> 13;
+                case LEGGINGS -> 15;
+                case CHESTPLATE -> 16;
+                case HELMET -> 12;
+                default -> 0;
+            };
+            return durability * this.durabilityMultiplier;
+        }
+
+        @Override
+        public int getDefenseForType(ArmorItem.Type type) {
+            return switch (type) {
+                case BOOTS -> this.defensePoints[0];
+                case LEGGINGS -> this.defensePoints[1];
+                case CHESTPLATE -> this.defensePoints[2];
+                case HELMET -> this.defensePoints[3];
+                default -> 0;
+            };
+        }
+
+        @Override
+        public int getEnchantmentValue() {
+            return this.enchantability;
+        }
+
+        @Override
+        public SoundEvent getEquipSound() {
+            return this.equipSound;
+        }
+
+        @Override
+        public Ingredient getRepairIngredient() {
+            return Ingredient.of(ObjectRegistry.HEART_OF_FLAME.get());
+        }
+
+
+        @Override
+        public String getName() {
+            return "dragon_head_helmet";
+        }
+
+        @Override
+        public float getToughness() {
+            return this.toughness;
+        }
+
+        @Override
+        public float getKnockbackResistance() {
+            return this.knockbackResistance;
+        }
+    };
 }
