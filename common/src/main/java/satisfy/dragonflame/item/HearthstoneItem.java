@@ -38,8 +38,6 @@ public class HearthstoneItem extends Item {
     public static final int USAGE_TICKS = 80;
     private static final int COOLDOWN_TICKS = 6000;
 
-    //private HearthstoneParticleEffect particleEffect;
-
     private final Random random = new Random();
     private final ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
 
@@ -50,25 +48,55 @@ public class HearthstoneItem extends Item {
 
     @Override
     public @NotNull UseAnim getUseAnimation(@NotNull ItemStack stack) {
-        return UseAnim.SPEAR;
+        return UseAnim.BOW;
     }
 
     @Override
-    public void onUseTick(@NotNull Level level, @NotNull LivingEntity livingEntity, @NotNull ItemStack itemStack, int i) {
-        super.onUseTick(level, livingEntity, itemStack, i);
+    public void onUseTick(@NotNull Level level, @NotNull LivingEntity entity, @NotNull ItemStack itemStack, int remainingTicks) {
+        super.onUseTick(level, entity, itemStack, remainingTicks);
 
-        if (!(livingEntity instanceof ServerPlayer player) || level.isClientSide()) {
-           // particleEffect.particleTick(level, (Player) livingEntity);
+        if (level.isClientSide) {
+            final int duration = getUseDuration(itemStack);
+            final float progress = (duration - remainingTicks) / (float) duration;
+            final int maxParticles = Math.max(20, (int) (progress * 30));
+            final double radius = 1.5;
+
+            double time = System.currentTimeMillis() / 1000.0 * 2 * Math.PI;
+            double xOffset = Math.cos(time) * radius;
+            double zOffset = Math.sin(time) * radius;
+
+            if (remainingTicks % 5 == 0) {
+                for (int i = 0; i < maxParticles; i++) {
+                    double angle = (2 * Math.PI / maxParticles) * i;
+                    double particleXOffset = Math.cos(angle + time) * radius;
+                    double particleZOffset = Math.sin(angle + time) * radius;
+
+                    level.addParticle(ParticleTypes.PORTAL,
+                            entity.getX() + particleXOffset,
+                            entity.getY() + random.nextDouble() * 2.0,
+                            entity.getZ() + particleZOffset,
+                            0, 0, 0);
+                    level.addParticle(ParticleTypes.REVERSE_PORTAL,
+                            entity.getX() + particleXOffset,
+                            entity.getY() + random.nextDouble() * 2.0,
+                            entity.getZ() + particleZOffset,
+                            0, 0, 0);
+                }
+            }
+        }
+
+        if (!(entity instanceof ServerPlayer player) || level.isClientSide()) {
             return;
         }
 
-        int duration = this.getUseDuration(itemStack) - i;
+        int duration = this.getUseDuration(itemStack) - remainingTicks;
         if (duration < USAGE_TICKS) return;
 
         if (player.getCommandSenderWorld().dimension() != Level.OVERWORLD) {
             player.displayClientMessage(Component.translatable("item.dragonflame.hearthstone.only_overworld"), true);
-
+            return;
         }
+
         BlockPos respawnPos = player.getRespawnPosition();
 
         if (respawnPos == null) {
@@ -98,29 +126,26 @@ public class HearthstoneItem extends Item {
 
             level.playSound(null, respawnPos, SoundEvents.PORTAL_TRAVEL, SoundSource.PLAYERS, 1.0F, 1.0F);
 
-            DustColorTransitionOptions dustColorTransitionOptions = new DustColorTransitionOptions(
-                    new Vector3f(0.0f, 1.0f, 1.0f),
-                    new Vector3f(1.0f, 0.0f, 1.0f),
-                    1.0f
-            );
+            for (int i = 0; i < 8; i++) {
+                double d0 = random.nextGaussian() * 0.02D;
+                double d1 = random.nextGaussian() * 0.02D;
+                double d2 = random.nextGaussian() * 0.02D;
+                ((ServerLevel) level).sendParticles(ParticleTypes.REVERSE_PORTAL,
+                        destinationX + random.nextFloat() * 2 - 1,
+                        destinationY + random.nextFloat() * 2 - 1,
+                        destinationZ + random.nextFloat() * 2 - 1,
+                        15, d0, d1, d2, 0.3D);
+                ((ServerLevel) level).sendParticles(ParticleTypes.WARPED_SPORE,
+                        destinationX + random.nextFloat() * 2 - 1,
+                        destinationY + random.nextFloat() * 2 - 1,
+                        destinationZ + random.nextFloat() * 2 - 1,
+                        15, d0, d1, d2, 0.3D);
+                ((ServerLevel) level).sendParticles(ParticleTypes.PORTAL,
+                        destinationX + random.nextFloat() * 2 - 1,
+                        destinationY + random.nextFloat() * 2 - 1,
+                        destinationZ + random.nextFloat() * 2 - 1,
+                        15, d0, d1, d2, 0.3D);
 
-            ServerLevel serverLevel = (ServerLevel) level;
-/*
-            serverLevel.players().forEach((sendToPlayer) -> {
-                ServerPlayNetworking.send(sendToPlayer, DragonflameNetworking.HEARTHSTONE_TP_PACKET_ID, new FriendlyByteBuf(
-                        PacketByteBufs.create().writeDouble(destinationX).writeDouble(destinationY).writeDouble(destinationZ)));
-            });
-*/
-            if (duration % 5 == 0) {
-                for (int j = 0; j < 8; j++) {
-                    level.addParticle(ParticleTypes.REVERSE_PORTAL,
-                            destinationX + (random.nextDouble() - 0.5) * 1.5f,
-                            destinationY + random.nextDouble(),
-                            destinationZ + (random.nextDouble() - 0.5) * 1.5f,
-                            0,
-                            random.nextDouble(),
-                            0);
-                }
             }
         } else {
             player.displayClientMessage(Component.translatable("item.dragonflame.hearthstone.no_bed"), true);
@@ -175,7 +200,6 @@ public class HearthstoneItem extends Item {
     @Override
     public @NotNull InteractionResultHolder<ItemStack> use(@NotNull Level worldIn, Player playerIn, @NotNull InteractionHand handIn) {
         ItemStack itemStack = playerIn.getItemInHand(handIn);
-        //particleEffect = new HearthstoneParticleEffect(playerIn);
         setCountdownStart(itemStack);
         playerIn.startUsingItem(handIn);
         return InteractionResultHolder.consume(itemStack);

@@ -79,7 +79,7 @@ public class ArmoredPillagerDogModel<T extends ArmoredPillagerDog> extends Hiera
         this.root().getAllParts().forEach(ModelPart::resetPose);
         this.applyHeadRotation(netHeadYaw, headPitch, ageInTicks);
 
-        this.animateWalk(ArmoredPillagerDogModel.walk, limbSwing, limbSwingAmount, 5f, 3f);
+        this.animateWalk(ArmoredPillagerDogModel.walk, limbSwing, limbSwingAmount, 2f, 2.5f);
         this.animate(entity.idleAnimationState, ArmoredPillagerDogModel.idle, ageInTicks, 0f);
         this.animate(entity.attackAnimationState, ArmoredPillagerDogModel.bite, ageInTicks, 1f);
         this.animate(entity.howlAnimationState, ArmoredPillagerDogModel.howl, ageInTicks, 1f);
