@@ -4,6 +4,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
@@ -31,9 +32,11 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 import satisfy.dragonflame.entity.LootChestEntity;
+import satisfy.dragonflame.event.DelayedDestructionManager;
 import satisfy.dragonflame.registry.BlockEntityRegistry;
 
 import java.util.List;
+import java.util.Random;
 
 @SuppressWarnings("all")
 public class LootChestBlock extends BaseEntityBlock implements SimpleWaterloggedBlock{
@@ -65,47 +68,10 @@ public class LootChestBlock extends BaseEntityBlock implements SimpleWaterlogged
         }
     }
 
-    public void playerWillDestroy(Level level, BlockPos blockPos, BlockState blockState, Player player) {
-        BlockEntity blockEntity = level.getBlockEntity(blockPos);
-        if (blockEntity instanceof LootChestEntity basketBlockEntity) {
-            if (!level.isClientSide && player.isCreative() && !basketBlockEntity.isEmpty()) {
-                ItemStack itemStack = new ItemStack(blockState.getBlock());
-                blockEntity.saveToItem(itemStack);
-                if (basketBlockEntity.hasCustomName()) {
-                    itemStack.setHoverName(basketBlockEntity.getCustomName());
-                }
-
-                ItemEntity itemEntity = new ItemEntity(level, (double)blockPos.getX() + 0.5D, (double)blockPos.getY() + 0.5D, (double)blockPos.getZ() + 0.5D, itemStack);
-                itemEntity.setDefaultPickUpDelay();
-                level.addFreshEntity(itemEntity);
-            } else {
-                basketBlockEntity.unpackLootTable(player);
-            }
-        }
-
-        super.playerWillDestroy(level, blockPos, blockState, player);
-    }
-
-    public List<ItemStack> getDrops(BlockState blockState, LootParams.Builder builder) {
-        BlockEntity blockEntity = builder.getOptionalParameter(LootContextParams.BLOCK_ENTITY);
-        if (blockEntity instanceof LootChestEntity basketBlockEntity) {
-            builder = builder.withDynamicDrop(CONTENTS, (consumer) -> {
-                for(int i = 0; i < basketBlockEntity.getContainerSize(); ++i) {
-                    consumer.accept(basketBlockEntity.getItem(i));
-                }
-            });
-        }
-
-        return super.getDrops(blockState, builder);
-    }
-
-    public void setPlacedBy(Level level, BlockPos blockPos, BlockState blockState, LivingEntity livingEntity, ItemStack itemStack) {
-        if (itemStack.hasCustomHoverName()) {
-            BlockEntity blockEntity = level.getBlockEntity(blockPos);
-            if (blockEntity instanceof LootChestEntity) {
-                ((LootChestEntity)blockEntity).setCustomName(itemStack.getHoverName());
-            }
-        }
+    @Override
+    public void setPlacedBy(Level level, BlockPos pos, BlockState state, LivingEntity placer, ItemStack itemStack) {
+        super.setPlacedBy(level, pos, state, placer, itemStack);
+        DelayedDestructionManager.scheduleDestruction(level, pos, 6000);
     }
 
     @Nullable

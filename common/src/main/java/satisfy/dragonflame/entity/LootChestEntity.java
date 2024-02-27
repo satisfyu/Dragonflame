@@ -210,5 +210,4 @@ public class LootChestEntity extends RandomizableContainerBlockEntity implements
             itemToAdd.setCount(0);
         }
     }
-
 }

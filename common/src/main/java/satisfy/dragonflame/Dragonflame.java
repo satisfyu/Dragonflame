@@ -25,6 +25,7 @@ public class Dragonflame {
 		MobEffectRegistry.init();
 		EnchantmentRegistry.init();
 		PlacerTypesRegistry.init();
+		EventRegistry.init();
 	}
 
 	public static void commonSetup(){
