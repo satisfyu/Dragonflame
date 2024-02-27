@@ -1,5 +1,5 @@
 package satisfy.dragonflame.client.render;
-
+/*
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
@@ -69,13 +69,15 @@ public class RenderPlayerLayer extends GeoRenderLayer<FireDragon> {
             entityIn.fillCrashReportCategory(crashreportcategory);
             CrashReportCategory crashreportcategory1 = crashreport.addCategory("Renderer details");
             crashreportcategory1.setDetail("Assigned renderer", render);
-            /*
+
             crashreportcategory1.setDetail("Location", CrashReportCategory.formatLocation(entityIn.level, x, y, z));
             crashreportcategory1.setDetail("Rotation", yaw);
-             */
+
             crashreportcategory1.setDetail("Delta", partialTicks);
             throw new ReportedException(crashreport);
         }
     }
 
 }
+
+*/

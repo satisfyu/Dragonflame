@@ -13,7 +13,7 @@ import net.minecraft.world.entity.ai.sensing.Sensor;
 import net.minecraft.world.entity.ai.sensing.SensorType;
 import net.minecraft.world.entity.schedule.Activity;
 import satisfy.dragonflame.entity.fire_dragon.FireDragon;
-
+  /*
 public class FireDragonAi {
 
     protected static final ImmutableList<SensorType<? extends Sensor<? super FireDragon>>> SENSOR_TYPES = ImmutableList.of(
@@ -45,7 +45,7 @@ public class FireDragonAi {
         brain.setDefaultActivity(Activity.IDLE);
         brain.resetPossibleActivities();
 
-         */
+
         return brain;
     }
 
@@ -62,7 +62,7 @@ public class FireDragonAi {
     private static RunOne<FireDragon> createIdleMovementBehaviors(FireDragon dragon) {
         return new RunOne<>(ImmutableList.of(Pair.of(RandomStroll.stroll(dragon.getSpeedSpecial()), 2), Pair.of(RandomStroll.fly(dragon.getSpeedSpecial()), 2)));
     }
-    /*
+
 
     protected static void updateActivity(FireDragon dragon) {
         Brain<FireDragon> brain = dragon.getBrain();
@@ -70,7 +70,7 @@ public class FireDragonAi {
         //dragonflame.LOGGER.error(activity == null ? null : activity.getName());
 
         brain.setActiveActivityToFirstValid(ImmutableList.of(Activity.IDLE));
-        /*Activity activity2 = brain.getActiveNonCoreActivity().orElse(null);
+        Activity activity2 = brain.getActiveNonCoreActivity().orElse(null);
         if (activity != activity2) {
             playActivitySound(dragon);
         }
@@ -78,7 +78,7 @@ public class FireDragonAi {
 
 
     }
-    */
+
 
     protected static void maybePlayActivitySound(FireDragon dragon) {
         if ((double)dragon.level().random.nextFloat() < 0.0125) {
@@ -94,3 +94,4 @@ public class FireDragonAi {
         });
     }
 }
+   */

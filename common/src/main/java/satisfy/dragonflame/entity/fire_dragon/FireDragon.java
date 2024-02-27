@@ -50,29 +50,18 @@ import net.tslat.smartbrainlib.api.core.sensor.vanilla.NearbyLivingEntitySensor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import satisfy.dragonflame.client.DragonflameClient;
-import satisfy.dragonflame.entity.fire_dragon.ai.FireDragonAi;
 import satisfy.dragonflame.entity.fire_dragon.ai.JumpFromGround;
 import satisfy.dragonflame.entity.fire_dragon.ai.upgrade.GroundNavigation;
 import satisfy.dragonflame.entity.fire_dragon.ai.upgrade.MoveToWalkTarget;
-import satisfy.dragonflame.entity.fire_dragon.control.DragonBodyController;
 import satisfy.dragonflame.entity.fire_dragon.control.DragonMoveControl;
 import satisfy.dragonflame.registry.ObjectRegistry;
-import software.bernie.geckolib.animatable.GeoEntity;
-import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.core.animation.AnimatableManager;
-import software.bernie.geckolib.core.animation.AnimationController;
-import software.bernie.geckolib.core.animation.AnimationState;
-import software.bernie.geckolib.core.animation.RawAnimation;
-import software.bernie.geckolib.core.keyframe.event.SoundKeyframeEvent;
-import software.bernie.geckolib.core.object.PlayState;
-import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
 
-public class FireDragon extends Monster implements GeoEntity, Saddleable, FlyingAnimal, PlayerRideableJumping, SmartBrainOwner<FireDragon> {
+public class FireDragon extends Monster implements Saddleable, FlyingAnimal, PlayerRideableJumping, SmartBrainOwner<FireDragon> {
 
     public static final double BASE_SPEED_GROUND = 0.6;
     public static final double BASE_SPEED_FLYING = 0.525;
@@ -103,7 +92,7 @@ public class FireDragon extends Monster implements GeoEntity, Saddleable, Flying
         groundNavigation.setCanFloat(true);
         navigation = groundNavigation;
     }
-
+/*
     private static final RawAnimation WALK = RawAnimation.begin().thenPlay("Walk");
     private static final RawAnimation FLY = RawAnimation.begin().thenPlay("Flyingv2");
     private static final RawAnimation TAKE_OFF = RawAnimation.begin().thenPlay("TakeOffv2");
@@ -144,36 +133,20 @@ public class FireDragon extends Monster implements GeoEntity, Saddleable, Flying
         }
     }
 
+ */
+
     @Override
     protected void customServerAiStep() {
         tickBrain(this);
         super.customServerAiStep();
     }
-    @Override
-    public void tick() {
-        super.tick();
 
-        if (isServer()) {
-            // update flying state based on the distance to the ground
-            boolean flying = shouldFly();
-            if (flying != isFlying()) {
-                changedFly = true;
-                // notify client
-                setFlying(flying);
-
-                // update pathfinding method
-                setNavigation(flying);
-                return;
-            }
-            changedFly = false;
-        }
-    }
 
 
     @Override
     public void travel(Vec3 vec3) {
         boolean isFlying = isFlying();
-        float speed = getSpeedSpecial();
+       // float speed = getSpeedSpecial();
 
         LivingEntity driver = getControllingPassenger();
         if (driver != null) {// Were being controlled; override ai movement
@@ -203,7 +176,6 @@ public class FireDragon extends Monster implements GeoEntity, Saddleable, Flying
                 if(!isFlying()) playerJumpPendingScale = 0.0F;
 
                 vec3 = new Vec3(moveSideways, moveY, moveForward);
-                setSpeed(speed);
             }
             else if (driver instanceof Player) { // other clients receive animations
                 //calculateEntityAnimation(true);
@@ -214,7 +186,6 @@ public class FireDragon extends Monster implements GeoEntity, Saddleable, Flying
 
         if (isFlying) {
             // Move relative to yaw - handled in the move controller or by driver
-            moveRelative(speed, vec3);
             move(MoverType.SELF, getDeltaMovement());
             if (getDeltaMovement().lengthSqr() < 0.1) // we're not actually going anywhere, bob up and down.
                 setDeltaMovement(getDeltaMovement().add(0, Math.sin(tickCount / 4f) * 0.03, 0));
@@ -360,7 +331,7 @@ public class FireDragon extends Monster implements GeoEntity, Saddleable, Flying
     @Override
     public void jumpFromGround() {
         super.jumpFromGround();
-        triggerAnim("Fly/Walk/Hover/Idle", "take_off");
+      //  triggerAnim("Fly/Walk/Hover/Idle", "take_off");
     }
     @Override
     protected float getJumpPower() {
@@ -436,7 +407,7 @@ public class FireDragon extends Monster implements GeoEntity, Saddleable, Flying
     @Nullable
     @Override
     public SpawnGroupData finalizeSpawn(ServerLevelAccessor serverLevelAccessor, DifficultyInstance difficultyInstance, MobSpawnType mobSpawnType, @Nullable SpawnGroupData spawnGroupData, @Nullable CompoundTag compoundTag) {
-        FireDragonAi.onInitialize(this);
+        //FireDragonAi.onInitialize(this);
         return super.finalizeSpawn(serverLevelAccessor, difficultyInstance, mobSpawnType, spawnGroupData, compoundTag);
     }
     @Override
@@ -496,7 +467,7 @@ public class FireDragon extends Monster implements GeoEntity, Saddleable, Flying
     @Override
     public void die(DamageSource damageSource) {
         super.die(damageSource);
-        triggerAnim("Death", "death");
+       // triggerAnim("Death", "death");
     }
     @Override
     protected void tickDeath() {
@@ -530,7 +501,7 @@ public class FireDragon extends Monster implements GeoEntity, Saddleable, Flying
     }
 
 
-
+/*
     public void setNavigation(boolean flying) {
         navigation = flying ? flyingNavigation : groundNavigation;
     }
@@ -554,10 +525,6 @@ public class FireDragon extends Monster implements GeoEntity, Saddleable, Flying
         return !isInWater() && isHighEnough(ALTITUDE_FLYING_THRESHOLD);
     }
 
-    /**
-     * Returns the int-precision distance to solid ground.
-     * Describe an inclusive limit to reduce iterations.
-     */
     public double getAltitude(int limit) {
         var pointer = blockPosition().mutable().move(0, -1, 0);
         var min = level().dimensionType().minY();
@@ -580,9 +547,6 @@ public class FireDragon extends Monster implements GeoEntity, Saddleable, Flying
     }
 
 
-    /**
-     * Returns the distance to the ground while the entity is flying.
-     */
     public double getAltitude() {
         return getAltitude(level().getMaxBuildHeight());
     }
@@ -590,5 +554,5 @@ public class FireDragon extends Monster implements GeoEntity, Saddleable, Flying
         return getAltitude(height) >= height;
     }
 
-
+*/
 }

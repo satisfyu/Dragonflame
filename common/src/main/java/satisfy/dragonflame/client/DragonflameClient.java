@@ -11,8 +11,6 @@ import net.minecraft.client.renderer.RenderType;
 import satisfy.dragonflame.client.gui.LootChestScreen;
 import satisfy.dragonflame.client.model.*;
 import satisfy.dragonflame.client.render.*;
-import satisfy.dragonflame.entity.DragonWhelpling;
-import satisfy.dragonflame.entity.fire_dragon.FireDragonRenderer;
 import satisfy.dragonflame.registry.*;
 
 import java.util.HashSet;
@@ -65,7 +63,7 @@ public class DragonflameClient {
                 EntityRendererRegistry.register(EntityRegistry.ARMORED_PILLAGER_DOG, ArmoredPillagerDogRenderer::new);
                 EntityRendererRegistry.register(EntityRegistry.ARMORED_VINDICATOR, ArmoredVindicatorRenderer::new);
                 EntityRendererRegistry.register(EntityRegistry.ARMORED_PILLAGER, ArmoredPillagerRenderer::new);
-                EntityRendererRegistry.register(EntityRegistry.FIREDRAGON, FireDragonRenderer::new);
+                //EntityRendererRegistry.register(EntityRegistry.FIREDRAGON, FireDragonRenderer::new);
                 EntityRendererRegistry.register(EntityRegistry.DRAGON_WHELPLING, DragonWhelplingRenderer::new);
         }
 

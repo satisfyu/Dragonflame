@@ -1,37 +1,21 @@
 package satisfy.dragonflame.entity.fire_dragon;
 
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import satisfy.dragonflame.client.render.RenderPlayerLayer;
-import software.bernie.geckolib.cache.object.BakedGeoModel;
-import software.bernie.geckolib.cache.object.GeoBone;
-import software.bernie.geckolib.renderer.GeoEntityRenderer;
+import net.minecraft.resources.ResourceLocation;
+import satisfy.dragonflame.client.model.DragonWhelplingModel;
+import satisfy.dragonflame.util.DragonflameIdentifier;
+/*
+public class FireDragonRenderer extends MobRenderer<T, FireDragonModel<T>> {
+    private static final ResourceLocation TEXTURE = new DragonflameIdentifier("textures/entity/fire_dragon.png");
 
-public class FireDragonRenderer extends GeoEntityRenderer<FireDragon> {
-    public FireDragonRenderer(EntityRendererProvider.Context renderManager) {
-        super(renderManager, new FireDragonModel());
-        this.shadowRadius = 0.3f;
-        this.addRenderLayer(new RenderPlayerLayer(this));
+    public FireDragonRenderer(EntityRendererProvider.Context context) {
+        super(context, new FireDragonModel<>(context.bakeLayer(DragonWhelplingModel.LAYER_LOCATION)), 1.1f);
     }
 
     @Override
-    public void preRender(PoseStack poseStack, FireDragon animatable, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-        withScale(animatable.getScale());
-        super.preRender(poseStack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+    public ResourceLocation getTextureLocation(T entity) {
+        return TEXTURE;
     }
 
-    @Override
-    public void renderCubesOfBone(PoseStack poseStack, GeoBone bone, VertexConsumer buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-        if(!this.animatable.isSaddled() && bone.getName().equals("saddle")){
-            return;
-        }
-        super.renderCubesOfBone(poseStack, bone, buffer, packedLight, packedOverlay, red, green, blue, alpha);
-    }
-
-    @Override
-    protected float getDeathMaxRotation(FireDragon animatable) {
-        return 0;
-    }
 }
+*/
