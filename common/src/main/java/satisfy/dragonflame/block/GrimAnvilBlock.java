@@ -138,49 +138,62 @@ public class GrimAnvilBlock extends BaseEntityBlock {
         ItemStack itemStack = player.getItemInHand(interactionHand);
         GrimAnvilBlockEntity blockEntity = getGrimAnvilEntity(blockState, level, blockPos);
 
+        if (blockEntity == null) {
+            return InteractionResult.FAIL;
+        }
+
         if (!level.isClientSide) {
-            if (itemStack.getItem() == ObjectRegistry.ESSENCE_OF_FIRE.get().asItem()) {
-                if (!blockState.getValue(ESSENCE)) {
-                    if (!player.isCreative()) {
-                        itemStack.shrink(1);
-                    }
-                    level.setBlockAndUpdate(blockPos, blockState.setValue(ESSENCE, true));
-                    displaySuccessParticles(level, blockPos, blockState);
-                    level.playSound(null, blockPos, SoundEvents.END_PORTAL_SPAWN, SoundSource.BLOCKS, 2.0F, 1.0F);
-                    level.sendBlockUpdated(blockPos, blockState, blockState, 3);
-                    return InteractionResult.sidedSuccess(level.isClientSide);
-                } else {
-                    return InteractionResult.PASS;
+            boolean handled = false;
+            if (itemStack.getItem() == ObjectRegistry.ESSENCE_OF_FIRE.get().asItem() && !blockState.getValue(ESSENCE)) {
+                // No item should be removed in Creative mode
+                if (!player.isCreative()) {
+                    itemStack.shrink(1);
                 }
-            } else if (itemStack.getItem() == ObjectRegistry.TITAN_INGOT.get().asItem()) {
-                if (blockEntity != null) {
-                    InteractionResult interactionResult = blockEntity.addOre(itemStack);
-                    if (interactionResult.consumesAction()) {
-                        update(blockPos, blockState, level);
-                        return interactionResult;
+                level.setBlockAndUpdate(blockPos, blockState.setValue(ESSENCE, true));
+                displaySuccessParticles(level, blockPos);
+                level.playSound(null, blockPos, SoundEvents.END_PORTAL_SPAWN, SoundSource.BLOCKS, 1.0F, 1.0F);
+                handled = true;
+            } else if (itemStack.getItem() == ObjectRegistry.TITAN_INGOT.get().asItem() || itemStack.getItem() == ObjectRegistry.DRAGON_EMBLEM.get().asItem()) {
+                InteractionResult result = blockEntity.addOre(itemStack);
+                if (result.consumesAction()) {
+                    if (itemStack.getItem() == ObjectRegistry.DRAGON_EMBLEM.get().asItem()) {
+                        displayDragonEmblemParticles(level, blockPos);
+                        level.playSound(null, blockPos, SoundEvents.BLAZE_SHOOT, SoundSource.BLOCKS, 1.0F, 1.0F);
+                        // Correctly ensuring no item removal in Creative mode
                     }
+                    handled = true;
                 }
             } else if (itemStack.isEmpty()) {
-                if (blockEntity != null) {
-                    ItemStack returnStack = blockEntity.removeOre();
-                    if (!returnStack.isEmpty()) {
-                        if (!player.addItem(returnStack)) {
-                            player.drop(returnStack, false);
-                        }
-                        update(blockPos, blockState, level);
-                        return InteractionResult.sidedSuccess(level.isClientSide);
+                ItemStack returnedStack = blockEntity.removeOre();
+                if (!returnedStack.isEmpty()) {
+                    if (!player.addItem(returnedStack)) {
+                        player.drop(returnedStack, false);
                     }
+                    handled = true;
                 }
             }
-        } else {
-            if (itemStack.getItem() == ObjectRegistry.ESSENCE_OF_FIRE.get().asItem() && blockState.getValue(ESSENCE)) {
-                displayLavaParticles(level, blockPos);
+
+            if (handled) {
+                update(blockPos, blockState, level);
+                return InteractionResult.sidedSuccess(level.isClientSide);
             }
         }
 
         return InteractionResult.PASS;
     }
 
+    private void displaySuccessParticles(Level world, BlockPos pos) {
+        if (world instanceof ServerLevel serverLevel) {
+            serverLevel.sendParticles(ParticleTypes.HAPPY_VILLAGER, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, 10, 0.5, 0.5, 0.5, 0.05);
+        }
+    }
+
+    private void displayDragonEmblemParticles(Level world, BlockPos pos) {
+        if (world instanceof ServerLevel serverLevel) {
+            serverLevel.sendParticles(ParticleTypes.FLAME, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, 100, 0.5, 0.5, 0.5, 0.05);
+            serverLevel.sendParticles(ParticleTypes.LAVA, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, 50, 0.5, 0.5, 0.5, 0.05);
+        }
+    }
 
     private void displaySuccessParticles(Level world, BlockPos pos, BlockState blockState) {
         if (world instanceof ServerLevel serverLevel) {
