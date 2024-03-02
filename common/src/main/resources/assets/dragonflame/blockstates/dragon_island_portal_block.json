@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "essence=false": {
+      "model": "dragonflame:block/dragon_island_portal"
+    },
+    "essence=true": {
+      "model": "dragonflame:block/dragon_island_portal_active"
+    }
+  }
+}

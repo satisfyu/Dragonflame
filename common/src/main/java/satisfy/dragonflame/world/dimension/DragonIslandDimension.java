@@ -1,40 +1,61 @@
 package satisfy.dragonflame.world.dimension;
 
+import dev.architectury.event.events.common.LifecycleEvent;
+import dev.architectury.registry.registries.DeferredRegister;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.data.worldgen.BootstapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.dimension.BuiltinDimensionTypes;
 import net.minecraft.world.level.dimension.DimensionType;
 import satisfy.dragonflame.Dragonflame;
 
 import java.util.OptionalLong;
 
 public class DragonIslandDimension {
-    public static final ResourceKey<Level> LIMBO = ResourceKey.create(Registries.DIMENSION, Dragonflame.MOD_ID("limbo"));
+    public static final ResourceKey<Level> DRAGONISLAND = ResourceKey.create(Registries.DIMENSION, new ResourceLocation(Dragonflame.MOD_ID, "dragonisland_dimension"));
 
-    public static final ResourceKey<DimensionType> LIMBO_TYPE_KEY = ResourceKey.create(Registries.DIMENSION_TYPE, Dragonflame.MOD_ID("limbo"));
+    public static final ResourceKey<DimensionType> DRAGONISLAND_TYPE_KEY = ResourceKey.create(Registries.DIMENSION_TYPE, new ResourceLocation(Dragonflame.MOD_ID, "dragonisland_type"));
 
-    public static ServerLevel LIMBO_DIMENSION;
+    public static DimensionType DRAGONISLAND_TYPE;
 
+    public static ServerLevel DRAGONISLAND_DIMENSION;
 
-    public static void bootstrapType(Registerable<DimensionType> context) {
-        context.register(KAUPEN_DIM_TYPE, new DimensionType(
+    private static DimensionType dragonflameDimensionType() {
+        return new DimensionType(
                 OptionalLong.of(12000), // fixedTime
-                false, // hasSkylight
+                true, // hasSkylight
                 false, // hasCeiling
                 false, // ultraWarm
-                true, // natural
+                false, // natural
                 1.0, // coordinateScale
-                true, // bedWorks
+                false, // bedWorks
                 false, // respawnAnchorWorks
                 0, // minY
                 256, // height
                 256, // logicalHeight
                 BlockTags.INFINIBURN_OVERWORLD, // infiniburn
-                DimensionTypes.OVERWORLD_ID, // effectsLocation
+                BuiltinDimensionTypes.OVERWORLD_EFFECTS, // effectsLocation
                 1.0f, // ambientLight
-                new DimensionType.MonsterSettings(false, false, UniformIntProvider.create(0, 0), 0)));
+                new DimensionType.MonsterSettings(false, false, UniformInt.of(0, 7), 7)
+        );
+    }
+
+    public static void bootstrapType(BootstapContext<DimensionType> context) {
+        context.register(DRAGONISLAND_TYPE_KEY, dragonflameDimensionType());
+    }
+
+    public static void init() {
+        LifecycleEvent.SERVER_STARTED.register(server -> {
+            DragonIslandDimension.DRAGONISLAND_TYPE = server.registryAccess().registryOrThrow(Registries.DIMENSION_TYPE).get(DRAGONISLAND_TYPE_KEY);
+            DragonIslandDimension.DRAGONISLAND_DIMENSION = server.getLevel(DRAGONISLAND);
+        });
+        var deffered =DeferredRegister.create(Dragonflame.MOD_ID, Registries.CHUNK_GENERATOR);
+        deffered.register("blank", () -> BlankChunkGenerator.CODEC);
+        deffered.register();
     }
 }

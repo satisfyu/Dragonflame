@@ -6,6 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import satisfy.dragonflame.config.DragonflameConfig;
 import satisfy.dragonflame.registry.*;
+import satisfy.dragonflame.world.dimension.DragonIslandDimension;
 
 public class Dragonflame {
 
