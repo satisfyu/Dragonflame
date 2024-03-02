@@ -1,17 +1,11 @@
 {
   "type": "dragonflame:dragonisland_type",
   "generator": {
-    "type": "minecraft:flat",
-    "settings": {
-      "biome": "minecraft:plains",
-      "lakes": false,
-      "features": false,
-      "layers": [
-        {
-          "block": "minecraft:stone",
-          "height": 1
-        }
-      ]
+    "type": "minecraft:noise",
+    "settings": "minecraft:overworld",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "minecraft:deep_ocean"
     }
   }
 }
