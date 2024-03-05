@@ -156,8 +156,7 @@ public class TabRegistry {
                     ObjectRegistry.TITAN_DUST,
                     ObjectRegistry.TITAN_INGOT,
                     ObjectRegistry.TITAN_PLATES,
-                    ObjectRegistry.HARDENED_TITAN_PLATES,
-                    ObjectRegistry.DRAGON_ISLAND_PORTAL_BLOCK
+                    ObjectRegistry.HARDENED_TITAN_PLATES
 
             ).forEach(registrySupplier -> out.accept(registrySupplier.get().asItem().getDefaultInstance())))
             .build());

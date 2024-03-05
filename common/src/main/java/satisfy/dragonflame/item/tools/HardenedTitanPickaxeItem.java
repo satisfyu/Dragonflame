@@ -20,13 +20,6 @@ import satisfy.dragonflame.util.MathUtil;
 import java.util.List;
 
 public class HardenedTitanPickaxeItem extends PickaxeItem {
-    /*
-       public static final SimpleParticleType[] BLOCK_AURA_SWIPE_PARTICLES;
-
-      static {
-           BLOCK_AURA_SWIPE_PARTICLES = new SimpleParticleType[]{ParticleRegistry.TITAN_PICKAXE_SWIPE_01, ParticleRegistry.TITAN_PICKAXE_SWIPE_02, ParticleRegistry.TITAN_PICKAXE_SWIPE_03};
-       }
-       */
     public HardenedTitanPickaxeItem(Tier tier, int i, float f, Properties properties) {
         super(tier, i, f, properties);
     }
@@ -39,7 +32,7 @@ public class HardenedTitanPickaxeItem extends PickaxeItem {
     }
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand interactionHand) {
+    public @NotNull InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand interactionHand) {
         int swipeRadius = 4;
         boolean isSurvival = !(player.isCreative() || player.isSpectator());
 
@@ -63,10 +56,7 @@ public class HardenedTitanPickaxeItem extends PickaxeItem {
             if (isSurvival) player.getCooldowns().addCooldown(this, (int) Math.ceil((double) cooldownCountingBlocks / 2));
             if (cooldownCountingBlocks <= 0) return InteractionResultHolder.fail(player.getItemInHand(interactionHand));
 
-            double deltaX = -Mth.sin((float)Math.toRadians(player.getYRot())); // Here we don't use the rounded value since it might be
-            double deltaZ = Mth.cos((float)Math.toRadians(player.getYRot())); // A little off-center when seen on-camera
-
-            Level world = player.level(); // We might be able to use the level variable but IDK,
+            Level world = player.level();
             if (world instanceof ServerLevel serverWorld) { // I'd rather be safe than cause a server crash
                 //serverWorld.sendParticles(BLOCK_AURA_SWIPE_PARTICLES[player.getRandom().nextInt(BLOCK_AURA_SWIPE_PARTICLES.length)], player.getX() + deltaX, player.getY(0.5), player.getZ() + deltaZ, 0, deltaX, 0.0, deltaZ, 0.0);
             }

@@ -174,7 +174,6 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Item> HARDENED_TITAN_PLATES = registerItem("hardened_titan_plates", () -> new Item(getSettings()));
     public static final RegistrySupplier<Block> STATUE_LILITU = registerWithItem("statue_lilitu", () -> new LilituStatueBlock(BlockBehaviour.Properties.of().strength(-1.0F, 3600000.0F).noLootTable().sound(SoundType.STONE).pushReaction(PushReaction.IGNORE)));
     public static final RegistrySupplier<Block> STATUE_ADOREDU = registerWithItem("statue_adoredu", () -> new StatueBlock(BlockBehaviour.Properties.of().strength(-1.0F, 3600000.0F).noLootTable().sound(SoundType.STONE).pushReaction(PushReaction.IGNORE)));
-    public static final RegistrySupplier<Block> DRAGON_ISLAND_PORTAL_BLOCK = registerWithItem("dragon_island_portal_block", () -> new DragonIslandPortalBlock(BlockBehaviour.Properties.of().strength(-1.0F, 3600000.0F).noLootTable().sound(SoundType.STONE).pushReaction(PushReaction.IGNORE)));
 
 
     public static void init() {
