@@ -1,0 +1,78 @@
+{
+  "name": "dragonflame:dungeon/room_corridor",
+  "fallback": "dragonflame:dungeon/corridor_end",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "dragonflame:dungeon/corridor/fourway/empty",
+        "projection": "rigid",
+        "processors": "dragonflame:dungeon/age"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "dragonflame:dungeon/corridor/threeway/empty",
+        "projection": "rigid",
+        "processors": "dragonflame:dungeon/age"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "dragonflame:dungeon/corridor/corner/empty",
+        "projection": "rigid",
+        "processors": "dragonflame:dungeon/age"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "dragonflame:dungeon/corridor/barrels",
+        "projection": "rigid",
+        "processors": "dragonflame:dungeon/age"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "dragonflame:dungeon/corridor/empty",
+        "projection": "rigid",
+        "processors": "dragonflame:dungeon/age"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "dragonflame:dungeon/corridor/lava",
+        "projection": "rigid",
+        "processors": "dragonflame:dungeon/age"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "dragonflame:dungeon/corridor/statue",
+        "projection": "rigid",
+        "processors": "dragonflame:dungeon/age"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "dragonflame:dungeon/corridor/windows",
+        "projection": "rigid",
+        "processors": "dragonflame:dungeon/age"
+      }
+    }
+  ]
+}

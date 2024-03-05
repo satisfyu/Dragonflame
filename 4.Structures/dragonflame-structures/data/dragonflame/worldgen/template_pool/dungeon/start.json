@@ -1,0 +1,15 @@
+{
+  "name": "dragonflame:dungeon/start",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "dragonflame:dungeon/corridor/fourway/empty",
+        "projection": "rigid",
+        "processors": "dragonflame:dungeon/age"
+      }
+    }
+  ]
+}
