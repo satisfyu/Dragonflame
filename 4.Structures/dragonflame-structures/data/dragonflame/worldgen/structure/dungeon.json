@@ -1,7 +1,12 @@
 {
   "type": "minecraft:jigsaw",
   "biomes": "#dragonflame:has_structure/dungeon",
-  "spawn_overrides": {},
+  "spawn_overrides": {
+    "monster":  {
+      "bounding_box": "full",
+      "spawns": []
+    }
+  },
   "start_pool": "dragonflame:dungeon/start",
   "size": 3,
   "step": "surface_structures",
