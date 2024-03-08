@@ -11,6 +11,8 @@ import net.minecraft.client.renderer.RenderType;
 import satisfy.dragonflame.client.gui.LootChestScreen;
 import satisfy.dragonflame.client.model.*;
 import satisfy.dragonflame.client.render.*;
+import satisfy.dragonflame.entity.fire_dragon.FireDragonModel;
+import satisfy.dragonflame.entity.fire_dragon.FireDragonRenderer;
 import satisfy.dragonflame.registry.*;
 
 import java.util.HashSet;
@@ -54,6 +56,7 @@ public enum DragonflameClient {
                 EntityModelLayerRegistry.register(ArmoredPillagerModel.ARMORED_PILLAGER_MODEL_LAYER, ArmoredPillagerModel::getTexturedModelData);
                 EntityModelLayerRegistry.register(DragonWhelplingModel.LAYER_LOCATION, DragonWhelplingModel::getTexturedModelData);
                 EntityModelLayerRegistry.register(LootChestRenderer.LAYER_LOCATION, LootChestRenderer::getTexturedModelData);
+                EntityModelLayerRegistry.register(FireDragonModel.LAYER_LOCATION, FireDragonModel::getTexturedModelData);
 
                 registerEntityModelLayers();
                 registerEntityRenderers();
@@ -65,7 +68,7 @@ public enum DragonflameClient {
                 EntityRendererRegistry.register(EntityRegistry.ARMORED_PILLAGER_DOG, ArmoredPillagerDogRenderer::new);
                 EntityRendererRegistry.register(EntityRegistry.ARMORED_VINDICATOR, ArmoredVindicatorRenderer::new);
                 EntityRendererRegistry.register(EntityRegistry.ARMORED_PILLAGER, ArmoredPillagerRenderer::new);
-                //EntityRendererRegistry.register(EntityRegistry.FIREDRAGON, FireDragonRenderer::new);
+                EntityRendererRegistry.register(EntityRegistry.FIREDRAGON, FireDragonRenderer::new);
                 EntityRendererRegistry.register(EntityRegistry.DRAGON_WHELPLING, DragonWhelplingRenderer::new);
         }
 

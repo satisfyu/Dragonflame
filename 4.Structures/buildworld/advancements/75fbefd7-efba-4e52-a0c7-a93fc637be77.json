@@ -1,0 +1,153 @@
+{
+  "meadow:main/root": {
+    "criteria": {
+      "seeds": "2024-03-05 18:26:55 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/soul_lantern": {
+    "criteria": {
+      "has_soul_torch": "2024-03-05 18:26:55 +0100"
+    },
+    "done": true
+  },
+  "herbalbrews:main/root": {
+    "criteria": {
+      "seeds": "2024-03-05 18:26:55 +0100"
+    },
+    "done": true
+  },
+  "vinery:main/root": {
+    "criteria": {
+      "seeds": "2024-03-05 18:26:55 +0100"
+    },
+    "done": true
+  },
+  "brewery:main/root": {
+    "criteria": {
+      "seeds": "2024-03-05 18:26:55 +0100"
+    },
+    "done": true
+  },
+  "candlelight:main/root": {
+    "criteria": {
+      "seeds": "2024-03-05 18:26:55 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/crafting_table": {
+    "criteria": {
+      "unlock_right_away": "2024-03-05 18:26:56 +0100"
+    },
+    "done": true
+  },
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "minecraft:plains": "2024-03-05 18:26:56 +0100"
+    },
+    "done": false
+  },
+  "minecraft:recipes/decorations/chest": {
+    "criteria": {
+      "has_lots_of_items": "2024-03-05 18:26:59 +0100"
+    },
+    "done": true
+  },
+  "vinery:recipes/fermentation_barrel": {
+    "criteria": {
+      "has_barrel": "2024-03-05 18:28:27 +0100"
+    },
+    "done": true
+  },
+  "brewery:recipes/barrel_main": {
+    "criteria": {
+      "has_barrel": "2024-03-05 18:28:27 +0100"
+    },
+    "done": true
+  },
+  "candlelight:recipes/chocolate_box": {
+    "criteria": {
+      "has_chest": "2024-03-05 18:28:40 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/eye_armor_trim_smithing_template_smithing_trim": {
+    "criteria": {
+      "has_smithing_trim_template": "2024-03-05 18:28:52 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/bookshelf": {
+    "criteria": {
+      "has_book": "2024-03-05 18:28:52 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/book": {
+    "criteria": {
+      "has_paper": "2024-03-05 18:28:52 +0100"
+    },
+    "done": true
+  },
+  "candlelight:recipes/love_letter_open": {
+    "criteria": {
+      "has_paper": "2024-03-05 18:28:52 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/redstone/lectern": {
+    "criteria": {
+      "has_book": "2024-03-05 18:28:52 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/chiseled_bookshelf": {
+    "criteria": {
+      "has_book": "2024-03-05 18:28:52 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/writable_book": {
+    "criteria": {
+      "has_book": "2024-03-05 18:28:52 +0100"
+    },
+    "done": true
+  },
+  "candlelight:recipes/napkin": {
+    "criteria": {
+      "has_paper": "2024-03-05 18:28:52 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/eye_armor_trim_smithing_template": {
+    "criteria": {
+      "has_eye_armor_trim_smithing_template": "2024-03-05 18:28:52 +0100"
+    },
+    "done": true
+  },
+  "candlelight:recipes/letter_open": {
+    "criteria": {
+      "has_paper": "2024-03-05 18:28:52 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/cartography_table": {
+    "criteria": {
+      "has_paper": "2024-03-05 18:28:52 +0100"
+    },
+    "done": true
+  },
+  "candlelight:recipes/table_sign": {
+    "criteria": {
+      "has_paper": "2024-03-05 18:28:52 +0100"
+    },
+    "done": true
+  },
+  "vinery:recipes/dirt_slab": {
+    "criteria": {
+      "has_dirt": "2024-03-05 18:30:26 +0100"
+    },
+    "done": true
+  },
+  "DataVersion": 3465
+}

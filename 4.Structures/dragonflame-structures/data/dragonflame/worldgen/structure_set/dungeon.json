@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "dragonflame:dungeon",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 2969420,
+    "spacing": 42,
+    "separation": 16,
+    "type": "minecraft:random_spread"
+  }
+}

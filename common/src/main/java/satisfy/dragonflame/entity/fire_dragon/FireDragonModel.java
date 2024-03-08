@@ -2,7 +2,7 @@ package satisfy.dragonflame.entity.fire_dragon;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.minecraft.client.model.HierarchicalModel;
+import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
@@ -10,20 +10,20 @@ import net.minecraft.client.model.geom.builders.*;
 import satisfy.dragonflame.util.DragonflameIdentifier;
 
 
-public class FireDragonModel<T extends HierarchicalModel> {
+public class FireDragonModel<T extends FireDragon> extends EntityModel<T> {
 
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new DragonflameIdentifier("pillager_dog"), "main");
-    private final ModelPart Root;
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new DragonflameIdentifier("firedragon"), "main");
+    private final ModelPart root;
 
     public FireDragonModel(ModelPart root) {
-        this.Root = root.getChild("Root");
+        this.root = root.getChild("root");
     }
 
     public static LayerDefinition getTexturedModelData() {
         MeshDefinition meshdefinition = new MeshDefinition();
         PartDefinition partdefinition = meshdefinition.getRoot();
 
-        PartDefinition Root = partdefinition.addOrReplaceChild("Root", CubeListBuilder.create(), PartPose.offset(0.0F, -16.0F, 23.0F));
+        PartDefinition Root = partdefinition.addOrReplaceChild("root", CubeListBuilder.create(), PartPose.offset(0.0F, -16.0F, 23.0F));
 
         PartDefinition Tail = Root.addOrReplaceChild("Tail", CubeListBuilder.create().texOffs(0, 157).addBox(-11.992F, -9.6947F, 0.768F, 24.0F, 17.0F, 26.0F, new CubeDeformation(0.0F)), PartPose.offset(-0.008F, -10.3053F, -0.768F));
 
@@ -250,4 +250,12 @@ public class FireDragonModel<T extends HierarchicalModel> {
     }
 
 
+    @Override
+    public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+    }
+
+    @Override
+    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
+        root.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+    }
 }

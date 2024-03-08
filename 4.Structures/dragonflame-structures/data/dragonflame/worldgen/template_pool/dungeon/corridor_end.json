@@ -1,0 +1,33 @@
+{
+  "name": "dragonflame:dungeon/corridor_end",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "dragonflame:dungeon/corridor/end/crumbled",
+        "projection": "rigid",
+        "processors": "dragonflame:dungeon/age"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "dragonflame:dungeon/corridor/end/lava",
+        "projection": "rigid",
+        "processors": "dragonflame:dungeon/age"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "dragonflame:dungeon/corridor/end/legacy",
+        "projection": "rigid",
+        "processors": "dragonflame:dungeon/age"
+      }
+    }
+  ]
+}

@@ -1,7 +1,6 @@
 package satisfy.dragonflame;
 
 import dev.architectury.hooks.item.tool.AxeItemHooks;
-import net.minecraft.world.level.block.Blocks;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import satisfy.dragonflame.config.DragonflameConfig;
@@ -14,7 +13,6 @@ public class Dragonflame {
 
 	public static void init() {
 		DragonflameConfig.DEFAULT.getConfig();
-		//ParticleRegistry.init();
 		ObjectRegistry.init();
 		BoatAndSignRegistry.init();
 		BlockEntityRegistry.init();
@@ -24,7 +22,6 @@ public class Dragonflame {
 		EntityRegistry.init();
 		MobEffectRegistry.init();
 		EnchantmentRegistry.init();
-		PlacerTypesRegistry.init();
 		EventRegistry.init();
 	}
 

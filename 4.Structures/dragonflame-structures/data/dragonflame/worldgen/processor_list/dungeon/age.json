@@ -1,0 +1,61 @@
+{
+  "processors": [
+    {
+      "processor_type": "minecraft:rule",
+      "rules": [
+        {
+          "input_predicate": {
+            "block": "dragonflame:dragonstone_bricks",
+            "predicate_type": "minecraft:random_block_match",
+            "probability": 0.04
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "dragonflame:mossy_dragonstone_bricks"
+          }
+        },
+        {
+          "input_predicate": {
+            "block": "dragonflame:dragonstone_bricks",
+            "predicate_type": "minecraft:random_block_match",
+            "probability": 0.04
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "dragonflame:cracked_dragonstone_bricks"
+          }
+        },
+        {
+          "input_predicate": {
+            "block": "dragonflame:dragonstone_bricks",
+            "predicate_type": "minecraft:random_block_match",
+            "probability": 0.02
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "dragonflame:cobbled_dragonstone"
+          }
+        },
+        {
+          "input_predicate": {
+            "block": "dragonflame:dragonstone_bricks",
+            "predicate_type": "minecraft:random_block_match",
+            "probability": 0.02
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "dragonflame:dragonstone"
+          }
+        }
+      ]
+    }
+  ]
+}

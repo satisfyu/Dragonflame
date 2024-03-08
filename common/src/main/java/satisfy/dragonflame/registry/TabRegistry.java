@@ -157,6 +157,7 @@ public class TabRegistry {
                     ObjectRegistry.TITAN_INGOT,
                     ObjectRegistry.TITAN_PLATES,
                     ObjectRegistry.HARDENED_TITAN_PLATES
+
             ).forEach(registrySupplier -> out.accept(registrySupplier.get().asItem().getDefaultInstance())))
             .build());
 

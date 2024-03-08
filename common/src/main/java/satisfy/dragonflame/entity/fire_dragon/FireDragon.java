@@ -20,11 +20,21 @@ import net.minecraft.world.entity.ai.Brain;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.BodyRotationControl;
+import net.minecraft.world.entity.ai.goal.FloatGoal;
+import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
+import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
+import net.minecraft.world.entity.ai.goal.RangedCrossbowAttackGoal;
+import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
 import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
 import net.minecraft.world.entity.animal.FlyingAnimal;
+import net.minecraft.world.entity.monster.EnderMan;
 import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.monster.Skeleton;
+import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.raid.Raider;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
@@ -32,7 +42,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import net.tslat.smartbrainlib.api.SmartBrainOwner;
 import net.tslat.smartbrainlib.api.core.BrainActivityGroup;
-import net.tslat.smartbrainlib.api.core.SmartBrainProvider;
 import net.tslat.smartbrainlib.api.core.behaviour.FirstApplicableBehaviour;
 import net.tslat.smartbrainlib.api.core.behaviour.OneRandomBehaviour;
 import net.tslat.smartbrainlib.api.core.behaviour.custom.attack.AnimatableMeleeAttack;
@@ -50,6 +59,8 @@ import net.tslat.smartbrainlib.api.core.sensor.vanilla.NearbyLivingEntitySensor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import satisfy.dragonflame.client.DragonflameClient;
+import satisfy.dragonflame.entity.DragonWhelpling;
+import satisfy.dragonflame.entity.ai.PatrolGoal;
 import satisfy.dragonflame.entity.fire_dragon.ai.JumpFromGround;
 import satisfy.dragonflame.entity.fire_dragon.ai.upgrade.GroundNavigation;
 import satisfy.dragonflame.entity.fire_dragon.ai.upgrade.MoveToWalkTarget;
@@ -73,9 +84,6 @@ public class FireDragon extends Monster implements Saddleable, FlyingAnimal, Pla
     public static final float BASE_SIZE_MODIFIER = 1f; //min (riding) 0.83
     public static final int ALTITUDE_FLYING_THRESHOLD = 4;
 
-    private final GroundPathNavigation groundNavigation;
-    private final FlyingPathNavigation flyingNavigation;
-
     private float playerJumpPendingScale;
 
     private boolean changedFly = false;
@@ -86,11 +94,22 @@ public class FireDragon extends Monster implements Saddleable, FlyingAnimal, Pla
         setMaxUpStep(1);
         noCulling = true;
         moveControl = new DragonMoveControl(this);
-        flyingNavigation = new FlyingPathNavigation(this, level());
-        groundNavigation = new GroundNavigation(this, level());
+        FlyingPathNavigation flyingNavigation = new FlyingPathNavigation(this, level());
+        GroundPathNavigation groundNavigation = new GroundNavigation(this, level());
         flyingNavigation.setCanFloat(true);
         groundNavigation.setCanFloat(true);
         navigation = groundNavigation;
+    }
+
+
+    @Override
+    protected void registerGoals() {
+        super.registerGoals();
+        this.targetSelector.addGoal(0, new NearestAttackableTargetGoal<>(this, Player.class, true));
+        this.goalSelector.addGoal(0, new FloatGoal(this));
+        this.goalSelector.addGoal(1, new RandomStrollGoal(this, 0.6));
+        this.goalSelector.addGoal(2, new LookAtPlayerGoal(this, Player.class, 15.0F, 1.0F));
+
     }
 /*
     private static final RawAnimation WALK = RawAnimation.begin().thenPlay("Walk");

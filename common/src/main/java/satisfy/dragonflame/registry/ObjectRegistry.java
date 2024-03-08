@@ -50,7 +50,7 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Block> DRAGON_STAIRS = registerWithItem("dragon_stairs", () -> new StairBlock(DRAGON_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.OAK_STAIRS)));
     public static final RegistrySupplier<Block> DRAGON_SLAB = registerWithItem("dragon_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SLAB)));
     public static final RegistrySupplier<Block> DRAGON_PRESSURE_PLATE = registerWithItem("dragon_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, BlockBehaviour.Properties.of().noCollission().strength(0.5f).sound(SoundType.WOOD).mapColor(DRAGON_PLANKS.get().defaultMapColor()), BlockSetType.OAK));
-    public static final RegistrySupplier<Block> DRAGON_BUTTON = registerWithItem("dragon_button", () -> woodenButton(BlockSetType.OAK, FeatureFlags.VANILLA));
+    public static final RegistrySupplier<Block> DRAGON_BUTTON = registerWithItem("dragon_button", () -> woodenButton(FeatureFlags.VANILLA));
     public static final RegistrySupplier<Block> DRAGON_TRAPDOOR = registerWithItem("dragon_trapdoor", () -> new TrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_TRAPDOOR), BlockSetType.OAK));
     public static final RegistrySupplier<Block> DRAGON_DOOR = registerWithItem("dragon_door", () -> new DoorBlock(BlockBehaviour.Properties.of().strength(3.0f).sound(SoundType.WOOD).noOcclusion().mapColor(DRAGON_PLANKS.get().defaultMapColor()), BlockSetType.OAK));
     public static final RegistrySupplier<Block> DRAGON_FENCE = registerWithItem("dragon_fence", () -> new FenceBlock(BlockBehaviour.Properties.of().strength(2.0f, 3.0f).sound(SoundType.WOOD)));
@@ -64,7 +64,7 @@ public class ObjectRegistry {
     public static final RegistrySupplier<Block> BURNT_STAIRS = registerWithItem("burnt_stairs", () -> new StairBlock(BURNT_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(Blocks.OAK_STAIRS)));
     public static final RegistrySupplier<Block> BURNT_SLAB = registerWithItem("burnt_slab", () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SLAB)));
     public static final RegistrySupplier<Block> BURNT_PRESSURE_PLATE = registerWithItem("burnt_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, BlockBehaviour.Properties.of().noCollission().strength(0.5f).sound(SoundType.WOOD).mapColor(BURNT_PLANKS.get().defaultMapColor()), BlockSetType.OAK));
-    public static final RegistrySupplier<Block> BURNT_BUTTON = registerWithItem("burnt_button", () -> woodenButton(BlockSetType.OAK, FeatureFlags.VANILLA));
+    public static final RegistrySupplier<Block> BURNT_BUTTON = registerWithItem("burnt_button", () -> woodenButton(FeatureFlags.VANILLA));
     public static final RegistrySupplier<Block> BURNT_TRAPDOOR = registerWithItem("burnt_trapdoor", () -> new TrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_TRAPDOOR), BlockSetType.OAK));
     public static final RegistrySupplier<Block> BURNT_DOOR = registerWithItem("burnt_door", () -> new DoorBlock(BlockBehaviour.Properties.of().strength(3.0f).sound(SoundType.WOOD).noOcclusion().mapColor(BURNT_PLANKS.get().defaultMapColor()), BlockSetType.OAK));
     public static final RegistrySupplier<Block> BURNT_FENCE = registerWithItem("burnt_fence", () -> new FenceBlock(BlockBehaviour.Properties.of().strength(2.0f, 3.0f).sound(SoundType.WOOD)));
@@ -202,13 +202,13 @@ public class ObjectRegistry {
         });
     }
 
-    static ButtonBlock woodenButton(BlockSetType blockSetType, FeatureFlag... featureFlags) {
+    static ButtonBlock woodenButton(FeatureFlag... featureFlags) {
         BlockBehaviour.Properties properties = BlockBehaviour.Properties.of().noCollission().strength(0.5F).pushReaction(PushReaction.DESTROY);
         if (featureFlags.length > 0) {
             properties = properties.requiredFeatures(featureFlags);
         }
 
-        return new ButtonBlock(properties, blockSetType, 30, true);
+        return new ButtonBlock(properties, BlockSetType.OAK, 30, true);
     }
 
     public static <T extends Block> RegistrySupplier<T> registerWithItem(String name, Supplier<T> block) {
