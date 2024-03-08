@@ -1,7 +1,8 @@
 package satisfy.dragonflame.item.armor;
 
-import de.cristelknight.doapi.common.item.CustomArmorItem;
+import de.cristelknight.doapi.common.item.ICustomArmor;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -13,14 +14,14 @@ import satisfy.dragonflame.registry.ArmorRegistry;
 import java.util.List;
 
 
-public class DragonLeggings extends CustomArmorItem {
+public class DragonLeggings extends ArmorItem implements ICustomArmor {
     public DragonLeggings(ArmorMaterial material, Properties settings) {
         super(material, Type.LEGGINGS, settings);
     }
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level world, @NotNull List<Component> tooltip, TooltipFlag context) {
-        if(world != null && world.isClientSide()){
+        if (null != world && world.isClientSide()) {
             ArmorRegistry.appendToolTipDragon(tooltip);
         }
     }

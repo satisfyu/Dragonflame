@@ -1,15 +1,13 @@
 package satisfy.dragonflame.registry;
 
-import com.mojang.datafixers.util.Pair;
-import de.cristelknight.doapi.client.render.feature.FullCustomArmor;
+import de.cristelknight.doapi.client.render.feature.CustomArmorManager;
+import de.cristelknight.doapi.client.render.feature.CustomArmorSet;
 import dev.architectury.registry.client.level.entity.EntityModelLayerRegistry;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.network.chat.Component;
@@ -24,10 +22,9 @@ import satisfy.dragonflame.config.DragonflameConfig;
 import satisfy.dragonflame.util.DragonflameIdentifier;
 
 import java.util.List;
-import java.util.Map;
 
 public interface ArmorRegistry {
-    static void registerArmorModelLayers(){
+    static void registerArmorModelLayers() {
         EntityModelLayerRegistry.register(ReinforcedLeatherHelmet.LAYER_LOCATION, ReinforcedLeatherHelmet::getTexturedModelData);
         EntityModelLayerRegistry.register(ReinforcedLeatherInner.LAYER_LOCATION, ReinforcedLeatherInner::createBodyLayer);
         EntityModelLayerRegistry.register(ReinforcedLeatherOuter.LAYER_LOCATION, ReinforcedLeatherOuter::createBodyLayer);
@@ -49,34 +46,46 @@ public interface ArmorRegistry {
 
     }
 
-    static  <T extends LivingEntity> void registerArmorModels(Map<FullCustomArmor, Pair<HumanoidModel<T>, HumanoidModel<T>>> models, EntityModelSet modelLoader) {
-        models.put(new FullCustomArmor(ObjectRegistry.REINFORCED_LEATHER_BOOTS.get(), ObjectRegistry.REINFORCED_LEATHER_CHESTPLATE.get(), ObjectRegistry.REINFORCED_LEATHER_LEGGINGS.get(), new DragonflameIdentifier("textures/models/armor/reinforced_leather.png")), new Pair<>(new ReinforcedLeatherOuter<>(modelLoader.bakeLayer(ReinforcedLeatherOuter.LAYER_LOCATION)), new ReinforcedLeatherInner<>(modelLoader.bakeLayer(ReinforcedLeatherInner.LAYER_LOCATION))));
-        models.put(new FullCustomArmor(ObjectRegistry.DRAGON_BOOTS.get(), ObjectRegistry.DRAGON_CHESTPLATE.get(), ObjectRegistry.DRAGON_LEGGINGS.get(), new DragonflameIdentifier("textures/models/armor/dragon.png")), new Pair<>(new DragonOuter<>(modelLoader.bakeLayer(DragonOuter.LAYER_LOCATION)), new DragonInner<>(modelLoader.bakeLayer(DragonInner.LAYER_LOCATION))));
-        models.put(new FullCustomArmor(ObjectRegistry.TITAN_BOOTS.get(), ObjectRegistry.TITAN_CHESTPLATE.get(), ObjectRegistry.TITAN_LEGGINGS.get(), new DragonflameIdentifier("textures/models/armor/titan.png")), new Pair<>(new TitanOuter<>(modelLoader.bakeLayer(TitanOuter.LAYER_LOCATION)), new TitanInner<>(modelLoader.bakeLayer(TitanInner.LAYER_LOCATION))));
-        models.put(new FullCustomArmor(ObjectRegistry.HARDENED_TITAN_BOOTS.get(), ObjectRegistry.HARDENED_TITAN_CHESTPLATE.get(), ObjectRegistry.HARDENED_TITAN_LEGGINGS.get(), new DragonflameIdentifier("textures/models/armor/hardened_titan.png")), new Pair<>(new HardenedTitanOuter<>(modelLoader.bakeLayer(HardenedTitanOuter.LAYER_LOCATION)), new HardenedTitanInner<>(modelLoader.bakeLayer(HardenedTitanInner.LAYER_LOCATION))));
+    static <T extends LivingEntity> void registerArmorModels(CustomArmorManager<T> armors, EntityModelSet modelLoader) {
+        armors.addArmor(new CustomArmorSet<T>(ObjectRegistry.REINFORCED_LEATHER_HELMET.get(), ObjectRegistry.REINFORCED_LEATHER_CHESTPLATE.get(), ObjectRegistry.REINFORCED_LEATHER_LEGGINGS.get(), ObjectRegistry.REINFORCED_LEATHER_BOOTS.get())
+                .setTexture(new DragonflameIdentifier("reinforced_leather"))
+                .setOuterModel(new ReinforcedLeatherOuter<>(modelLoader.bakeLayer(ReinforcedLeatherOuter.LAYER_LOCATION)))
+                .setInnerModel(new ReinforcedLeatherInner<>(modelLoader.bakeLayer(ReinforcedLeatherInner.LAYER_LOCATION)))
+                .setHatModel(new ReinforcedLeatherHelmet<>(modelLoader.bakeLayer(ReinforcedLeatherHelmet.LAYER_LOCATION))));
 
+        armors.addArmor(new CustomArmorSet<>(ObjectRegistry.DRAGON_HELMET.get(), ObjectRegistry.DRAGON_CHESTPLATE.get(), ObjectRegistry.DRAGON_LEGGINGS.get(), ObjectRegistry.DRAGON_BOOTS.get()))
+                .setTexture(new DragonflameIdentifier("dragon"))
+                .setOuterModel(new DragonOuter<>(modelLoader.bakeLayer(DragonOuter.LAYER_LOCATION)))
+                .setInnerModel(new DragonInner<>(modelLoader.bakeLayer(DragonInner.LAYER_LOCATION)))
+                .setHatModel(new DragonHelmet<>(modelLoader.bakeLayer(DragonHelmet.LAYER_LOCATION)));
 
+        armors.addArmor(new CustomArmorSet<>(ObjectRegistry.TITAN_HELMET.get(), ObjectRegistry.TITAN_CHESTPLATE.get(), ObjectRegistry.TITAN_LEGGINGS.get(), ObjectRegistry.TITAN_BOOTS.get()))
+                .setTexture(new DragonflameIdentifier("titan"))
+                .setOuterModel(new TitanOuter<>(modelLoader.bakeLayer(TitanOuter.LAYER_LOCATION)))
+                .setInnerModel(new TitanInner<>(modelLoader.bakeLayer(TitanInner.LAYER_LOCATION)))
+                .setHatModel(new TitanHelmet<>(modelLoader.bakeLayer(TitanHelmet.LAYER_LOCATION)));
+
+        armors.addArmor(new CustomArmorSet<>(ObjectRegistry.HARDENED_TITAN_HELMET.get(), ObjectRegistry.HARDENED_TITAN_CHESTPLATE.get(), ObjectRegistry.HARDENED_TITAN_LEGGINGS.get(), ObjectRegistry.HARDENED_TITAN_BOOTS.get()))
+                .setTexture(new DragonflameIdentifier("hardened_titan"))
+                .setOuterModel(new HardenedTitanOuter<>(modelLoader.bakeLayer(HardenedTitanOuter.LAYER_LOCATION)))
+                .setInnerModel(new HardenedTitanInner<>(modelLoader.bakeLayer(HardenedTitanInner.LAYER_LOCATION)))
+                .setHatModel(new HardenedTitanHelmet<>(modelLoader.bakeLayer(HardenedTitanHelmet.LAYER_LOCATION)));
+
+        armors.addArmor(new CustomArmorSet<>(ObjectRegistry.DRAGON_HEAD_HELMET.get()))
+                .setTexture(new DragonflameIdentifier("dragon_head_helmet"))
+                .setHatModel(new DragonHeadHelmet<>(modelLoader.bakeLayer(DragonHeadHelmet.LAYER_LOCATION)));
     }
-
-    static  <T extends LivingEntity> void registerHatModels(Map<Item, EntityModel<T>> models, EntityModelSet modelLoader) {
-        models.put(ObjectRegistry.REINFORCED_LEATHER_HELMET.get(), new ReinforcedLeatherHelmet<>(modelLoader.bakeLayer(ReinforcedLeatherHelmet.LAYER_LOCATION)));
-        models.put(ObjectRegistry.DRAGON_HELMET.get(), new DragonHelmet<>(modelLoader.bakeLayer(DragonHelmet.LAYER_LOCATION)));
-        models.put(ObjectRegistry.TITAN_HELMET.get(), new satisfy.dragonflame.client.model.TitanHelmet<>(modelLoader.bakeLayer(satisfy.dragonflame.client.model.TitanHelmet.LAYER_LOCATION)));
-        models.put(ObjectRegistry.HARDENED_TITAN_HELMET.get(), new HardenedTitanHelmet<>(modelLoader.bakeLayer(HardenedTitanHelmet.LAYER_LOCATION)));
-        models.put(ObjectRegistry.DRAGON_HEAD_HELMET.get(), new DragonHeadHelmet<>(modelLoader.bakeLayer(DragonHeadHelmet.LAYER_LOCATION)));
-    }
-
 
     static void appendArmorToolTip(@NotNull List<Component> tooltip, List<Item> itemsInOrder, String armorSetName, List<Object> fullSetBonuses) {
         Player player = Minecraft.getInstance().player;
-        if (player == null) return;
+        if (null == player) return;
 
         ItemStack helmet = player.getItemBySlot(EquipmentSlot.HEAD);
         ItemStack chestplate = player.getItemBySlot(EquipmentSlot.CHEST);
         ItemStack leggings = player.getItemBySlot(EquipmentSlot.LEGS);
         ItemStack boots = player.getItemBySlot(EquipmentSlot.FEET);
 
-        assert itemsInOrder.size() == 4;
+        assert 4 == itemsInOrder.size();
 
         boolean isFullSet = helmet.getItem().getDefaultInstance() == itemsInOrder.get(0).getDefaultInstance() &&
                 chestplate.getItem().getDefaultInstance() == itemsInOrder.get(1).getDefaultInstance() &&

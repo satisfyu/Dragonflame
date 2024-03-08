@@ -18,11 +18,12 @@ import java.util.Set;
 import java.util.UUID;
 
 @Environment(EnvType.CLIENT)
-public class DragonflameClient {
+public enum DragonflameClient {
+    ;
 
-        public static final Set<UUID> dragonRiders = new HashSet<>();
+    public static final Set<UUID> dragonRiders = new HashSet<>();
 
-        public static boolean isYPressed = false;
+    public static boolean isYPressed;
 
         public static void onInitializeClient() {
                 //EntityRendererRegistry.register(EntityRegistry.SKELETON_BSP, SkeletonRenderer::new);
@@ -43,6 +44,7 @@ public class DragonflameClient {
                 MenuRegistry.registerScreenFactory(ScreenhandlerTypeRegistry.LOOTCHEST_SCREENHANDLER.get(), LootChestScreen::new);
                 registerBlockEntityRenderers();
 
+            initColorItems();
         }
 
         public static void preInitClient() {
@@ -58,7 +60,7 @@ public class DragonflameClient {
                 //ParticleRegistry.registerFactories();
         }
 
-        public static void registerEntityRenderers() {
+    private static void registerEntityRenderers() {
                 EntityRendererRegistry.register(EntityRegistry.FIERY_WARHORSE, FieryWarhorseRenderer::new);
                 EntityRendererRegistry.register(EntityRegistry.ARMORED_PILLAGER_DOG, ArmoredPillagerDogRenderer::new);
                 EntityRendererRegistry.register(EntityRegistry.ARMORED_VINDICATOR, ArmoredVindicatorRenderer::new);
@@ -67,12 +69,19 @@ public class DragonflameClient {
                 EntityRendererRegistry.register(EntityRegistry.DRAGON_WHELPLING, DragonWhelplingRenderer::new);
         }
 
-        public static void registerBlockEntityRenderers() {
+    private static void registerBlockEntityRenderers() {
                 BlockEntityRendererRegistry.register(BlockEntityRegistry.GRIM_ANVIL_BLOCK_ENTITY.get(), GrimAnvilRenderer::new);
                 BlockEntityRendererRegistry.register(BlockEntityRegistry.LOOTCHEST_BLOCK_ENTITY.get(), LootChestRenderer::new);
         }
 
-        public static void registerEntityModelLayers() {
+    private static void initColorItems() {
+        ClientUtil.registerColorArmor(ObjectRegistry.REINFORCED_LEATHER_HELMET.get(), 0x8B0000);
+        ClientUtil.registerColorArmor(ObjectRegistry.REINFORCED_LEATHER_CHESTPLATE.get(), 0x8B0000);
+        ClientUtil.registerColorArmor(ObjectRegistry.REINFORCED_LEATHER_LEGGINGS.get(), 0x8B0000);
+        ClientUtil.registerColorArmor(ObjectRegistry.REINFORCED_LEATHER_BOOTS.get(), 0x8B0000);
+    }
+
+    private static void registerEntityModelLayers() {
                 ArmorRegistry.registerArmorModelLayers();
         }
 }
