@@ -1,33 +1,26 @@
 package satisfy.dragonflame.item.armor;
 
-import de.cristelknight.doapi.common.item.CustomHatItem;
+import de.cristelknight.doapi.common.item.ICustomArmor;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import satisfy.dragonflame.registry.ArmorRegistry;
-import satisfy.dragonflame.util.DragonflameIdentifier;
 
 import java.util.List;
 
 
-public class DragonHeadHelmet extends CustomHatItem {
+public class DragonHeadHelmet extends ArmorItem implements ICustomArmor {
     public DragonHeadHelmet(ArmorMaterial material, Properties settings) {
         super(material, Type.HELMET, settings);
     }
 
     @Override
-    public ResourceLocation getTexture() {
-        return new DragonflameIdentifier("textures/models/armor/dragon_head_helmet.png");
-    }
-
-    @Override
-    public Float getOffset() {
+    public Float getYOffset() {
         return -1.5f;
     }
 
