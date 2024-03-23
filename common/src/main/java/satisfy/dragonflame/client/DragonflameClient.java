@@ -78,13 +78,13 @@ public enum DragonflameClient {
         }
 
     private static void initColorItems() {
-        ClientUtil.registerColorArmor(ObjectRegistry.REINFORCED_LEATHER_HELMET.get(), 0x8B0000);
-        ClientUtil.registerColorArmor(ObjectRegistry.REINFORCED_LEATHER_CHESTPLATE.get(), 0x8B0000);
-        ClientUtil.registerColorArmor(ObjectRegistry.REINFORCED_LEATHER_LEGGINGS.get(), 0x8B0000);
-        ClientUtil.registerColorArmor(ObjectRegistry.REINFORCED_LEATHER_BOOTS.get(), 0x8B0000);
+        ClientUtil.registerColorArmor(ObjectRegistry.REINFORCED_LEATHER_HELMET.get(), 0xFFADD8E6);
+        ClientUtil.registerColorArmor(ObjectRegistry.REINFORCED_LEATHER_CHESTPLATE.get(), 0xFFADD8E6);
+        ClientUtil.registerColorArmor(ObjectRegistry.REINFORCED_LEATHER_LEGGINGS.get(), 0xFFADD8E6);
+        ClientUtil.registerColorArmor(ObjectRegistry.REINFORCED_LEATHER_BOOTS.get(), 0xFFADD8E6);
     }
 
     private static void registerEntityModelLayers() {
-                ArmorRegistry.registerArmorModelLayers();
+            ArmorRegistry.registerArmorModelLayers();
         }
 }
